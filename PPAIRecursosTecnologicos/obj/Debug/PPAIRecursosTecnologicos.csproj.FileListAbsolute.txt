@@ -1,0 +1,9 @@
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe.config
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.pdb
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csprojAssemblyReference.cache
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Properties.Resources.resources
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.GenerateResource.cache
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.CoreCompileInputs.cache
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
