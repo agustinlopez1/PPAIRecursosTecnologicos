@@ -58,11 +58,11 @@
     <Compile Include="Entidades\Turno.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Gestor\GestorRegistrarReserva.cs" />
-    <Compile Include="Pantalla\Form1.cs">
+    <Compile Include="Pantalla\SeleccionTipoTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantalla\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Pantalla\SeleccionTipoTurno.Designer.cs">
+      <DependentUpon>SeleccionTipoTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantalla\InterfazMail.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pantalla\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Pantalla\SeleccionTipoTurno.resx">
+      <DependentUpon>SeleccionTipoTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantalla\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

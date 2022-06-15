@@ -16,7 +16,7 @@ namespace PPAIRecursosTecnologicos
     {
         GestorRegistrarReserva gestor = new GestorRegistrarReserva();
 
-        // Esta entidad a traves del GESTOR es la encargada de levantar todos los datos de la DB al iniciar
+        // Esta entidad a traves del GESTOR es la encargada de levantar todos los datos de la DB al iniciar (2da entrega)
 
         public PantallaRegistrarReserva()
         {

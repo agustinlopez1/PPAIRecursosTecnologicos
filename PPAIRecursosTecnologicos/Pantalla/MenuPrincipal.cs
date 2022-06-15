@@ -23,5 +23,12 @@ namespace PPAIRecursosTecnologicos.Pantalla
             ventana.Show();
             this.Hide();
         }
+
+        private void botonSeleccionarTipoRecurso_Click(object sender, EventArgs e)
+        {
+            PantallaSeleccionTipoRecurso ventana = new PantallaSeleccionTipoRecurso();
+            ventana.Show();
+
+        }
     }
 }

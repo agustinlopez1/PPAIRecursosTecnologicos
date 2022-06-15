@@ -11,20 +11,18 @@ namespace PPAIRecursosTecnologicos.Entidades
         private int idTipoRecurso;
         private string nombre;
         private string descripcion;
-        private List<TipoRecurso> listaTipoRecursos;
 
         public TipoRecurso(){}
 
         public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        public List<TipoRecurso> ListaTipoRecursos { get => listaTipoRecursos; set => listaTipoRecursos = value; }
 
 
         // Creo objetos "Tipo de Recurso Tecnologico", los agrego a una lista y la retorno.
-        public List<TipoRecurso> generarTipoRecursos()
+        public List<TipoRecurso> getNombre()
         {
-            this.listaTipoRecursos = new List<TipoRecurso>();
+            List<TipoRecurso> listaTipoRecursos = new List<TipoRecurso>();
 
             //Tipo Recurso 1 - Balanza de precisión
             TipoRecurso tipoRecurso1 = new TipoRecurso();

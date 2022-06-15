@@ -153,6 +153,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.botonSeleccionarTipoRecurso.TabIndex = 22;
             this.botonSeleccionarTipoRecurso.Text = "Seleccionar Tipo Recurso";
             this.botonSeleccionarTipoRecurso.UseVisualStyleBackColor = false;
+            this.botonSeleccionarTipoRecurso.Click += new System.EventHandler(this.botonSeleccionarTipoRecurso_Click);
             // 
             // button1
             // 

@@ -9,4 +9,4 @@ C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\ob
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.PantallaRegistrarReserva.resources
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.MenuPrincipal.resources
-C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaSeleccionTipoTurno.resources
+C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaSeleccionTipoRecurso.resources

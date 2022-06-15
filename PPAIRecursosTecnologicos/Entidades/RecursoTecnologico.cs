@@ -8,17 +8,18 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class RecursoTecnologico
     {
+        private int nroRT;
         private string nombre;
         private string imagen;
         private string caracteristica;
         private DateTime fechaAlta;
         private int numeroInventario;
-        private bool disponibilidad; // VERRR
+        private int idTipoRecurso;
+        private bool disponibilidad; // Ver
         private Modelo modelo; 
         private Marca marca;  
-        private TipoRecurso tipoRecurso;
         private Estado estado;
-        private PersonalCientifico cientifico; // VERRR
+        private PersonalCientifico cientifico; // Ver
 
         public RecursoTecnologico()
         {
@@ -32,9 +33,46 @@ namespace PPAIRecursosTecnologicos.Entidades
         public bool Disponibilidad { get => disponibilidad; set => disponibilidad = value; }
         public Modelo Modelo { get => modelo; set => modelo = value; }
         public Marca Marca { get => marca; set => marca = value; }
-        public TipoRecurso TipoRecurso { get => tipoRecurso; set => tipoRecurso = value; }
+        public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
         public Estado Estado { get => estado; set => estado = value; }
         public PersonalCientifico Cientifico { get => cientifico; set => cientifico = value; }
+
+        public List<RecursoTecnologico> getRecursosTecnologicos()
+        {
+            List<RecursoTecnologico> listaRecursosTecnologicos = new List<RecursoTecnologico>();
+
+            // Recurso Tecnologico 1 - Balanza de precisión
+            //RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico();
+            //recursoTecnologico1.nroRT = 1;
+            //recursoTecnologico1.nombre = " ";
+            //recursoTecnologico1.imagen = " ";
+            //recursoTecnologico1.caracteristica = " ";
+            //recursoTecnologico1.fechaAlta = "";
+            //recursoTecnologico1.numeroInventario = "";
+            //recursoTecnologico1.disponibilidad = "";
+            //recursoTecnologico1.marca = "";
+            //recursoTecnologico1.idTipoRecurso = 1;
+            //recursoTecnologico1.estado = "";
+            //recursoTecnologico1.cientifico = "";
+            //recursoTecnologico1.nombre = "";
+
+
+
+
+
+
+
+
+
+
+
+
+            return listaRecursosTecnologicos;
+
+        }
+
+
+
 
     }
 }
