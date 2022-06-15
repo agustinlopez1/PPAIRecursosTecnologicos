@@ -12,10 +12,15 @@ namespace PPAIRecursosTecnologicos.Entidades
         private DateTime fechaHoraFin;
         private Usuario usuario;
 
-        public Sesion(){}
+        public Sesion() { }
 
         public DateTime FechaHoraInicio { get => fechaHoraInicio; set => fechaHoraInicio = value; }
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
         public Usuario Usuario { get => usuario; set => usuario = value; }
+
+        //public Usuario getUsuario()
+        //{
+        //    return usuario.generarUsuario();
+        //}
     }
 }

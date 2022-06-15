@@ -1,4 +1,5 @@
 ﻿using PPAIRecursosTecnologicos.Gestor;
+using PPAIRecursosTecnologicos.Pantalla;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,19 @@ namespace PPAIRecursosTecnologicos
         public PantallaRegistrarReserva()
         {
             InitializeComponent();
+        }
+
+        private void botonRegistrarReserva_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal ventana = new MenuPrincipal();
+            ventana.Show();
+            this.Hide();
+        }
+
+        private void botonSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
         }
     }
 }

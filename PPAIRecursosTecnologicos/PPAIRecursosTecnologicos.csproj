@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="AccesoADatos\DAO.cs" />
     <Compile Include="Entidades\CentroInvestigacion.cs" />
-    <Compile Include="Entidades\Cientifico.cs" />
+    <Compile Include="Entidades\PersonalCientifico.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\Modelo.cs" />
@@ -58,6 +58,24 @@
     <Compile Include="Entidades\Turno.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Gestor\GestorRegistrarReserva.cs" />
+    <Compile Include="Pantalla\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantalla\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantalla\InterfazMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantalla\InterfazMail.Designer.cs">
+      <DependentUpon>InterfazMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantalla\MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantalla\MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantalla\PantallaRegistrarReserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +84,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pantalla\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantalla\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantalla\PantallaRegistrarReserva.resx">
+      <DependentUpon>PantallaRegistrarReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -89,7 +117,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\maxresdefault.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoUNC_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxresdefault.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxresdefault1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxresdefault1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxresdefault2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
