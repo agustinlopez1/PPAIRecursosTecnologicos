@@ -9,5 +9,7 @@ namespace PPAIRecursosTecnologicos.Entidades
     public class Estado
     {
         // VERRR
+
+        // asdasd
     }
 }
