@@ -28,7 +28,6 @@ namespace PPAIRecursosTecnologicos.Pantalla
         {
             PantallaSeleccionTipoRecurso ventana = new PantallaSeleccionTipoRecurso();
             ventana.Show();
-
         }
     }
 }

@@ -10,3 +10,16 @@ C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\ob
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.PantallaRegistrarReserva.resources
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.MenuPrincipal.resources
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaSeleccionTipoRecurso.resources
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.AssemblyReference.cache
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.SuggestedBindingRedirects.cache
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaSeleccionTipoRecurso.resources
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.MenuPrincipal.resources
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.PantallaRegistrarReserva.resources
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Properties.Resources.resources
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.GenerateResource.cache
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.CoreCompileInputs.cache
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe.config
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\bsambrenil\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.pdb
