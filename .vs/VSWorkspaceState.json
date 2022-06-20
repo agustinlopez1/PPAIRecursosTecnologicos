@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     ""
   ],
   "SelectedNode": "\\C:\\Users\\Usuario\\source\\repos\\PPAI",
+=======
+    "",
+    "\\PPAIRecursosTecnologicos",
+    "\\PPAIRecursosTecnologicos\\Gestor",
+    "\\PPAIRecursosTecnologicos\\Pantalla"
+  ],
+  "SelectedNode": "\\PPAIRecursosTecnologicos\\Pantalla",
+>>>>>>> bda02aeb2f5ba567e99c09bf1bfd3581cbc8734d
   "PreviewInSolutionExplorer": false
 }
