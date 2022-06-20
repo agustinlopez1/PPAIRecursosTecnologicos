@@ -12,7 +12,7 @@ namespace PPAIRecursosTecnologicos.Entidades
         private string nombre;
         private string descripcion;
 
-        public TipoRecurso(){}
+        public TipoRecurso() { }
 
         public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -20,7 +20,7 @@ namespace PPAIRecursosTecnologicos.Entidades
 
 
         // Creo objetos "Tipo de Recurso Tecnologico", los agrego a una lista y la retorno.
-        public List<TipoRecurso> getNombre()
+        public List<TipoRecurso> ListaTipoRecursos()
         {
             List<TipoRecurso> listaTipoRecursos = new List<TipoRecurso>();
 
@@ -53,5 +53,21 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         }
 
+        public List<string> getNombre()
+        {
+            List<string> listaNombresTipoRecurso = new List<string>();
+            List<TipoRecurso> listaTR = ListaTipoRecursos();
+
+
+            foreach (TipoRecurso tipo in listaTR)
+            {
+                listaNombresTipoRecurso.Add(tipo.Nombre);
+            }
+           
+            return listaNombresTipoRecurso;
+        }
+
+
     }
+
 }
