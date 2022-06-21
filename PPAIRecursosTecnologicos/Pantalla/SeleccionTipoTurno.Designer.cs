@@ -34,7 +34,15 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.comboTipoRecurso = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
+            this.grid_rt = new System.Windows.Forms.DataGridView();
+            this.centro_investigacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero_rt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxTipoRecurso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_rt)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxTipoRecurso
@@ -43,12 +51,12 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.groupBoxTipoRecurso.Controls.Add(this.botonSeleccionTipoRecurso);
             this.groupBoxTipoRecurso.Controls.Add(this.comboTipoRecurso);
             this.groupBoxTipoRecurso.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBoxTipoRecurso.Location = new System.Drawing.Point(220, 174);
+            this.groupBoxTipoRecurso.Location = new System.Drawing.Point(12, 158);
             this.groupBoxTipoRecurso.Name = "groupBoxTipoRecurso";
-            this.groupBoxTipoRecurso.Size = new System.Drawing.Size(347, 264);
+            this.groupBoxTipoRecurso.Size = new System.Drawing.Size(347, 232);
             this.groupBoxTipoRecurso.TabIndex = 0;
             this.groupBoxTipoRecurso.TabStop = false;
-            this.groupBoxTipoRecurso.Text = "Seleccion";
+            this.groupBoxTipoRecurso.Text = "Seleccion tipo recurso tecnologico";
             // 
             // botonSeleccionTipoRecurso
             // 
@@ -59,7 +67,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.botonSeleccionTipoRecurso.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
             this.botonSeleccionTipoRecurso.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonSeleccionTipoRecurso.ForeColor = System.Drawing.Color.White;
-            this.botonSeleccionTipoRecurso.Location = new System.Drawing.Point(113, 223);
+            this.botonSeleccionTipoRecurso.Location = new System.Drawing.Point(113, 173);
             this.botonSeleccionTipoRecurso.Name = "botonSeleccionTipoRecurso";
             this.botonSeleccionTipoRecurso.Size = new System.Drawing.Size(101, 35);
             this.botonSeleccionTipoRecurso.TabIndex = 16;
@@ -69,6 +77,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             // 
             // comboTipoRecurso
             // 
+            this.comboTipoRecurso.AccessibleName = "";
             this.comboTipoRecurso.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.comboTipoRecurso.Font = new System.Drawing.Font("Dubai", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboTipoRecurso.ForeColor = System.Drawing.SystemColors.Window;
@@ -77,7 +86,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.comboTipoRecurso.Name = "comboTipoRecurso";
             this.comboTipoRecurso.Size = new System.Drawing.Size(258, 26);
             this.comboTipoRecurso.TabIndex = 0;
-            this.comboTipoRecurso.Text = "    Seleccionar";
+            this.comboTipoRecurso.Text = "Todos";
             this.comboTipoRecurso.SelectedIndexChanged += new System.EventHandler(this.comboTipoRecurso_SelectedIndexChanged);
             // 
             // label2
@@ -87,11 +96,11 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Dubai", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(355, 42);
+            this.label2.Location = new System.Drawing.Point(220, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(325, 36);
+            this.label2.Size = new System.Drawing.Size(281, 36);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Seleccion Tipo Recurso Tecnologico";
+            this.label2.Text = "Seleccion Recurso Tecnologico";
             // 
             // botonVolver
             // 
@@ -110,18 +119,66 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
+            // grid_rt
+            // 
+            this.grid_rt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_rt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.centro_investigacion,
+            this.nombre,
+            this.numero_rt,
+            this.estado,
+            this.Modelo,
+            this.Marca});
+            this.grid_rt.Location = new System.Drawing.Point(441, 200);
+            this.grid_rt.Name = "grid_rt";
+            this.grid_rt.Size = new System.Drawing.Size(648, 116);
+            this.grid_rt.TabIndex = 30;
+            this.grid_rt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_rt_CellContentClick);
+            // 
+            // centro_investigacion
+            // 
+            this.centro_investigacion.HeaderText = "Centro Investigacion";
+            this.centro_investigacion.Name = "centro_investigacion";
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // numero_rt
+            // 
+            this.numero_rt.HeaderText = "Numero Inventario";
+            this.numero_rt.Name = "numero_rt";
+            // 
+            // estado
+            // 
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
             // PantallaSeleccionTipoRecurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault3;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1157, 503);
+            this.Controls.Add(this.grid_rt);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBoxTipoRecurso);
             this.Name = "PantallaSeleccionTipoRecurso";
             this.Text = "Seleccion Tipo Turno";
             this.groupBoxTipoRecurso.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grid_rt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +191,12 @@ namespace PPAIRecursosTecnologicos.Pantalla
         private System.Windows.Forms.ComboBox comboTipoRecurso;
         private System.Windows.Forms.Button botonSeleccionTipoRecurso;
         private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.DataGridView grid_rt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centro_investigacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero_rt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
     }
 }
