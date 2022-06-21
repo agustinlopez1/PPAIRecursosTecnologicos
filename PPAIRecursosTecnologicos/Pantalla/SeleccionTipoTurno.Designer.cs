@@ -129,9 +129,9 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.estado,
             this.Modelo,
             this.Marca});
-            this.grid_rt.Location = new System.Drawing.Point(441, 200);
+            this.grid_rt.Location = new System.Drawing.Point(435, 174);
             this.grid_rt.Name = "grid_rt";
-            this.grid_rt.Size = new System.Drawing.Size(648, 116);
+            this.grid_rt.Size = new System.Drawing.Size(829, 216);
             this.grid_rt.TabIndex = 30;
             this.grid_rt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_rt_CellContentClick);
             // 
@@ -170,7 +170,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault3;
-            this.ClientSize = new System.Drawing.Size(1157, 503);
+            this.ClientSize = new System.Drawing.Size(1288, 458);
             this.Controls.Add(this.grid_rt);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.label2);

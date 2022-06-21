@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoADatos\DAO.cs" />
+    <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CentroInvestigacion.cs" />
     <Compile Include="Entidades\PersonalCientifico.cs" />
     <Compile Include="Entidades\Estado.cs" />

@@ -23,17 +23,14 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             CentroInvestigacion CentroInvestigacion1 = new CentroInvestigacion();
             CentroInvestigacion1.nombre = "Centro Investigacion uno";
-
             listaCentroInvestigacion.Add(CentroInvestigacion1);
 
             CentroInvestigacion CentroInvestigacion2 = new CentroInvestigacion();
             CentroInvestigacion2.nombre = "Centro Investigacion dos";
-
             listaCentroInvestigacion.Add(CentroInvestigacion2);
 
             CentroInvestigacion CentroInvestigacion3 = new CentroInvestigacion();
             CentroInvestigacion3.nombre = "Centro Investigacion tres";
-
             listaCentroInvestigacion.Add(CentroInvestigacion3);
 
             return listaCentroInvestigacion;

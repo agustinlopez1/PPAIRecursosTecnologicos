@@ -29,9 +29,7 @@ namespace PPAIRecursosTecnologicos.Gestor
         public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
         public Sesion Sesion { get => sesion; set => sesion = value; }
 
-        //
-        // Primer metodo Gestor
-        //
+
         // Le solicito a "Tipo de Recursos Tecnologicos" que me devuelva una lista de todos.
         public List<string> buscarTipoRecursoTecnologico()
         {
@@ -41,7 +39,8 @@ namespace PPAIRecursosTecnologicos.Gestor
             return tiposRecursos;
         }
 
-        // Gestor recibe el tipo de recurso desde la pantalla y lo setea
+
+        // Gestor recibe el tipo de recurso desde la pantalla y lo guarda 
         public List<RecursoTecnologico> tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
         {
             this.tipoRecursoSeleccionado = tipoRecurso;
@@ -50,16 +49,15 @@ namespace PPAIRecursosTecnologicos.Gestor
             return listaRTdeTipoRT;
         }
 
-        //
-        // Segundo metodo Gestor
-        //
-        //
+
+        //gestor busca el rt del tipo seleccionado
         public List<RecursoTecnologico> obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
         {
             RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
             List<RecursoTecnologico> listaRTdeTipoRT = recursoTecnologico.esDeTipoRtSeleccionado(tipoRecursoSeleccionado);
+            List<RecursoTecnologico> listaRTReservable = recursoTecnologico.esReservable(listaRTdeTipoRT);
 
-            return listaRTdeTipoRT;
+            return listaRTReservable;
         }
 
         //public Usuario verificarUsuarioLogueado()

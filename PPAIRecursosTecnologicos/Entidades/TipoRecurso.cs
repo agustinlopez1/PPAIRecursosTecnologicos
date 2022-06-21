@@ -45,7 +45,7 @@ namespace PPAIRecursosTecnologicos.Entidades
             TipoRecurso tipoRecurso3 = new TipoRecurso();
             tipoRecurso3.idTipoRecurso = 3;
             tipoRecurso3.nombre = "Resonador Magnetico";
-            tipoRecurso3.descripcion = " ";
+            tipoRecurso3.descripcion = "Contador con lectura: 0.1μm";
 
             listaTipoRecursos.Add(tipoRecurso3);
 

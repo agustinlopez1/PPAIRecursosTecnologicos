@@ -50,20 +50,15 @@ namespace PPAIRecursosTecnologicos.Pantalla
             GestorRegistrarReserva gestor = new GestorRegistrarReserva();
             List<RecursoTecnologico> listagestor = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
-            cargarGrid(listagestor);
+            pedirSeleccionRecursoTecnologico(listagestor);
 
         }
 
         // La pantalla le envía el tipo de recurso seleccionado al gestor para setear
         private string tomarSeleccionTipoRecursoTecnologico()
         {
-            //GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-            //MessageBox.Show(comboTipoRecurso.SelectedItem.ToString());
-            //gestor.tomarSeleccionTipoRecursoTecnologico(comboTipoRecurso.SelectedItem.ToString());
             string tipoRecursoSeleccionado = comboTipoRecurso.SelectedItem.ToString();
             return tipoRecursoSeleccionado;
-
-            //  pedirSeleccionRecursoTecnologico(null);
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
@@ -82,62 +77,44 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
 
-        private void cargarGrid(List<RecursoTecnologico> listagestor)
+        private void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor)
         {
-            DataGridViewRow fila = new DataGridViewRow();
-            fila.CreateCells(grid_rt);
-            fila.Cells[0].Value = "ok";
-            grid_rt.Rows.Add(fila);
+            int columna = 0;
+            int fila = 0;
 
-            //foreach (RecursoTecnologico rt in listagestor)
-            //{
+            grid_rt.Rows.Clear();
 
+                foreach (RecursoTecnologico rt in listagestor)
+                {
+                    grid_rt.Rows.Add();
+                    //centro investigacion
+                    grid_rt.Rows[fila].Cells[columna].Value = rt.CentroInvestigacion.Nombre;
+                    columna++;
 
-            //    //  fila.Cells[0].Value = rt.CentroInvestigacion;
-            //    fila.Cells[0].Value = "hola";
-            //    fila.Cells[1].Value = rt.Nombre;
-            //    fila.Cells[2].Value = rt.NumeroRT;
-            //    //fila.Cells[3].Value = rt.Estado;
-            //    //fila.Cells[4].Value = rt.Modelo;
-            //    //fila.Cells[5].Value = rt.Marca;
+                    //nombre
+                    grid_rt.Rows[fila].Cells[columna].Value = rt.Nombre;
+                    columna++;
 
-            //    grid_rt.Rows.Add(fila);
-            //}
-        }
+                    //nro inventario
+                    grid_rt.Rows[fila].Cells[columna].Value = rt.NumeroRT;
+                    columna++;
 
-        public void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor)
-        {
-            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-            gestor.tomarSeleccionTipoRecursoTecnologico(comboTipoRecurso.SelectedItem.ToString());
+                //estado
+                    //grid_rt.Rows[fila].Cells[columna].Value = rt.getEstado(rt);
+                    columna++;
 
-            //DataGridViewRow fila = new DataGridViewRow();
-            //fila.CreateCells(grid_rt);
-            //fila.Cells[0].Value = "ok";
-            //grid_rt.Rows.Add(fila);
+                    //modelo
+                    //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo.Nombre;
+                    columna++;
 
+                    //marca
+                    //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo;
 
-            //foreach (RecursoTecnologico rt in listagestor)
-            //{
+                    columna++;
 
-
-            //    //  fila.Cells[0].Value = rt.CentroInvestigacion;
-            //    fila.Cells[0].Value = "hola";
-            //    fila.Cells[1].Value = rt.Nombre;
-            //    fila.Cells[2].Value = rt.NumeroRT;
-            //    //fila.Cells[3].Value = rt.Estado;
-            //    //fila.Cells[4].Value = rt.Modelo;
-            //    //fila.Cells[5].Value = rt.Marca;
-
-            //    grid_rt.Rows.Add(fila);
-
-
-            //    grid_rt.Rows.Add();
-            //    grid_rt.Rows[1].Cells[0].Value = rt.Nombre;
-            //    grid_rt.Rows[1].Cells[1].Value = "FACTURA";
-            //}
-
-            //grid_rt.Rows.Add();
-            //grid_rt.Rows[1].Cells[1].Value = "FACTURA";
+                    columna = 0;
+                    fila++;
+                }
         }
     }
 }
