@@ -10,23 +10,25 @@ namespace PPAIRecursosTecnologicos.Gestor
 {
     public class GestorRegistrarReserva
     {
-        private List<RecursoTecnologico> recursosTecnologicos;
-        //private List<TipoRecurso> tiposRecursos;
+
         private List<string> tiposRecursos;
         private Sesion sesion;
-        private Usuario usuario;
-        private DateTime fechaHoraActual; // Ver
-        private string TipoNotificacion; // Es otra entidad? Es string?
         private string tipoRecursoSeleccionado;
+
+      //  List<RecursoTecnologico> listaRTReservable;
+    //    List<RecursoTecnologico> listaRTdeTipoRT;
+        //private List<RecursoTecnologico> recursosTecnologicos;
+        //private Usuario usuario;
+        //private DateTime fechaHoraActual; // Ver
+        //private string TipoNotificacion; // Es otra entidad? Es string?
 
         public GestorRegistrarReserva()
         {
         }
 
         // GET Y SET de atributos
-        public List<RecursoTecnologico> RecursosTecnologicos { get => recursosTecnologicos; set => recursosTecnologicos = value; }
-        //   public List<TipoRecurso> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
-        public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
+       // public List<RecursoTecnologico> RecursosTecnologicos { get => recursosTecnologicos; set => recursosTecnologicos = value; }
+      //  public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
         public Sesion Sesion { get => sesion; set => sesion = value; }
 
 
@@ -41,24 +43,38 @@ namespace PPAIRecursosTecnologicos.Gestor
 
 
         // Gestor recibe el tipo de recurso desde la pantalla y lo guarda 
-        public List<RecursoTecnologico> tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
+        public (List<RecursoTecnologico>, List<String>, List<String>, List<String>, List<String>) tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
         {
             this.tipoRecursoSeleccionado = tipoRecurso;
-            List<RecursoTecnologico> listaRTdeTipoRT = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
+            (List<RecursoTecnologico> listaRTdeTipoRT, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
 
-            return listaRTdeTipoRT;
+            return (listaRTdeTipoRT, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
         }
 
 
         //gestor busca el rt del tipo seleccionado
-        public List<RecursoTecnologico> obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
+        public (List<RecursoTecnologico>, List<String>, List<String>, List<String>, List<String>) obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
         {
             RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
             List<RecursoTecnologico> listaRTdeTipoRT = recursoTecnologico.esDeTipoRtSeleccionado(tipoRecursoSeleccionado);
-            List<RecursoTecnologico> listaRTReservable = recursoTecnologico.esReservable(listaRTdeTipoRT);
+            (List<RecursoTecnologico> listaRTReservable, List<string> listaEstados) = recursoTecnologico.esReservable(listaRTdeTipoRT);
+            (List<string> listaMarca, List<string> listaModelos, List<string> listaCentroInvestigacion) = getDatosRT(listaRTReservable);
 
-            return listaRTReservable;
+            return(listaRTReservable, listaEstados, listaMarca, listaModelos, listaCentroInvestigacion);
         }
+
+        //busca los datos del rt
+        public (List<string>, List<string>, List<string>) getDatosRT(List<RecursoTecnologico> listaRTReservable)
+        {
+            RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
+            
+            (List<string> listaMarca, List<string> listaModelos) = recursoTecnologico.getMarcaModelo(listaRTReservable);
+            List<string> listaCentroInvestigacion = recursoTecnologico.getCentroInvestigacion(listaRTReservable);
+
+            return (listaMarca, listaModelos, listaCentroInvestigacion);
+
+        }
+
 
         //public Usuario verificarUsuarioLogueado()
         //{
@@ -67,8 +83,6 @@ namespace PPAIRecursosTecnologicos.Gestor
         //    this.usuario = sesion.getCientificoLogueado();
 
         //}
-
-
 
     }
 }

@@ -48,6 +48,9 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         public List<RecursoTecnologico> getRecursosTecnologicos()
         {
+            Modelo modelo = new Modelo();
+            List<Modelo> listaModelo = modelo.getModelo();
+            
             TipoRecurso tipoRt = new TipoRecurso();
             List<TipoRecurso> listaTiposRt = tipoRt.ListaTipoRecursos();
 
@@ -55,10 +58,11 @@ namespace PPAIRecursosTecnologicos.Entidades
             List<CentroInvestigacion> listaCentroInv = centroInvestigacion.getCentroInvestigacion();
 
             CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-             (List<CambioEstadoRT> listaCambioEstadoRT1, List<CambioEstadoRT> listaCambioEstadoRT2) = cambioEstadoRT.getCambioEstadoRT();
+            (List<CambioEstadoRT> listaCambioEstadoRT1, List<CambioEstadoRT> listaCambioEstadoRT2) = cambioEstadoRT.getCambioEstadoRT();
 
             List<RecursoTecnologico> listaRecursosTecnologicos = new List<RecursoTecnologico>();
 
+            //BALANZA DE PRECISION RESERVABLE
             RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico();
             recursoTecnologico1.nombre = "recurso tipo Balanza de precisión";
             recursoTecnologico1.numeroRT = 1;
@@ -70,11 +74,13 @@ namespace PPAIRecursosTecnologicos.Entidades
             recursoTecnologico1.tipoRecurso = listaTiposRt[0];
             recursoTecnologico1.centroInvestigacion = listaCentroInv[0];
             recursoTecnologico1.cambioEstadoRT = listaCambioEstadoRT1;
+            recursoTecnologico1.modelo = listaModelo[0];
 
             listaRecursosTecnologicos.Add(recursoTecnologico1);
 
+            // BALANZA DE PRECISION RESERVABLE
             RecursoTecnologico recursoTecnologico2 = new RecursoTecnologico();
-            recursoTecnologico2.nombre = "recurso tipo Microscopio de medición";
+            recursoTecnologico2.nombre = "recurso tipo BALANZA DE PRECISION";
             recursoTecnologico2.numeroRT = 2;
             recursoTecnologico2.imagen = "imagen2";
             recursoTecnologico2.fechaAlta = DateTime.Now;
@@ -84,9 +90,11 @@ namespace PPAIRecursosTecnologicos.Entidades
             recursoTecnologico2.tipoRecurso = listaTiposRt[0];
             recursoTecnologico2.centroInvestigacion = listaCentroInv[1];
             recursoTecnologico2.cambioEstadoRT = listaCambioEstadoRT2;
+            recursoTecnologico2.modelo = listaModelo[1];
 
             listaRecursosTecnologicos.Add(recursoTecnologico2);
 
+            // RESONADOR CON ESTADO RESERVABLE
             RecursoTecnologico recursoTecnologico3 = new RecursoTecnologico();
             recursoTecnologico3.nombre = "recurso tipo Resonador Magnetico";
             recursoTecnologico3.numeroRT = 3;
@@ -98,18 +106,14 @@ namespace PPAIRecursosTecnologicos.Entidades
             recursoTecnologico3.tipoRecurso = listaTiposRt[2];
             recursoTecnologico3.centroInvestigacion = listaCentroInv[2];
             recursoTecnologico3.cambioEstadoRT = listaCambioEstadoRT1;
+            recursoTecnologico3.modelo = listaModelo[2];
 
             listaRecursosTecnologicos.Add(recursoTecnologico3);
 
-            //recursoTecnologico1.idTipoRecurso = 1;
-            //recursoTecnologico1.estado = "";
+
             //recursoTecnologico1.cientifico = "";
-            //recursoTecnologico1.numeroInventario = "";
             //recursoTecnologico1.disponibilidad = true;
-            //recursoTecnologico1.marca = "";
-            //recursoTecnologico1.nombre = "";
             //recursoTecnologico1.caracteristica = "caracteristica1";
-            //recursoTecnologico1.nombre = "Balanza de precision ";
 
             return listaRecursosTecnologicos;
 
@@ -130,35 +134,62 @@ namespace PPAIRecursosTecnologicos.Entidades
             return listaRtTipoSelecc;
         }
 
-        public List<RecursoTecnologico> esReservable(List<RecursoTecnologico> listaRTdeTipoRT)
+        public (List<RecursoTecnologico>, List<String>) esReservable(List<RecursoTecnologico> listaRTdeTipoRT)
         {
             CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
             List<RecursoTecnologico> listaRTReservable = new List<RecursoTecnologico>();
 
             Boolean esActual = false;
             Boolean reservable = false;
-            //String nombreEstado = " ";
+            List<String> listaEstados = new List<String>();
 
             foreach (RecursoTecnologico rt in listaRTdeTipoRT)
             {
-                //(esActual, reservable, nombreEstado) = cambioEstadoRT.esActual(rt);
-                (esActual, reservable) = cambioEstadoRT.esActual(rt);
+                (esActual, reservable, listaEstados) = cambioEstadoRT.EsActual(rt, listaEstados);
                 if (esActual == true && reservable == true)
                 {
                     listaRTReservable.Add(rt);
                 }
-
-                //cambioEstadoRT.getEstado(rt);
             }
 
-            return listaRTReservable;
+            return (listaRTReservable, listaEstados);
         }
 
-        //public void getEstado()
-        //{
-        //    CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-        //    cambioEstadoRT.getEstado(RecursoTecnologico rt);
-        //}
+        //busca marca y modelo
+        public (List<string>, List<string>) getMarcaModelo(List<RecursoTecnologico> listaRTReservable)
+        {
+            Modelo modelo = new Modelo();
+
+            List<string> listaModelos = new List<string>();
+            List<string> listaMarca = new List<string>();
+
+            string nombreModelo = " ";
+            string nombreMarca = " ";
+
+            foreach (RecursoTecnologico rt in listaRTReservable)
+            {
+                (nombreMarca, nombreModelo) = modelo.getMarcaModelo(rt);
+                listaModelos.Add(nombreModelo);
+                listaMarca.Add(nombreMarca);
+            }
+
+            return (listaMarca, listaModelos);
+        }
+
+        public List<string> getCentroInvestigacion(List<RecursoTecnologico> listaRTReservable)
+        {
+            CentroInvestigacion centroInvestigacion = new CentroInvestigacion();
+            List<string> listaCentroInvestigacion = new List<string>();
+            string nombreCentroInvestigacion = " ";
+
+            foreach (RecursoTecnologico rt in listaRTReservable)
+            {
+                nombreCentroInvestigacion = centroInvestigacion.getNombre(rt);
+                listaCentroInvestigacion.Add(nombreCentroInvestigacion);
+            }
+
+            return listaCentroInvestigacion;
+        }
 
     }
 }

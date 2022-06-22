@@ -8,14 +8,13 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class Modelo
     {
-        public string nombre { get; set; }
-        public string nombre { get => nombre; set => nombre = value; }
+        private string nombre;
+
+        public string Nombre { get => nombre; set => nombre = value; }
 
 
         public List<Modelo> getModelo()
         {
-
-
             List<Modelo> listaModelo = new List<Modelo>();
 
             Modelo modelo1 = new Modelo();
@@ -33,6 +32,20 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             return listaModelo;
         }
+
+        public (string,string) getMarcaModelo(RecursoTecnologico rt)
+        {
+            Marca marca = new Marca();
+
+            string nombreModelo = " ";
+            string nombreMarca = " ";
+
+            nombreMarca = marca.getNombre(rt);
+            nombreModelo = rt.Modelo.nombre;
+
+            return (nombreMarca, nombreModelo);
+        }
+
     }
 
 }

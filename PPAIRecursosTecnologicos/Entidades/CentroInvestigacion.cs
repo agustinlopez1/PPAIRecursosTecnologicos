@@ -9,7 +9,7 @@ namespace PPAIRecursosTecnologicos.Entidades
     public class CentroInvestigacion
     {
         private string nombre;
-       // private List<RecursoTecnologico> recursosTecnologicos;
+        // private List<RecursoTecnologico> recursosTecnologicos;
 
         public CentroInvestigacion() { }
 
@@ -18,7 +18,7 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         public List<CentroInvestigacion> getCentroInvestigacion()
         {
-  
+
             List<CentroInvestigacion> listaCentroInvestigacion = new List<CentroInvestigacion>();
 
             CentroInvestigacion CentroInvestigacion1 = new CentroInvestigacion();
@@ -35,6 +35,13 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             return listaCentroInvestigacion;
 
+        }
+
+        public string getNombre(RecursoTecnologico rt)
+        {
+            string nombreCentroInvestigacion = rt.CentroInvestigacion.nombre;
+
+            return nombreCentroInvestigacion;
         }
 
     }

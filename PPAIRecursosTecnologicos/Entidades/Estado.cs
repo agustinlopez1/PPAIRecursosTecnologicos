@@ -17,35 +17,31 @@ namespace PPAIRecursosTecnologicos.Entidades
             List<Estado> listaEstado = new List<Estado>();
 
             Estado estado1 = new Estado();
-            estado1.nombre = "esReservable";
+            estado1.nombre = "dado de baja";
             listaEstado.Add(estado1);
 
             Estado estado2 = new Estado();
-            estado2.nombre = "estado 2";
+            estado2.nombre = "baja definitiva";
             listaEstado.Add(estado2);
 
             Estado estado3 = new Estado();
-            estado3.nombre = "estado 3";
+            estado3.nombre = "disponible";
             listaEstado.Add(estado3);
 
             Estado estado4 = new Estado();
-            estado4.nombre = "estado 4";
+            estado4.nombre = "en mantenimiento";
             listaEstado.Add(estado4);
 
             Estado estado5 = new Estado();
-            estado5.nombre = "estado 5";
+            estado5.nombre = "en inicio de mantenimiento correctivo";
             listaEstado.Add(estado5);
-
-            Estado estado6 = new Estado();
-            estado6.nombre = "estado 6";
-            listaEstado.Add(estado6);
 
             return listaEstado;
         }
 
         public Boolean esReservable(string estadoActual)
         {
-            if (estadoActual == "esReservable")
+            if (estadoActual != "dado de baja" && estadoActual != "baja definitiva")
             {
                 return true;
             }
@@ -53,11 +49,6 @@ namespace PPAIRecursosTecnologicos.Entidades
             {
                 return false;
             }
-        }
-
-        public string getNombre(CambioEstadoRT rt)
-        {
-            return rt.Estado.Nombre;
         }
     }
 }

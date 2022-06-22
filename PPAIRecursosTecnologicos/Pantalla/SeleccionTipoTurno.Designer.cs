@@ -39,8 +39,9 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero_rt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.botonSeleccionarRT = new System.Windows.Forms.Button();
             this.groupBoxTipoRecurso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_rt)).BeginInit();
             this.SuspendLayout();
@@ -127,8 +128,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.nombre,
             this.numero_rt,
             this.estado,
-            this.Modelo,
-            this.Marca});
+            this.Marca,
+            this.Modelo});
             this.grid_rt.Location = new System.Drawing.Point(435, 174);
             this.grid_rt.Name = "grid_rt";
             this.grid_rt.Size = new System.Drawing.Size(829, 216);
@@ -155,15 +156,32 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.estado.HeaderText = "Estado";
             this.estado.Name = "estado";
             // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
             // Modelo
             // 
             this.Modelo.HeaderText = "Modelo";
             this.Modelo.Name = "Modelo";
             // 
-            // Marca
+            // botonSeleccionarRT
             // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
+            this.botonSeleccionarRT.BackColor = System.Drawing.Color.SteelBlue;
+            this.botonSeleccionarRT.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonSeleccionarRT.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.botonSeleccionarRT.FlatAppearance.BorderSize = 0;
+            this.botonSeleccionarRT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
+            this.botonSeleccionarRT.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonSeleccionarRT.ForeColor = System.Drawing.Color.White;
+            this.botonSeleccionarRT.Location = new System.Drawing.Point(813, 411);
+            this.botonSeleccionarRT.Name = "botonSeleccionarRT";
+            this.botonSeleccionarRT.Size = new System.Drawing.Size(101, 35);
+            this.botonSeleccionarRT.TabIndex = 17;
+            this.botonSeleccionarRT.Text = "Seleccionar";
+            this.botonSeleccionarRT.UseVisualStyleBackColor = false;
+            this.botonSeleccionarRT.Click += new System.EventHandler(this.botonSeleccionarRT_Click);
             // 
             // PantallaSeleccionTipoRecurso
             // 
@@ -171,6 +189,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault3;
             this.ClientSize = new System.Drawing.Size(1288, 458);
+            this.Controls.Add(this.botonSeleccionarRT);
             this.Controls.Add(this.grid_rt);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.label2);
@@ -196,7 +215,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero_rt;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.Button botonSeleccionarRT;
     }
 }

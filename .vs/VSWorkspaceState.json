@@ -1,31 +1,9 @@
 {
   "ExpandedNodes": [
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    ""
-  ],
-  "SelectedNode": "\\PPAIRecursosTecnologicos.sln",
-=======
-<<<<<<< HEAD
-    ""
-  ],
-  "SelectedNode": "\\C:\\Users\\Usuario\\source\\repos\\PPAI",
-=======
->>>>>>> 6af78cfd6468f3e7fc3be8a8cec3b25aa379931d
     "",
     "\\PPAIRecursosTecnologicos",
-    "\\PPAIRecursosTecnologicos\\Entidades",
-    "\\PPAIRecursosTecnologicos\\Gestor",
-    "\\PPAIRecursosTecnologicos\\obj",
     "\\PPAIRecursosTecnologicos\\Pantalla"
   ],
-<<<<<<< HEAD
-  "SelectedNode": "\\PPAIRecursosTecnologicos.sln",
-=======
-  "SelectedNode": "\\PPAIRecursosTecnologicos\\Pantalla",
->>>>>>> bda02aeb2f5ba567e99c09bf1bfd3581cbc8734d
->>>>>>> 542a451013f940f5fc38a812ca9a16e854a9f10c
->>>>>>> 6af78cfd6468f3e7fc3be8a8cec3b25aa379931d
+  "SelectedNode": "\\PPAIRecursosTecnologicos\\Pantalla\\PantallaRegistrarReserva.cs",
   "PreviewInSolutionExplorer": false
 }

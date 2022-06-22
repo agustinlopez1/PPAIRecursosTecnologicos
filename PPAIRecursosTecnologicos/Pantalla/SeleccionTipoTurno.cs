@@ -14,6 +14,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
 {
     public partial class PantallaSeleccionTipoRecurso : Form
     {
+
         public PantallaSeleccionTipoRecurso()
         {
             InitializeComponent();
@@ -48,9 +49,9 @@ namespace PPAIRecursosTecnologicos.Pantalla
             string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
 
             GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-            List<RecursoTecnologico> listagestor = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
+            (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
-            pedirSeleccionRecursoTecnologico(listagestor);
+            pedirSeleccionRecursoTecnologico(listagestor, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
 
         }
 
@@ -77,10 +78,17 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
 
-        private void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor)
+        private void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion)
         {
+            tomarSeleccionRecursoTecnologico(listagestor);
+
+
             int columna = 0;
             int fila = 0;
+            int estado = 0;
+            int marca = 0;
+            int modelo = 0;
+            int centroInvestigacion = 0;
 
             grid_rt.Rows.Clear();
 
@@ -88,7 +96,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
             {
                 grid_rt.Rows.Add();
                 //centro investigacion
-                grid_rt.Rows[fila].Cells[columna].Value = rt.CentroInvestigacion.Nombre;
+                grid_rt.Rows[fila].Cells[columna].Value = listaCentroInvestigacion[centroInvestigacion];
+                centroInvestigacion++;
                 columna++;
 
                 //nombre
@@ -100,23 +109,50 @@ namespace PPAIRecursosTecnologicos.Pantalla
                 columna++;
 
                 //estado
-                grid_rt.Rows[fila].Cells[columna].Value = rt.CambioEstadoRT.FirstOrDefault().Estado.Nombre;
+                grid_rt.Rows[fila].Cells[columna].Value = listaEstados[estado];
                 columna++;
+                estado++;
 
 
                 //marca
-                // por algun motivo el getEstado() devuelve null por eso tira error.
-                //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo.getModelo().FirstOrDefault().nombre;
+                grid_rt.Rows[fila].Cells[columna].Value = listaMarca[marca];
                 columna++;
+                marca++;
 
-                //marca
-                //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo;
-
+                //modelo
+                grid_rt.Rows[fila].Cells[columna].Value = listaModelo[modelo];
                 columna++;
+                modelo++;
 
                 columna = 0;
                 fila++;
             }
+        }
+
+        private void botonSeleccionarRT_Click(object sender, EventArgs e)
+        {
+
+            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+
+
+        }
+
+        private RecursoTecnologico tomarSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor)
+        {
+            string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
+            RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
+
+            foreach(RecursoTecnologico rt in listagestor)
+            {
+                if(rt.Nombre == nombreRecursoSeleccionado)
+                {
+                    recursoSeleccionado = rt;
+                }
+            }
+
+            MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
+
+            return recursoSeleccionado;
         }
     }
 }
