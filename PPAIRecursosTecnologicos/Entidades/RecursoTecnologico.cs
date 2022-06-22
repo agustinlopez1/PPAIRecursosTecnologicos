@@ -41,10 +41,10 @@ namespace PPAIRecursosTecnologicos.Entidades
         public string DuracionMantenimientoPrev { get => duracionMantenimientoPrev; set => duracionMantenimientoPrev = value; }
         public string FraccionHorarioTurnos { get => fraccionHorarioTurnos; set => fraccionHorarioTurnos = value; }
 
-        //        public PersonalCientifico Cientifico { get => cientifico; set => cientifico = value; }      
-        //        public string Caracteristica { get => caracteristica; set => caracteristica = value; }
-        //        public bool Disponibilidad { get => disponibilidad; set => disponibilidad = value; }
-        //        public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
+        //public PersonalCientifico Cientifico { get => cientifico; set => cientifico = value; }      
+        //public string Caracteristica { get => caracteristica; set => caracteristica = value; }
+        //public bool Disponibilidad { get => disponibilidad; set => disponibilidad = value; }
+        //public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
 
         public List<RecursoTecnologico> getRecursosTecnologicos()
         {

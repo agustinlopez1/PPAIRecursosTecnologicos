@@ -76,13 +76,12 @@ namespace PPAIRecursosTecnologicos.Gestor
         }
 
 
-        //public Usuario verificarUsuarioLogueado()
-        //{
-        //    Session sesion = new Session();
+        public void verificarUsuarioLogueado()
+        {
+            Sesion sesion = new Sesion();
+            sesion.getCientificoLogueado();
 
-        //    this.usuario = sesion.getCientificoLogueado();
-
-        //}
+        }
 
     }
 }

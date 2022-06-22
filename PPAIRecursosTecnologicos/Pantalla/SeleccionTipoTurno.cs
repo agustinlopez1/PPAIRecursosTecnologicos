@@ -15,6 +15,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
     public partial class PantallaSeleccionTipoRecurso : Form
     {
 
+        List<RecursoTecnologico> gestorLista;
+
         public PantallaSeleccionTipoRecurso()
         {
             InitializeComponent();
@@ -51,6 +53,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
             GestorRegistrarReserva gestor = new GestorRegistrarReserva();
             (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
+            this.gestorLista = listagestor;
+
             pedirSeleccionRecursoTecnologico(listagestor, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
 
         }
@@ -80,9 +84,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
         private void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion)
         {
-            tomarSeleccionRecursoTecnologico(listagestor);
-
-
+           
             int columna = 0;
             int fila = 0;
             int estado = 0;
@@ -131,18 +133,18 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
         private void botonSeleccionarRT_Click(object sender, EventArgs e)
         {
-
+            tomarSeleccionRecursoTecnologico();
             GestorRegistrarReserva gestor = new GestorRegistrarReserva();
 
 
         }
 
-        private RecursoTecnologico tomarSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor)
+        private RecursoTecnologico tomarSeleccionRecursoTecnologico()
         {
             string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
             RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
 
-            foreach(RecursoTecnologico rt in listagestor)
+            foreach(RecursoTecnologico rt in this.gestorLista)
             {
                 if(rt.Nombre == nombreRecursoSeleccionado)
                 {
