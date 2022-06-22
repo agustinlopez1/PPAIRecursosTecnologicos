@@ -84,37 +84,39 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
             grid_rt.Rows.Clear();
 
-                foreach (RecursoTecnologico rt in listagestor)
-                {
-                    grid_rt.Rows.Add();
-                    //centro investigacion
-                    grid_rt.Rows[fila].Cells[columna].Value = rt.CentroInvestigacion.Nombre;
-                    columna++;
+            foreach (RecursoTecnologico rt in listagestor)
+            {
+                grid_rt.Rows.Add();
+                //centro investigacion
+                grid_rt.Rows[fila].Cells[columna].Value = rt.CentroInvestigacion.Nombre;
+                columna++;
 
-                    //nombre
-                    grid_rt.Rows[fila].Cells[columna].Value = rt.Nombre;
-                    columna++;
+                //nombre
+                grid_rt.Rows[fila].Cells[columna].Value = rt.Nombre;
+                columna++;
 
-                    //nro inventario
-                    grid_rt.Rows[fila].Cells[columna].Value = rt.NumeroRT;
-                    columna++;
+                //nro inventario
+                grid_rt.Rows[fila].Cells[columna].Value = rt.NumeroRT;
+                columna++;
 
                 //estado
-                    //grid_rt.Rows[fila].Cells[columna].Value = rt.getEstado(rt);
-                    columna++;
+                grid_rt.Rows[fila].Cells[columna].Value = rt.CambioEstadoRT.FirstOrDefault().Estado.Nombre;
+                columna++;
 
-                    //modelo
-                    //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo.Nombre;
-                    columna++;
 
-                    //marca
-                    //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo;
+                //marca
+                // por algun motivo el getEstado() devuelve null por eso tira error.
+                //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo.getModelo().FirstOrDefault().nombre;
+                columna++;
 
-                    columna++;
+                //marca
+                //grid_rt.Rows[fila].Cells[columna].Value = rt.Modelo;
 
-                    columna = 0;
-                    fila++;
-                }
+                columna++;
+
+                columna = 0;
+                fila++;
+            }
         }
     }
 }

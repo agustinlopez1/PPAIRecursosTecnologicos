@@ -8,14 +8,14 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class Modelo
     {
-        private string nombre;
+        public string nombre { get; set; }
+        public string nombre { get => nombre; set => nombre = value; }
 
-        public Modelo(){}
-
-        public string Nombre { get => nombre; set => nombre = value; }
 
         public List<Modelo> getModelo()
         {
+
+
             List<Modelo> listaModelo = new List<Modelo>();
 
             Modelo modelo1 = new Modelo();
@@ -30,7 +30,9 @@ namespace PPAIRecursosTecnologicos.Entidades
             modelo3.nombre = "modelo 3";
             listaModelo.Add(modelo3);
 
+
             return listaModelo;
         }
     }
+
 }
