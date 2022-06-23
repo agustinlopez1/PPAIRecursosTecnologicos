@@ -15,10 +15,10 @@ namespace PPAIRecursosTecnologicos.Pantalla
     public partial class PantallaRegistrarTurno : Form
     {
 
-        List<Turno> listaTurnos;
-        Turno turnoSeleccionado;
+        private List<Turno> listaTurnos;
+        private static Turno turnoSeleccionado;
 
-//        GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+   //     GestorRegistrarReserva gestor = new GestorRegistrarReserva();
 
 
         public PantallaRegistrarTurno()
@@ -63,7 +63,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         //toma la seleccion del usuario y se la envia al gestor
-        public void tomarSeleccionTurno()
+        public  void tomarSeleccionTurno()
         {
             DateTime fechaTurno = (DateTime)grid_turno.CurrentRow.Cells[0].Value;
 

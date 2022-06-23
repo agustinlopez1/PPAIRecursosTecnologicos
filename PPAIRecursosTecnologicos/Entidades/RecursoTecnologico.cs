@@ -203,6 +203,10 @@ namespace PPAIRecursosTecnologicos.Entidades
             return centroInvestigacion.esAsignado(cientificoLogeado);
         }
 
+        public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
+        {
+            turnoSeleccionado.reservar(estadoReservado, turnoSeleccionado);
+        }
 
     }
 }

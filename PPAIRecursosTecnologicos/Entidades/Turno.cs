@@ -65,5 +65,15 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             return listaEstados;
         }
+
+        public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
+        {
+            List<CambioEstadoTurno> cambioEstadoActual = turnoSeleccionado.cambioEstadoTurno;
+
+            turnoSeleccionado.cambioEstadoTurno.setFechaHoraFin(turnoSeleccionado);
+
+
+
+        }
     }
 }

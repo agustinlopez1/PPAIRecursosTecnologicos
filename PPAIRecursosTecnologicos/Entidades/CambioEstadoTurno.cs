@@ -72,17 +72,20 @@ namespace PPAIRecursosTecnologicos.Entidades
             Boolean esActual = false;
             DateTime fechaActual = DateTime.Now;
 
-
             foreach (CambioEstadoTurno cambioEstado in turno.CambioEstadoTurno)
             {
                 if (cambioEstado.fechaHoraHasta > fechaActual)
                 {
                     esActual = true;
                     listaEstados.Add(cambioEstado.Estado.Nombre);
-
                 }
             }
             return (esActual, listaEstados);
+        }
+
+        public void setFechaHoraFin(Turno turnoSelecionado)
+        {
+
         }
 
     }

@@ -15,6 +15,7 @@ namespace PPAIRecursosTecnologicos.Gestor
         private List<string> tiposRecursos;
         private Sesion sesion;
         private string tipoRecursoSeleccionado;
+        private static RecursoTecnologico rtSeleccionado;
         private string tipoRecurso;
         private RecursoTecnologico recursoTecnologicoSeleccionado;
         private DateTime fechaHoraActual = DateTime.UtcNow;
@@ -93,6 +94,7 @@ namespace PPAIRecursosTecnologicos.Gestor
         public void tomarSeleccionRecursoTecnologico(RecursoTecnologico recursoTecnologicoSeleccionado)
         {
             this.recursoTecnologicoSeleccionado = recursoTecnologicoSeleccionado;
+            rtSeleccionado = recursoTecnologicoSeleccionado;
             verificarUsuarioLogueado();
         }
 
@@ -106,6 +108,7 @@ namespace PPAIRecursosTecnologicos.Gestor
             PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
             pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
             pantallaRegistrarTurno.Show();
+
         }
 
         //recibe la seleccion desde la pantalla
@@ -117,13 +120,20 @@ namespace PPAIRecursosTecnologicos.Gestor
 
         public static void tomarConfirmacionReserva()
         {
-            generarReservaRecursoTecnologico();
+            Estado estadoReservado = generarReservaRecursoTecnologico();
+            reservar(estadoReservado);
         }
 
-        public static void generarReservaRecursoTecnologico()
+        public static Estado generarReservaRecursoTecnologico()
         {
-            Estado estado = Estado();
-            estado.
+            Estado estado = new Estado();
+            Estado estadoReservado = estado.esAmbitoTurno();
+            return estadoReservado;
+        }
+
+        public static void reservar(Estado estadoReservado)
+        {
+            rtSeleccionado.reservar(estadoReservado, turnoSeleccionado);
         }
     }
 }
