@@ -67,7 +67,7 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         }
 
-        public (Boolean, List<String>) EsActual(Turno turno, List<String> listaEstados)
+        public (Boolean, List<String>, List<CambioEstadoTurno>) EsActual(Turno turno, List<String> listaEstados, List<CambioEstadoTurno> cambioEstadoActual)
         {
             Boolean esActual = false;
             DateTime fechaActual = DateTime.Now;
@@ -78,15 +78,16 @@ namespace PPAIRecursosTecnologicos.Entidades
                 {
                     esActual = true;
                     listaEstados.Add(cambioEstado.Estado.Nombre);
+                    cambioEstadoActual.Add(cambioEstado);
                 }
+
             }
-            return (esActual, listaEstados);
+            return (esActual, listaEstados, cambioEstadoActual);
         }
 
-        public void setFechaHoraFin(Turno turnoSelecionado)
+        public void setFechaHoraFin()
         {
-
+            return;
         }
-
     }
 }

@@ -12,6 +12,7 @@ namespace PPAIRecursosTecnologicos.Entidades
         private DateTime fechaHoraFin;
         private DateTime fechaGeneracion;
         private List<CambioEstadoTurno> cambioEstadoTurno;
+        private List<CambioEstadoTurno> cambioEstadoTurnoActual;
 
         public DateTime FechaGeneracion { get => fechaGeneracion; set => fechaGeneracion = value; }
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
@@ -57,23 +58,30 @@ namespace PPAIRecursosTecnologicos.Entidades
         public List<String> getDatos(List<Turno> turnos)
         {
             List<String> listaEstados = new List<String>();
+            List<CambioEstadoTurno> cambioEstadoActual = new List<CambioEstadoTurno>();
 
             foreach (Turno turno in turnos)
             {
-                cambioEstadoT.EsActual(turno, listaEstados);
+                cambioEstadoT.EsActual(turno, listaEstados, cambioEstadoActual);
             }
-
+            this.cambioEstadoTurnoActual = cambioEstadoActual;
             return listaEstados;
         }
 
         public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
         {
-            List<CambioEstadoTurno> cambioEstadoActual = turnoSeleccionado.cambioEstadoTurno;
+            foreach(CambioEstadoTurno cambioEstado in this.cambioEstadoTurnoActual)
+            {
+                foreach(CambioEstadoTurno cambioEstadoTurno in turnoSeleccionado.cambioEstadoTurno)
+                {
+                    if (cambioEstadoTurno == cambioEstado)
+                    {
+                        cambioEstadoTurno.setFechaHoraFin();
+                    }
+                }
+                
 
-            turnoSeleccionado.cambioEstadoTurno.setFechaHoraFin(turnoSeleccionado);
-
-
-
+            }
         }
     }
 }
