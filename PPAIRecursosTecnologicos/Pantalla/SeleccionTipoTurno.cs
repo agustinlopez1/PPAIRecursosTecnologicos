@@ -16,6 +16,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
     {
 
         List<RecursoTecnologico> gestorLista;
+        GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+
 
         public PantallaSeleccionTipoRecurso()
         {
@@ -27,7 +29,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         // Se carga el combo box
         private void pedirSeleccionTipoRecursoTecnologico()
         {
-            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+            //GestorRegistrarReserva gestor = new GestorRegistrarReserva();
             List<string> listagestor = gestor.buscarTipoRecursoTecnologico();
 
             foreach (String tipo in listagestor)
@@ -50,7 +52,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         {
             string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
 
-            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+            //GestorRegistrarReserva gestor = new GestorRegistrarReserva();
             (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
             this.gestorLista = listagestor;
@@ -84,7 +86,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
         private void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion)
         {
-           
+
             int columna = 0;
             int fila = 0;
             int estado = 0;
@@ -134,9 +136,6 @@ namespace PPAIRecursosTecnologicos.Pantalla
         private void botonSeleccionarRT_Click(object sender, EventArgs e)
         {
             tomarSeleccionRecursoTecnologico();
-            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-
-
         }
 
         private RecursoTecnologico tomarSeleccionRecursoTecnologico()
@@ -144,15 +143,16 @@ namespace PPAIRecursosTecnologicos.Pantalla
             string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
             RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
 
-            foreach(RecursoTecnologico rt in this.gestorLista)
+            foreach (RecursoTecnologico rt in gestorLista)
             {
-                if(rt.Nombre == nombreRecursoSeleccionado)
+                if (rt.Nombre == nombreRecursoSeleccionado)
                 {
                     recursoSeleccionado = rt;
                 }
             }
 
             MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
+            gestor.tomarSeleccionRecursoTecnologico(recursoSeleccionado);
 
             return recursoSeleccionado;
         }

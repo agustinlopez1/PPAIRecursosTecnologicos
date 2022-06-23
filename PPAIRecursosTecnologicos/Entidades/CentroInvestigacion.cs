@@ -11,6 +11,7 @@ namespace PPAIRecursosTecnologicos.Entidades
         private string nombre;
         // private List<RecursoTecnologico> recursosTecnologicos;
 
+        private AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion;
         public CentroInvestigacion() { }
 
         public string Nombre { get => nombre; set => nombre = value; }
@@ -44,5 +45,9 @@ namespace PPAIRecursosTecnologicos.Entidades
             return nombreCentroInvestigacion;
         }
 
+        public bool esAsignado(Usuario usuario)
+        {
+            return asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuario);
+        }
     }
 }

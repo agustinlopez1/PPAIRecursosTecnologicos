@@ -16,10 +16,6 @@ namespace PPAIRecursosTecnologicos.Entidades
         private string correoElectronicoPersonal;
         private int telefonoCelular;
 
-        public PersonalCientifico()
-        {
-        }
-
         public int Legajo { get => legajo; set => legajo = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
@@ -34,8 +30,8 @@ namespace PPAIRecursosTecnologicos.Entidades
             PersonalCientifico personalCientifico = new PersonalCientifico();
 
             personalCientifico.Legajo = 1234;
-            personalCientifico.nombre = "Jose";
-            personalCientifico.apellido = "Flores";
+            personalCientifico.nombre = "Matias ";
+            personalCientifico.apellido = "Logueado";
             personalCientifico.numeroDocumento = 21522167;
             personalCientifico.correoElectronicoInstitucional = "joseflores@ci.unc";
             personalCientifico.correoElectronicoPersonal = "joseflores@gmail.com";

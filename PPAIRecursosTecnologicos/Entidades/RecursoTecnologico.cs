@@ -19,15 +19,13 @@ namespace PPAIRecursosTecnologicos.Entidades
         private string periodicidadMantenimientoPrev;
         private string duracionMantenimientoPrev;
         private string fraccionHorarioTurnos;
+        private List<Turno> listaTurnos;
+
         // private PersonalCientifico cientifico; // Ver
         // private int numeroInventario;
         // private int idTipoRecurso;
         // private bool disponibilidad; // Ver
         // private string caracteristica;
-
-        public RecursoTecnologico()
-        {
-        }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Imagen { get => imagen; set => imagen = value; }
@@ -50,7 +48,7 @@ namespace PPAIRecursosTecnologicos.Entidades
         {
             Modelo modelo = new Modelo();
             List<Modelo> listaModelo = modelo.getModelo();
-            
+
             TipoRecurso tipoRt = new TipoRecurso();
             List<TipoRecurso> listaTiposRt = tipoRt.ListaTipoRecursos();
 
@@ -61,6 +59,11 @@ namespace PPAIRecursosTecnologicos.Entidades
             (List<CambioEstadoRT> listaCambioEstadoRT1, List<CambioEstadoRT> listaCambioEstadoRT2) = cambioEstadoRT.getCambioEstadoRT();
 
             List<RecursoTecnologico> listaRecursosTecnologicos = new List<RecursoTecnologico>();
+
+            Turno turno = new Turno();
+            List<Turno> turnos = turno.getTurnos();
+
+
 
             //BALANZA DE PRECISION RESERVABLE
             RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico();
@@ -75,6 +78,7 @@ namespace PPAIRecursosTecnologicos.Entidades
             recursoTecnologico1.centroInvestigacion = listaCentroInv[0];
             recursoTecnologico1.cambioEstadoRT = listaCambioEstadoRT1;
             recursoTecnologico1.modelo = listaModelo[0];
+            recursoTecnologico1.listaTurnos = turnos;
 
             listaRecursosTecnologicos.Add(recursoTecnologico1);
 
@@ -91,6 +95,8 @@ namespace PPAIRecursosTecnologicos.Entidades
             recursoTecnologico2.centroInvestigacion = listaCentroInv[1];
             recursoTecnologico2.cambioEstadoRT = listaCambioEstadoRT2;
             recursoTecnologico2.modelo = listaModelo[1];
+            recursoTecnologico2.listaTurnos = turnos;
+
 
             listaRecursosTecnologicos.Add(recursoTecnologico2);
 
@@ -107,6 +113,8 @@ namespace PPAIRecursosTecnologicos.Entidades
             recursoTecnologico3.centroInvestigacion = listaCentroInv[2];
             recursoTecnologico3.cambioEstadoRT = listaCambioEstadoRT1;
             recursoTecnologico3.modelo = listaModelo[2];
+            recursoTecnologico3.listaTurnos = turnos;
+
 
             listaRecursosTecnologicos.Add(recursoTecnologico3);
 
@@ -119,6 +127,18 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         }
 
+        public List<Turno> getTurnos()
+        {
+            List<Turno> turnosPosteriorFecha = new List<Turno>();
+            foreach (Turno turno in listaTurnos)
+                if (turno.esPosteriorFechaHoraActual(turno))
+                    turnosPosteriorFecha.Add(turno);
+
+            //Turno.getDatos();
+
+            return turnosPosteriorFecha;
+        }
+
         public List<RecursoTecnologico> esDeTipoRtSeleccionado(string tipoRtSeleccionado)
         {
             List<RecursoTecnologico> listaRecursosTecnologicos = getRecursosTecnologicos();
@@ -128,7 +148,7 @@ namespace PPAIRecursosTecnologicos.Entidades
             {
                 if (rt.tipoRecurso.Nombre == tipoRtSeleccionado)
                 {
-                    listaRtTipoSelecc.Add(rt); 
+                    listaRtTipoSelecc.Add(rt);
                 }
             }
             return listaRtTipoSelecc;
@@ -190,6 +210,12 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             return listaCentroInvestigacion;
         }
+
+        public bool esCientificoDelCentroDeInvestigacion(Usuario cientificoLogeado)
+        {
+            return centroInvestigacion.esAsignado(cientificoLogeado);
+        }
+
 
     }
 }

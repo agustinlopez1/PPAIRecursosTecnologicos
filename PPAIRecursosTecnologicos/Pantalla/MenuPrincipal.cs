@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PPAIRecursosTecnologicos.Gestor;
 
 namespace PPAIRecursosTecnologicos.Pantalla
 {
     public partial class MenuPrincipal : Form
     {
+        GestorRegistrarReserva gestor = new GestorRegistrarReserva();
         public MenuPrincipal()
         {
             InitializeComponent();
+            //label14.Text = gestor.verificarUsuarioLogueado();
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
@@ -29,5 +32,6 @@ namespace PPAIRecursosTecnologicos.Pantalla
             PantallaSeleccionTipoRecurso ventana = new PantallaSeleccionTipoRecurso();
             ventana.Show();
         }
+
     }
 }

@@ -47,6 +47,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -292,12 +294,38 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.label13.TabIndex = 34;
             this.label13.Text = "----------";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Dubai", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DimGray;
+            this.label14.Location = new System.Drawing.Point(901, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 45);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Dubai", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.DimGray;
+            this.label15.Location = new System.Drawing.Point(778, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(117, 45);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "Usuario:";
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault4;
             this.ClientSize = new System.Drawing.Size(1133, 696);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -343,5 +371,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
