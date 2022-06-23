@@ -68,20 +68,20 @@ namespace PPAIRecursosTecnologicos.Entidades
             return listaEstados;
         }
 
-        public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
-        {
-            foreach(CambioEstadoTurno cambioEstado in this.cambioEstadoTurnoActual)
-            {
-                foreach(CambioEstadoTurno cambioEstadoTurno in turnoSeleccionado.cambioEstadoTurno)
-                {
-                    if (cambioEstadoTurno == cambioEstado)
-                    {
-                        cambioEstadoTurno.setFechaHoraFin();
-                    }
-                }
-                
+        //public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
+        //{
 
-            }
-        }
+        //    foreach (CambioEstadoTurno cambioEstado in cambioEstadoTurnoActual)
+        //    {
+        //        foreach (CambioEstadoTurno cambioEstadoTurno in turnoSeleccionado.cambioEstadoTurno)
+        //        {
+        //            if (cambioEstadoTurno == cambioEstado)
+        //            {
+        //                cambioEstadoTurno.setFechaHoraFin();
+        //            }
+
+        //        }
+        //    }
+        //}
     }
 }
