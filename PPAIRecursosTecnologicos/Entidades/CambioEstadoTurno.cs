@@ -58,7 +58,7 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             //TURNO CON ESTADO RESERVADO -- ES EL QUE SE USA
             CambioEstadoTurno cambioEstadoTurno6 = new CambioEstadoTurno();
-            cambioEstadoTurno6.estado = listaEstado[6];
+            cambioEstadoTurno6.estado = listaEstado[2];
             cambioEstadoTurno6.fechaHoraDesde = new DateTime(2022, 3, 1, 8, 30, 52);
             cambioEstadoTurno6.fechaHoraHasta = DateTime.Now.AddHours(10);
             listaCambioEstadoTurno2.Add(cambioEstadoTurno6);

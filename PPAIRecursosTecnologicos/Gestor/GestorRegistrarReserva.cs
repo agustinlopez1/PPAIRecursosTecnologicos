@@ -115,5 +115,15 @@ namespace PPAIRecursosTecnologicos.Gestor
             PantallaRegistrarTurno.mostrarDatosTurno(turnoSeleccionado);
         }
 
+        public static void tomarConfirmacionReserva()
+        {
+            generarReservaRecursoTecnologico();
+        }
+
+        public static void generarReservaRecursoTecnologico()
+        {
+            Estado estado = Estado();
+            estado.
+        }
     }
 }

@@ -81,15 +81,16 @@ namespace PPAIRecursosTecnologicos.Pantalla
         public static void mostrarDatosTurno(Turno turnoSeleccionado)
         {
 
-            String datosTurno = "Datos del turno: \n" +
-                                "Fecha hora inicio: \n" + turnoSeleccionado.FechaHoraInicio  +
-                                "Fecha hora fin: \n" + turnoSeleccionado.FechaHoraFin +
-                                "Fecha generacion: \n" + turnoSeleccionado.FechaGeneracion;
+            String datosTurno = "Datos del turno:" +
+                                "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio  +
+                                "\n Fecha hora fin: " + turnoSeleccionado.FechaHoraFin +
+                                "\n Fecha generacion: " + turnoSeleccionado.FechaGeneracion;
             
             DialogResult dialogResult = MessageBox.Show(datosTurno, "Confirmar turno", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("Turno confirmado correctamente");
+                GestorRegistrarReserva.tomarConfirmacionReserva();
             }
             else if (dialogResult == DialogResult.No)
             {
