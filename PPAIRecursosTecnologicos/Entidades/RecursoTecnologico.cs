@@ -205,7 +205,7 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
         {
-           // turnoSeleccionado.reservar(estadoReservado, turnoSeleccionado);
+           //turnoSeleccionado.reservar(estadoReservado, turnoSeleccionado);
         }
 
     }
