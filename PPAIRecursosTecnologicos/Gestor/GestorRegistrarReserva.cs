@@ -108,7 +108,6 @@ namespace PPAIRecursosTecnologicos.Gestor
             PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
             pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
             pantallaRegistrarTurno.Show();
-
         }
 
         //recibe la seleccion desde la pantalla
@@ -117,6 +116,8 @@ namespace PPAIRecursosTecnologicos.Gestor
             turnoSeleccionado = turnoSelec;
             PantallaRegistrarTurno.mostrarDatosTurno(turnoSeleccionado);
         }
+
+
 
         public static void tomarConfirmacionReserva()
         {

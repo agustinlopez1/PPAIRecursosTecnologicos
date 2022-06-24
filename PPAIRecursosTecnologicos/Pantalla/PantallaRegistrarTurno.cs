@@ -60,6 +60,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         private void botonSeleccionarTurno_Click(object sender, EventArgs e)
         {
             tomarSeleccionTurno();
+            this.Hide();
         }
 
         //toma la seleccion del usuario y se la envia al gestor
@@ -85,12 +86,20 @@ namespace PPAIRecursosTecnologicos.Pantalla
                                 "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio  +
                                 "\n Fecha hora fin: " + turnoSeleccionado.FechaHoraFin +
                                 "\n Fecha generacion: " + turnoSeleccionado.FechaGeneracion;
-            
+
+            String datosTurno1 = "Datos actualizados del turno:" +
+                    "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio +
+                    "\n Fecha hora fin: " + turnoSeleccionado.FechaHoraFin +
+                    "\n Fecha generacion: " + turnoSeleccionado.FechaGeneracion +
+                    "\n Estado: reservado";
+
             DialogResult dialogResult = MessageBox.Show(datosTurno, "Confirmar turno", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("Turno confirmado correctamente");
-                GestorRegistrarReserva.tomarConfirmacionReserva();
+                //GestorRegistrarReserva.tomarConfirmacionReserva();
+                MessageBox.Show(datosTurno1);
+
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -98,5 +107,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
             }
 
         }
+
+
+        
     }
 }
