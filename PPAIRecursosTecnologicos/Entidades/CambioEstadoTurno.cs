@@ -87,7 +87,27 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         public void setFechaHoraFin()
         {
-            return;
+            fechaHoraHasta = DateTime.Now;
         }
+
+        public List<CambioEstadoTurno> New()
+        {
+            CambioEstadoTurno cambioEstadoTurno7 = new CambioEstadoTurno();
+
+            List<CambioEstadoTurno> listaCambioEstadoTurno1 = new List<CambioEstadoTurno>();
+            List<CambioEstadoTurno> listaCambioEstadoTurno2 = new List<CambioEstadoTurno>();
+            (listaCambioEstadoTurno1, listaCambioEstadoTurno2) = getCambioEstadoTurno();
+
+            Estado estado = new Estado();
+            List<Estado> listaEstado = estado.getEstado();
+
+            cambioEstadoTurno7.estado = listaEstado[6];
+            cambioEstadoTurno7.fechaHoraDesde = DateTime.Now;
+            cambioEstadoTurno7.fechaHoraHasta = DateTime.Now.AddHours(10);
+            listaCambioEstadoTurno2.Add(cambioEstadoTurno7);
+
+            return listaCambioEstadoTurno2;
+        }
+
     }
 }

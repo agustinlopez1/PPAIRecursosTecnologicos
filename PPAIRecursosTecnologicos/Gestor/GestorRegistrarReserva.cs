@@ -15,12 +15,11 @@ namespace PPAIRecursosTecnologicos.Gestor
         private List<string> tiposRecursos;
         private Sesion sesion;
         private string tipoRecursoSeleccionado;
-        private static RecursoTecnologico rtSeleccionado;
         private string tipoRecurso;
         private RecursoTecnologico recursoTecnologicoSeleccionado;
         private DateTime fechaHoraActual = DateTime.UtcNow;
-        private static Turno turnoSeleccionado;
-
+        private Turno turnoSeleccionado;
+        PersonalCientifico pesrsonalCientificoLogeado;
 
         // GET Y SET de atributos
         // public List<RecursoTecnologico> RecursosTecnologicos { get => recursosTecnologicos; set => recursosTecnologicos = value; }
@@ -72,52 +71,67 @@ namespace PPAIRecursosTecnologicos.Gestor
         }
 
         //verificar que el centro de investigacion pertenece al usuario logeado
-        public string verificarUsuarioLogueado()
+        public (PersonalCientifico, List<Turno>, List<String>) verificarUsuarioLogueado()
         {
+            List<String> listaEstados = new List<String>();
+            List<Turno> turnosPosteriorFecha = new List<Turno>();
+
             Sesion sesion = new Sesion();
             Usuario cientificoLogeado = sesion.getCientificoLogueado(1).Usuario;
 
-            if (recursoTecnologicoSeleccionado.esCientificoDelCentroDeInvestigacion(cientificoLogeado))
-                getTurnosRecursoTecnologicoSeleccionado();
+            Boolean bandera;
+            PersonalCientifico logeadoCientifico;
+            (bandera, logeadoCientifico) = recursoTecnologicoSeleccionado.esCientificoDelCentroDeInvestigacion(cientificoLogeado);
+
+            if (bandera == true)
+                (turnosPosteriorFecha, listaEstados)  = getTurnosRecursoTecnologicoSeleccionado();
             else
                 MessageBox.Show("No puede seleccionar el recurso tecnologico seleccionado");
 
-            return cientificoLogeado.Nombre;
+            return (logeadoCientifico, turnosPosteriorFecha, listaEstados);
         }
 
 
         //recibe el rt seleccionado desde la pantalla
-        public void tomarSeleccionRecursoTecnologico(RecursoTecnologico recursoTecnologicoSeleccionado)
+        public (List<Turno>, List<String>) tomarSeleccionRecursoTecnologico(RecursoTecnologico recursoTecnologicoSeleccionado)
         {
+            List<String> listaEstados = new List<String>();
+            List<Turno> turnosPosteriorFecha = new List<Turno>();
+            PersonalCientifico cientificoLogeado;
+
             this.recursoTecnologicoSeleccionado = recursoTecnologicoSeleccionado;
-            rtSeleccionado = recursoTecnologicoSeleccionado;
-            verificarUsuarioLogueado();
+            (cientificoLogeado, turnosPosteriorFecha, listaEstados) = verificarUsuarioLogueado();
+
+            this.pesrsonalCientificoLogeado = cientificoLogeado;
+
+            return (turnosPosteriorFecha, listaEstados);
         }
 
-        public void getTurnosRecursoTecnologicoSeleccionado()
+
+        public (List<Turno>, List<String>) getTurnosRecursoTecnologicoSeleccionado()
         {
             List<String> listaEstados = new List<String>();
             List<Turno> turnosPosteriorFecha = new List<Turno>();
 
             (turnosPosteriorFecha, listaEstados) = recursoTecnologicoSeleccionado.getTurnos();
-
-            PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
-            pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
-            pantallaRegistrarTurno.Show();
-
+            return (turnosPosteriorFecha, listaEstados);
         }
 
         //recibe la seleccion desde la pantalla
         public void tomarSeleccionTurno(Turno turnoSelec)
         {
             turnoSeleccionado = turnoSelec;
-            PantallaRegistrarTurno.mostrarDatosTurno(turnoSeleccionado);
         }
 
-        public void tomarConfirmacionReserva()
+        public (Turno, string) tomarConfirmacionReserva()
         {
             Estado estadoReservado = generarReservaRecursoTecnologico();
-            reservar(estadoReservado);
+            Turno turnoActualizado;
+            string nombreEstadoActual;
+
+            (turnoActualizado, nombreEstadoActual) = reservar(estadoReservado);
+
+            return (turnoActualizado, nombreEstadoActual);
         }
 
         public Estado generarReservaRecursoTecnologico()
@@ -127,9 +141,13 @@ namespace PPAIRecursosTecnologicos.Gestor
             return estadoReservado;
         }
 
-        public void reservar(Estado estadoReservado)
+        public (Turno, string) reservar(Estado estadoReservado)
         {
-            rtSeleccionado.reservar(estadoReservado, turnoSeleccionado);
+            Turno turnoActualizado;
+            string nombreEstadoActual;
+            (turnoActualizado, nombreEstadoActual) = recursoTecnologicoSeleccionado.reservar(estadoReservado, turnoSeleccionado, pesrsonalCientificoLogeado);
+           
+            return (turnoActualizado, nombreEstadoActual);
         }
     }
 }

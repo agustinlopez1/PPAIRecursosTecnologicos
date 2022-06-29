@@ -51,10 +51,20 @@ namespace PPAIRecursosTecnologicos.Entidades
         }
 
 
-        public bool esAsignado(Usuario usuario)
+        public (bool, PersonalCientifico) esAsignado(Usuario usuario)
         {
+            Boolean bandera;
+            PersonalCientifico logeadoCientifico;
+
             AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion = new AsignacionCientificoDeCentroInvestigacion();
-            return asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuario);
+            (bandera, logeadoCientifico) = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuario);
+
+            return (bandera, logeadoCientifico);
+        }
+
+        public void asignarTurno(Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
+        {
+            asignacionCientificoDeCentroInvestigacion.setTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
         }
     }
 }

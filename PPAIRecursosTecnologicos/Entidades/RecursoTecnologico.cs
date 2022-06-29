@@ -36,6 +36,7 @@ namespace PPAIRecursosTecnologicos.Entidades
 
 
         Turno turno = new Turno();
+
         public List<RecursoTecnologico> getRecursosTecnologicos()
         {
             Modelo modelo = new Modelo();
@@ -198,15 +199,25 @@ namespace PPAIRecursosTecnologicos.Entidades
             return listaCentroInvestigacion;
         }
 
-        public bool esCientificoDelCentroDeInvestigacion(Usuario cientificoLogeado)
+        public (bool, PersonalCientifico) esCientificoDelCentroDeInvestigacion(Usuario cientificoLogeado)
         {
-            return centroInvestigacion.esAsignado(cientificoLogeado);
+            Boolean bandera;
+            PersonalCientifico logeadoCientifico;
+
+            (bandera, logeadoCientifico) = centroInvestigacion.esAsignado(cientificoLogeado);
+            return (bandera, logeadoCientifico);
         }
 
-        public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
+        public (Turno, string) reservar(Estado estadoReservado, Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
         {
-           // turnoSeleccionado.reservar(estadoReservado, turnoSeleccionado);
+            String nombreEstadoActual = "";
+            nombreEstadoActual = turno.reservar(estadoReservado, turnoSeleccionado);
+            centroInvestigacion.asignarTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
+
+            return (turnoSeleccionado, nombreEstadoActual);
         }
+
+
 
     }
 }

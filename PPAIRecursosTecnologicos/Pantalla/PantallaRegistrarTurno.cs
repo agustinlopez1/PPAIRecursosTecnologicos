@@ -16,15 +16,17 @@ namespace PPAIRecursosTecnologicos.Pantalla
     {
 
         private List<Turno> listaTurnos;
-        private static Turno turnoSeleccionado;
-        private static GestorRegistrarReserva gestor;
-
-        //     GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-
+        private Turno turnoSeleccionado;
+        private GestorRegistrarReserva gestorRegistrar;
 
         public PantallaRegistrarTurno()
         {
             InitializeComponent();
+        }
+
+        public void tomarGestor(GestorRegistrarReserva gestor)
+        {
+            gestorRegistrar = gestor;
         }
 
         public void pedirSeleccionTurno(List<Turno> turnosPosteriorFecha, List<String> listaEstados)
@@ -75,11 +77,11 @@ namespace PPAIRecursosTecnologicos.Pantalla
                     turnoSeleccionado = turno;
                 }
             }
-            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-            gestor.tomarSeleccionTurno(turnoSeleccionado);
+            gestorRegistrar.tomarSeleccionTurno(turnoSeleccionado);
+            mostrarDatosTurno(turnoSeleccionado);
         }
 
-        public static void mostrarDatosTurno(Turno turnoSeleccionado)
+        public void mostrarDatosTurno(Turno turnoSeleccionado)
         {
 
             String datosTurno = "Datos del turno:" +
@@ -91,14 +93,34 @@ namespace PPAIRecursosTecnologicos.Pantalla
             if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("Turno confirmado correctamente");
-                GestorRegistrarReserva gestor = new GestorRegistrarReserva();
-                gestor.tomarConfirmacionReserva();
+                (Turno turnoActualizado, string nombreEstadoActual) = gestorRegistrar.tomarConfirmacionReserva();
+                mostrarTurnoSeleccionado(nombreEstadoActual, turnoActualizado);
             }
             else if (dialogResult == DialogResult.No)
             {
                 MessageBox.Show("No se confirmo el turno seleccionado");
             }
 
+        }
+
+        public void mostrarTurnoSeleccionado(string nombreEstadoActual, Turno turnoActualizado)
+        {
+                int columna = 0;
+
+                grid_turno.Rows.Clear();
+
+                grid_turno.Rows.Add();
+                //fecha hora inicio
+                grid_turno.Rows[0].Cells[columna].Value = turnoActualizado.FechaHoraInicio;
+                columna++;
+
+                //fecha hora fin
+                grid_turno.Rows[0].Cells[columna].Value = turnoActualizado.FechaHoraFin;
+                columna++;
+
+                //estado
+                grid_turno.Rows[0].Cells[columna].Value = nombreEstadoActual;
+                columna++;
         }
     }
 }

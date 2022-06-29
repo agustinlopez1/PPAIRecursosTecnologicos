@@ -48,3 +48,16 @@ C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\ob
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
 C:\Users\Usuario\source\repos\PPAI\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaRegistrarTurno.resources
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaRegistrarTurno.resources
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe.config
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.pdb
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaRegistrarTurno.resources
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaSeleccionTipoRecurso.resources
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.MenuPrincipal.resources
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.PantallaRegistrarReserva.resources
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Properties.Resources.resources
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.GenerateResource.cache
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
+C:\Users\Usuario\Source\Repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.AssemblyReference.cache

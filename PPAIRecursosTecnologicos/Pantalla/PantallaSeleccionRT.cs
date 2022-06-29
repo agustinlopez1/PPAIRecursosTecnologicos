@@ -29,7 +29,6 @@ namespace PPAIRecursosTecnologicos.Pantalla
         // Se carga el combo box
         private void pedirSeleccionTipoRecursoTecnologico()
         {
-            //GestorRegistrarReserva gestor = new GestorRegistrarReserva();
             List<string> listagestor = gestor.buscarTipoRecursoTecnologico();
 
             foreach (String tipo in listagestor)
@@ -52,7 +51,6 @@ namespace PPAIRecursosTecnologicos.Pantalla
         {
             string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
 
-            //GestorRegistrarReserva gestor = new GestorRegistrarReserva();
             (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
             this.gestorLista = listagestor;
@@ -140,7 +138,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         //le envia al gestor el rt seleccionado
-        private RecursoTecnologico tomarSeleccionRecursoTecnologico()
+        //   private RecursoTecnologico tomarSeleccionRecursoTecnologico()
+        private void tomarSeleccionRecursoTecnologico()
         {
             string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
             RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
@@ -154,9 +153,18 @@ namespace PPAIRecursosTecnologicos.Pantalla
             }
 
             MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
-            this.gestor.tomarSeleccionRecursoTecnologico(recursoSeleccionado);
 
-            return recursoSeleccionado;
+            List<String> listaEstados = new List<String>();
+            List<Turno> turnosPosteriorFecha = new List<Turno>();
+
+            (turnosPosteriorFecha, listaEstados) = this.gestor.tomarSeleccionRecursoTecnologico(recursoSeleccionado);
+
+            PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
+            pantallaRegistrarTurno.Show();
+            pantallaRegistrarTurno.tomarGestor(gestor);
+            pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
+
+            //return recursoSeleccionado;
         }
     }
 }

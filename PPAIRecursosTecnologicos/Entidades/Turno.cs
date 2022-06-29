@@ -59,29 +59,37 @@ namespace PPAIRecursosTecnologicos.Entidades
         {
             List<String> listaEstados = new List<String>();
             List<CambioEstadoTurno> cambioEstadoActual = new List<CambioEstadoTurno>();
+            Boolean esActual;
 
             foreach (Turno turno in turnos)
             {
-                cambioEstadoT.EsActual(turno, listaEstados, cambioEstadoActual);
+                (esActual, listaEstados, cambioEstadoActual) = cambioEstadoT.EsActual(turno, listaEstados, cambioEstadoActual);
             }
             this.cambioEstadoTurnoActual = cambioEstadoActual;
             return listaEstados;
         }
 
-        //public void reservar(Estado estadoReservado, Turno turnoSeleccionado)
-        //{
+        public String reservar(Estado estadoReservado, Turno turnoSeleccionado)
+        {
+            List<CambioEstadoTurno> listaCambioEstadoTurno2;
+            String nombreEstadoActual = "";
 
-        //    foreach (CambioEstadoTurno cambioEstado in cambioEstadoTurnoActual)
-        //    {
-        //        foreach (CambioEstadoTurno cambioEstadoTurno in turnoSeleccionado.cambioEstadoTurno)
-        //        {
-        //            if (cambioEstadoTurno == cambioEstado)
-        //            {
-        //                cambioEstadoTurno.setFechaHoraFin();
-        //            }
+            foreach (CambioEstadoTurno cambioEstado in this.cambioEstadoTurnoActual)
+            {
+                foreach (CambioEstadoTurno cambioEstadoTurno in turnoSeleccionado.cambioEstadoTurno)
+                {
+                    if (cambioEstadoTurno == cambioEstado)
+                    {
+                        cambioEstadoTurno.setFechaHoraFin();
+                        listaCambioEstadoTurno2 = cambioEstadoTurno.New();
+                        turnoSeleccionado.cambioEstadoTurno = listaCambioEstadoTurno2;
+                        cambioEstadoTurno.Estado = estadoReservado;
+                        nombreEstadoActual = cambioEstadoTurno.Estado.Nombre;
+                    }
+                }
+            }
 
-        //        }
-        //    }
-        //}
+            return nombreEstadoActual;
+        }
     }
 }
