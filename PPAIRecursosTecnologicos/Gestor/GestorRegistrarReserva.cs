@@ -22,10 +22,6 @@ namespace PPAIRecursosTecnologicos.Gestor
         private static Turno turnoSeleccionado;
 
 
-        public GestorRegistrarReserva()
-        {
-        }
-
         // GET Y SET de atributos
         // public List<RecursoTecnologico> RecursosTecnologicos { get => recursosTecnologicos; set => recursosTecnologicos = value; }
         //  public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
@@ -112,26 +108,26 @@ namespace PPAIRecursosTecnologicos.Gestor
         }
 
         //recibe la seleccion desde la pantalla
-        public static void tomarSeleccionTurno(Turno turnoSelec)
+        public void tomarSeleccionTurno(Turno turnoSelec)
         {
             turnoSeleccionado = turnoSelec;
             PantallaRegistrarTurno.mostrarDatosTurno(turnoSeleccionado);
         }
 
-        public static void tomarConfirmacionReserva()
+        public void tomarConfirmacionReserva()
         {
             Estado estadoReservado = generarReservaRecursoTecnologico();
             reservar(estadoReservado);
         }
 
-        public static Estado generarReservaRecursoTecnologico()
+        public Estado generarReservaRecursoTecnologico()
         {
             Estado estado = new Estado();
             Estado estadoReservado = estado.esAmbitoTurno();
             return estadoReservado;
         }
 
-        public static void reservar(Estado estadoReservado)
+        public void reservar(Estado estadoReservado)
         {
             rtSeleccionado.reservar(estadoReservado, turnoSeleccionado);
         }

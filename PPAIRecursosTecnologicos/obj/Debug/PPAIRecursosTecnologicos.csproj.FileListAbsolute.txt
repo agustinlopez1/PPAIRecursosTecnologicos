@@ -38,7 +38,6 @@ C:\Users\Usuario\source\repos\PPAI\PPAIRecursosTecnologicos\bin\Debug\PPAIRecurs
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe.config
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.pdb
-C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.AssemblyReference.cache
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaSeleccionTipoRecurso.resources
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.MenuPrincipal.resources
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.PantallaRegistrarReserva.resources
@@ -48,3 +47,4 @@ C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\ob
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.exe
 C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
 C:\Users\Usuario\source\repos\PPAI\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaRegistrarTurno.resources
+C:\Users\mente\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Pantalla.PantallaRegistrarTurno.resources

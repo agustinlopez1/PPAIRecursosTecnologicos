@@ -17,8 +17,9 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
         private List<Turno> listaTurnos;
         private static Turno turnoSeleccionado;
+        private static GestorRegistrarReserva gestor;
 
-   //     GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+        //     GestorRegistrarReserva gestor = new GestorRegistrarReserva();
 
 
         public PantallaRegistrarTurno()
@@ -63,7 +64,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         //toma la seleccion del usuario y se la envia al gestor
-        public  void tomarSeleccionTurno()
+        public void tomarSeleccionTurno()
         {
             DateTime fechaTurno = (DateTime)grid_turno.CurrentRow.Cells[0].Value;
 
@@ -74,23 +75,24 @@ namespace PPAIRecursosTecnologicos.Pantalla
                     turnoSeleccionado = turno;
                 }
             }
-
-            GestorRegistrarReserva.tomarSeleccionTurno(turnoSeleccionado);
+            GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+            gestor.tomarSeleccionTurno(turnoSeleccionado);
         }
 
         public static void mostrarDatosTurno(Turno turnoSeleccionado)
         {
 
             String datosTurno = "Datos del turno:" +
-                                "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio  +
+                                "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio +
                                 "\n Fecha hora fin: " + turnoSeleccionado.FechaHoraFin +
                                 "\n Fecha generacion: " + turnoSeleccionado.FechaGeneracion;
-            
+
             DialogResult dialogResult = MessageBox.Show(datosTurno, "Confirmar turno", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("Turno confirmado correctamente");
-                GestorRegistrarReserva.tomarConfirmacionReserva();
+                GestorRegistrarReserva gestor = new GestorRegistrarReserva();
+                gestor.tomarConfirmacionReserva();
             }
             else if (dialogResult == DialogResult.No)
             {
