@@ -35,6 +35,8 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.fechaHoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaHoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid_turno)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +62,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.botonSeleccionarTurno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
             this.botonSeleccionarTurno.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonSeleccionarTurno.ForeColor = System.Drawing.Color.White;
-            this.botonSeleccionarTurno.Location = new System.Drawing.Point(213, 345);
+            this.botonSeleccionarTurno.Location = new System.Drawing.Point(296, 345);
             this.botonSeleccionarTurno.Name = "botonSeleccionarTurno";
             this.botonSeleccionarTurno.Size = new System.Drawing.Size(101, 35);
             this.botonSeleccionarTurno.TabIndex = 31;
@@ -95,12 +97,48 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.estado.HeaderText = "Estado";
             this.estado.Name = "estado";
             // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.Color.SlateGray;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
+            this.botonVolver.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.ForeColor = System.Drawing.Color.White;
+            this.botonVolver.Location = new System.Drawing.Point(36, 341);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(95, 39);
+            this.botonVolver.TabIndex = 33;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.SteelBlue;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
+            this.button1.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(403, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 35);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Imprimir";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PantallaRegistrarTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault3;
             this.ClientSize = new System.Drawing.Size(589, 428);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.botonSeleccionarTurno);
             this.Controls.Add(this.grid_turno);
             this.Controls.Add(this.label2);
@@ -120,5 +158,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaHoraInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaHoraFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button button1;
     }
 }

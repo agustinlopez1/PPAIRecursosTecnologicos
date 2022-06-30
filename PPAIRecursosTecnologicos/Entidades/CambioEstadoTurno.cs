@@ -103,7 +103,6 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             cambioEstadoTurno7.estado = listaEstado[6];
             cambioEstadoTurno7.fechaHoraDesde = DateTime.Now;
-            cambioEstadoTurno7.fechaHoraHasta = DateTime.Now.AddHours(10);
             listaCambioEstadoTurno2.Add(cambioEstadoTurno7);
 
             return listaCambioEstadoTurno2;

@@ -122,5 +122,15 @@ namespace PPAIRecursosTecnologicos.Pantalla
                 grid_turno.Rows[0].Cells[columna].Value = nombreEstadoActual;
                 columna++;
         }
+
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Turno impreso correctamente");
+        }
     }
 }
