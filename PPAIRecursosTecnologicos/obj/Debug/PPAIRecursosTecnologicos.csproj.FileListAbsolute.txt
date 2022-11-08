@@ -7,3 +7,12 @@ C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\ob
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.CoreCompileInputs.cache
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.exe
 C:\Users\agusl\source\repos\PPAIRecursosTecnologicos\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe.config
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\bin\Debug\PPAIRecursosTecnologicos.pdb
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csprojAssemblyReference.cache
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.Properties.Resources.resources
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.GenerateResource.cache
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.csproj.CoreCompileInputs.cache
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.exe
+C:\Users\agusl\Escritorio\PPAI 2022\3er entrega\PPAIRecursosTecnologicos\obj\Debug\PPAIRecursosTecnologicos.pdb
