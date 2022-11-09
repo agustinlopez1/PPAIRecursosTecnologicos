@@ -27,14 +27,20 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         // Se carga el combo box
+        //private void pedirSeleccionTipoRecursoTecnologico()
+        //{
+        //    DataTable listagestor = gestor.buscarTipoRecursoTecnologico();
+
+        //    foreach (String tipo in listagestor)
+        //    {
+        //        comboTipoRecurso.Items.Add(tipo);
+        //    }
+        //}
+
         private void pedirSeleccionTipoRecursoTecnologico()
         {
-            List<string> listagestor = gestor.buscarTipoRecursoTecnologico();
-
-            foreach (String tipo in listagestor)
-            {
-                comboTipoRecurso.Items.Add(tipo);
-            }
+            DataTable listagestor = gestor.buscarTipoRecursoTecnologico();
+            comboTipoRecurso.Items.Add(listagestor); 
         }
 
         // Verifica que se haya elegido un recurso para habilitar el boton "Seleccionar"
@@ -56,7 +62,6 @@ namespace PPAIRecursosTecnologicos.Pantalla
             this.gestorLista = listagestor;
 
             pedirSeleccionRecursoTecnologico(listagestor, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
-
         }
 
         // La pantalla le envía el tipo de recurso seleccionado al gestor para setear

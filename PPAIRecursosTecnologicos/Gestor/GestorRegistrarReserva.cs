@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using PPAIRecursosTecnologicos.Pantalla;
 using System.Windows.Forms;
+using System.Data;
 
 namespace PPAIRecursosTecnologicos.Gestor
 {
     public class GestorRegistrarReserva
     {
 
-        private List<string> tiposRecursos;
+        private DataTable tiposRecursos;
         private Sesion sesion;
         private string tipoRecursoSeleccionado;
         private string tipoRecurso;
@@ -26,13 +27,19 @@ namespace PPAIRecursosTecnologicos.Gestor
         //  public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
         public Sesion Sesion { get => sesion; set => sesion = value; }
 
-
         // Le solicito a "Tipo de Recursos Tecnologicos" que me devuelva una lista de todos.
-        public List<string> buscarTipoRecursoTecnologico()
+        //public List<string> buscarTipoRecursoTecnologico()
+        //{
+        //    TipoRecurso tipoRecurso = new TipoRecurso();
+        //    this.tiposRecursos = tipoRecurso.getNombre();
+
+        //    return tiposRecursos;
+        //}
+
+        public DataTable buscarTipoRecursoTecnologico()
         {
             TipoRecurso tipoRecurso = new TipoRecurso();
             this.tiposRecursos = tipoRecurso.getNombre();
-
             return tiposRecursos;
         }
 

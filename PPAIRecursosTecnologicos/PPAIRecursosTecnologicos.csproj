@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoADatos\DAO.cs" />
+    <Compile Include="AccesoADatos\Acceso_base_dato.cs" />
+    <Compile Include="AccesoADatos\CargarCombo.cs" />
+    <Compile Include="AccesoADatos\ModeloDAO.cs" />
+    <Compile Include="AccesoADatos\RecursoTecnologicoDAO.cs" />
+    <Compile Include="AccesoADatos\TipoRecursoTecnologicoDAO.cs" />
     <Compile Include="Entidades\AsignacionCientificoDeCentroInvestigacion.cs" />
     <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CambioEstadoTurno.cs" />

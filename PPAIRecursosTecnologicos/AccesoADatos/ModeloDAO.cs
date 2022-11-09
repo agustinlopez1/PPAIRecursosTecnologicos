@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 
 namespace PPAIRecursosTecnologicos.AccesoADatos
 {
-    public class RecursoTecnologicoDAO
+    public class ModeloDAO
     {
-        public string pp_id_rubro { get; set; }
         public string pp_nombre { get; set; }
 
         Acceso_base_dato _BD = new Acceso_base_dato();
 
         //Usar para reportes
-        public DataTable BuscarNombre(object nombre)
+        public DataTable BuscarNombreModeloPorMarca()
         {
-            string sql = "SELECT * FROM PersonalCientifico WHERE nombre = '" + nombre + "'";
+            string sql = "SELECT * FROM Modelo JOIN Marca ON Modelo.id = Marca.id";
             return _BD.EjecutarSelect(sql);
         }
     }
