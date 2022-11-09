@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\PPAIRecursosTecnologicos"
+    "\\PPAIRecursosTecnologicos",
+    "\\PPAIRecursosTecnologicos\\Gestor",
+    "\\PPAIRecursosTecnologicos\\obj",
+    "\\PPAIRecursosTecnologicos\\Pantalla"
   ],
-  "SelectedNode": "\\PPAIRecursosTecnologicos.sln",
+  "SelectedNode": "\\PPAIRecursosTecnologicos\\Pantalla\\PantallaRegistrarReserva.cs",
   "PreviewInSolutionExplorer": false
 }

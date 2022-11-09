@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PPAIRecursosTecnologicos.AccesoADatos
 {
-    public class DAO
+    class CargarCombo
     {
     }
 }
