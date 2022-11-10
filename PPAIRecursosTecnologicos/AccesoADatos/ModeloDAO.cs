@@ -19,5 +19,24 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             string sql = "SELECT * FROM Modelo JOIN Marca ON Modelo.id = Marca.id";
             return _BD.EjecutarSelect(sql);
         }
+
+        public DataTable BuscarNombreModeloPorRt()
+        {
+            string sql = "SELECT * FROM Modelo JOIN RecursoTecnologico ON Modelo.id = RecursoTecnologico.id";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public DataTable BuscarNombreModeloPorRt()
+        {
+            string sql = "SELECT * FROM Modelo JOIN RecursoTecnologico ON Modelo.id = RecursoTecnologico.id";
+            return _BD.EjecutarSelect(sql);
+        }
+
+
+        public DataTable BuscarModelos()
+        {
+            string sql = "SELECT * FROM Modelo";
+            return _BD.EjecutarSelect(sql);
+        }
     }
 }

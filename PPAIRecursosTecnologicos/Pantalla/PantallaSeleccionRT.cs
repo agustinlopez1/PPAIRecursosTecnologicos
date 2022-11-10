@@ -52,16 +52,26 @@ namespace PPAIRecursosTecnologicos.Pantalla
             }
         }
 
+
         // Accion que se realiza al hacer click en "Seleccionar"
+        //private void botonSeleccionTipoRecurso_Click(object sender, EventArgs e)
+        //{
+        //    string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
+
+        //    (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
+
+        //    this.gestorLista = listagestor;
+
+        //    pedirSeleccionRecursoTecnologico(listagestor, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
+        //}
+
         private void botonSeleccionTipoRecurso_Click(object sender, EventArgs e)
         {
             string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
 
-            (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
+            DataTable tablaRTActivo = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
-            this.gestorLista = listagestor;
-
-            pedirSeleccionRecursoTecnologico(listagestor, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
+            pedirSeleccionRecursoTecnologico(tablaRTActivo);
         }
 
         // La pantalla le envía el tipo de recurso seleccionado al gestor para setear
@@ -144,30 +154,47 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
         //le envia al gestor el rt seleccionado
         //   private RecursoTecnologico tomarSeleccionRecursoTecnologico()
+        //private void tomarSeleccionRecursoTecnologico()
+        //{
+        //    string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
+        //    RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
+
+        //    foreach (RecursoTecnologico rt in gestorLista)
+        //    {
+        //        if (rt.Nombre == nombreRecursoSeleccionado)
+        //        {
+        //            recursoSeleccionado = rt;
+        //        }
+        //    }
+
+        //    MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
+
+        //    List<String> listaEstados = new List<String>();
+        //    List<Turno> turnosPosteriorFecha = new List<Turno>();
+
+        //    (turnosPosteriorFecha, listaEstados) = this.gestor.tomarSeleccionRecursoTecnologico(recursoSeleccionado);
+
+        //    PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
+        //    pantallaRegistrarTurno.Show();
+        //    pantallaRegistrarTurno.tomarGestor(gestor);
+        //    pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
+
+        //    //return recursoSeleccionado;
+        //}
+
         private void tomarSeleccionRecursoTecnologico()
         {
             string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
-            RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
-
-            foreach (RecursoTecnologico rt in gestorLista)
-            {
-                if (rt.Nombre == nombreRecursoSeleccionado)
-                {
-                    recursoSeleccionado = rt;
-                }
-            }
+            //buscar nombre del recurso seleccionado
 
             MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
 
-            List<String> listaEstados = new List<String>();
-            List<Turno> turnosPosteriorFecha = new List<Turno>();
-
-            (turnosPosteriorFecha, listaEstados) = this.gestor.tomarSeleccionRecursoTecnologico(recursoSeleccionado);
+            DataTable estadoTurnosActuales = this.gestor.tomarSeleccionRecursoTecnologico(nombreRecursoSeleccionado);
 
             PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
             pantallaRegistrarTurno.Show();
             pantallaRegistrarTurno.tomarGestor(gestor);
-            pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
+            pantallaRegistrarTurno.pedirSeleccionTurno(estadoTurnosActuales);
 
             //return recursoSeleccionado;
         }

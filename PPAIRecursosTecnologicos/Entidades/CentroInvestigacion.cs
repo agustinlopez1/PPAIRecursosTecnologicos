@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.AccesoADatos;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +10,15 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class CentroInvestigacion
     {
+        private int idCentroInvestigacion;
         private string nombre;
-        private AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion;
+        private int idAsignacionCientificoCI;
         public CentroInvestigacion() { }
 
         public string Nombre { get => nombre; set => nombre = value; }
-        public AsignacionCientificoDeCentroInvestigacion AsignacionCientificoDeCentroInvestigacion { get => asignacionCientificoDeCentroInvestigacion; set => asignacionCientificoDeCentroInvestigacion = value; }
+        public int IdAsignacionCientificoCI { get => idAsignacionCientificoCI; set => idAsignacionCientificoCI = value; }
+        public int IdCentroInvestigacion { get => idCentroInvestigacion; set => idCentroInvestigacion = value; }
+
 
         public List<CentroInvestigacion> getCentroInvestigacion()
         {
@@ -51,15 +56,27 @@ namespace PPAIRecursosTecnologicos.Entidades
         }
 
 
-        public (bool, PersonalCientifico) esAsignado(Usuario usuario)
+        //public (bool, PersonalCientifico) esAsignado(Usuario usuario)
+        //{
+        //    Boolean bandera;
+        //    PersonalCientifico logeadoCientifico;
+
+        //    AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion = new AsignacionCientificoDeCentroInvestigacion();
+        //    (bandera, logeadoCientifico) = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuario);
+
+        //    return (bandera, logeadoCientifico);
+        //}
+
+        public DataTable esAsignado(DataTable usuarioLogeado, DataTable tablaRTseleccionado)
         {
-            Boolean bandera;
-            PersonalCientifico logeadoCientifico;
-
             AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion = new AsignacionCientificoDeCentroInvestigacion();
-            (bandera, logeadoCientifico) = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuario);
+            CentroInvestigacionDAO centroInvestigacionbd = new CentroInvestigacionDAO();
 
-            return (bandera, logeadoCientifico);
+            DataTable asignacionPersonalLogueado = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuarioLogeado);
+
+            DataTable centroInvestigacionRtSeleccioando = centroInvestigacionbd.BuscarCentroInvestigacionRtSeleccionado(tablaRTseleccionado, asignacionPersonalLogueado);
+
+            return centroInvestigacionRtSeleccioando;
         }
 
         public void asignarTurno(Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)

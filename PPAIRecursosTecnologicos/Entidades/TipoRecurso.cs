@@ -71,6 +71,15 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tabla;
         }
 
+        public DataTable getTipoRecurso()
+        {
+            DataTable tabla = new DataTable();
+            TipoRecursoTecnologicoDAO tipoRecursoTeconologico = new TipoRecursoTecnologicoDAO();
+
+            tabla = tipoRecursoTeconologico.BuscarTipoRecursos();
+
+            return tabla;
+        }
 
     }
 

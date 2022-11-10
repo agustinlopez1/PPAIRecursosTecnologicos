@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.AccesoADatos;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,6 +87,13 @@ namespace PPAIRecursosTecnologicos.Entidades
                 }
             }
             return null;
+        }
+
+        public DataTable getEstadoTurno(DataTable tablaTurnosDisponibles)
+        {
+            TurnoDAO turnobd = new TurnoDAO();
+            DataTable estadoTurnosActuales =  turnobd.BuscarEstadoPorCambioEstado(tablaTurnosDisponibles);
+            return estadoTurnosActuales;
         }
     }
 }

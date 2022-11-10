@@ -29,7 +29,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             gestorRegistrar = gestor;
         }
 
-        public void pedirSeleccionTurno(List<Turno> turnosPosteriorFecha, List<String> listaEstados)
+        public void pedirSeleccionTurno(DataTable estadoTurnosActuales)
         {
             int columna = 0;
             int fila = 0;
@@ -66,22 +66,30 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         //toma la seleccion del usuario y se la envia al gestor
+        //public void tomarSeleccionTurno()
+        //{
+        //    DateTime fechaTurno = (DateTime)grid_turno.CurrentRow.Cells[0].Value;
+
+        //    foreach (Turno turno in listaTurnos)
+        //    {
+        //        if (fechaTurno == turno.FechaHoraInicio)
+        //        {
+        //            turnoSeleccionado = turno;
+        //        }
+        //    }
+        //    gestorRegistrar.tomarSeleccionTurno(turnoSeleccionado);
+        //    mostrarDatosTurno(turnoSeleccionado);
+        //}
         public void tomarSeleccionTurno()
         {
             DateTime fechaTurno = (DateTime)grid_turno.CurrentRow.Cells[0].Value;
 
-            foreach (Turno turno in listaTurnos)
-            {
-                if (fechaTurno == turno.FechaHoraInicio)
-                {
-                    turnoSeleccionado = turno;
-                }
-            }
-            gestorRegistrar.tomarSeleccionTurno(turnoSeleccionado);
+            DataTable turnoSeleccionado = gestorRegistrar.tomarSeleccionTurno(fechaTurno);
             mostrarDatosTurno(turnoSeleccionado);
         }
 
-        public void mostrarDatosTurno(Turno turnoSeleccionado)
+
+        public void mostrarDatosTurno(DataTable turnoSeleccionado)
         {
 
             String datosTurno = "Datos del turno:" +

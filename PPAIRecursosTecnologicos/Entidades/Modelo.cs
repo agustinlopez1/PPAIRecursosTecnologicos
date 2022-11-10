@@ -10,9 +10,11 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class Modelo
     {
+        private int idModelo;
         private string nombre;
 
         public string Nombre { get => nombre; set => nombre = value; }
+        public int IdModelo { get => idModelo; set => idModelo = value; }
 
 
         //public List<Modelo> getModelo()
@@ -42,7 +44,7 @@ namespace PPAIRecursosTecnologicos.Entidades
         //    string nombreModelo = " ";
         //    string nombreMarca = " ";
 
-        //    nombreMarca = marca.getNombre(rt);
+        // nombreMarca = marca.getNombre(rt);
         //    nombreModelo = rt.Modelo.nombre;
 
         //    return (nombreMarca, nombreModelo);
@@ -53,6 +55,13 @@ namespace PPAIRecursosTecnologicos.Entidades
         {
             ModeloDAO modelo = new ModeloDAO();
             DataTable tabla = modelo.BuscarNombreModeloPorMarca();
+            return tabla;
+        }
+
+        public DataTable getModelo()
+        {
+            ModeloDAO modelo = new ModeloDAO();
+            DataTable tabla = modelo.BuscarModelos();
             return tabla;
         }
     }

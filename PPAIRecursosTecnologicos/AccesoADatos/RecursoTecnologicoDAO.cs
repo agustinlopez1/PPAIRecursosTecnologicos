@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,8 +10,14 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 {
     public class RecursoTecnologicoDAO
     {
-        public string pp_id_rubro { get; set; }
-        public string pp_nombre { get; set; }
+        private string nombre;
+        private int numeroRT;
+        private TipoRecurso tipoRecurso;
+
+        public string Nombre { get => nombre; set => nombre = value; }
+        public TipoRecurso TipoRecurso { get => TipoRecurso; set => TipoRecurso = value; }
+        public int NumeroRT { get => numeroRT; set => numeroRT = value; }
+
 
         Acceso_base_dato _BD = new Acceso_base_dato();
 
@@ -18,6 +25,24 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
         public DataTable BuscarNombre(object nombre)
         {
             string sql = "SELECT * FROM PersonalCientifico WHERE nombre = '" + nombre + "'";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public DataTable BuscarRtPorTipo(string idTipoRecurso)
+        {
+            string sql = "select * from recurso recursoTecnologico.id ";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public DataTable getRecursosTecnologicosPorNumero(DataTable tablaRtActualesReservable)
+        {
+            string sql = "buscar tabla completa de rt haciendo un join con la tabla rt acutales y reservables";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public DataTable getRecursosTecnologicos(string nombreRecursoSeleccionado)
+        {
+            string sql = "buscar tabla completa de rt para buscar el personal asociado";
             return _BD.EjecutarSelect(sql);
         }
     }

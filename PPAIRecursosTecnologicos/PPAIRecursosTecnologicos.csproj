@@ -47,10 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoADatos\Acceso_base_dato.cs" />
+    <Compile Include="AccesoADatos\AsignacionCientificaDAO.cs" />
+    <Compile Include="AccesoADatos\CambioEstadoDAO.cs" />
+    <Compile Include="AccesoADatos\CambioEstadoTurnoDAO.cs" />
     <Compile Include="AccesoADatos\CargarCombo.cs" />
+    <Compile Include="AccesoADatos\CentroInvestigacionDAO.cs" />
     <Compile Include="AccesoADatos\ModeloDAO.cs" />
+    <Compile Include="AccesoADatos\PersonalCientificoDAO.cs" />
     <Compile Include="AccesoADatos\RecursoTecnologicoDAO.cs" />
+    <Compile Include="AccesoADatos\SesionDAO.cs" />
     <Compile Include="AccesoADatos\TipoRecursoTecnologicoDAO.cs" />
+    <Compile Include="AccesoADatos\TurnoDAO.cs" />
+    <Compile Include="AccesoADatos\Utils.cs" />
+    <Compile Include="AccesoADatos\UsuarioDAO.cs" />
     <Compile Include="Entidades\AsignacionCientificoDeCentroInvestigacion.cs" />
     <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CambioEstadoTurno.cs" />

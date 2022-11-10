@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 
 namespace PPAIRecursosTecnologicos.AccesoADatos
 {
-    class TipoRecursoTecnologicoDAO
+    class UsuarioDAO
     {
-        private int idTipoRecurso;
         private string nombre;
-        private string descripcion;
+        private int clave;
+        private int idUsuario;
 
-        public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
         public string Nombre { get => nombre; set => nombre = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-
+        public int Clave { get => clave; set => clave = value; }
+        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+        
         Acceso_base_dato _BD = new Acceso_base_dato();
 
-        //Usar para reportes
-        public DataTable BuscarNombreTipoRecursos()
+        public DataTable getUsuarioPorId(int id)
         {
-            string sql = "SELECT nombre FROM TipoRecurso";
+            string sql = "SELECT * FROM usuario where id = " + id;
             return _BD.EjecutarSelect(sql);
         }
 

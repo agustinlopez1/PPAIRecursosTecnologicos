@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.AccesoADatos;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +11,11 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class CambioEstadoRT
     {
-        private Estado estado;
+        private int idEstado;
         private DateTime fechaHoraDesde;
         private DateTime fechaHoraHasta;
 
-        public Estado Estado { get => estado; set => estado = value; }
+        public int IdEstado { get => idEstado; set => idEstado = value; }
         public DateTime FechaHoraDesde { get => fechaHoraDesde; set => fechaHoraDesde = value; }
         public DateTime FechaHoraHasta { get => fechaHoraHasta; set => fechaHoraHasta = value; }
 
@@ -67,35 +69,50 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         }
 
-        public (Boolean, Boolean, List<String>) EsActual(RecursoTecnologico rt, List<String> listaEstados)
+        //public (Boolean, Boolean, List<String>) EsActual(RecursoTecnologico rt, List<String> listaEstados)
+        //{
+        //    Boolean esActual = false;
+        //    Boolean reservable = false;
+        //    DateTime fechaActual = DateTime.Now;
+
+
+        //    foreach (CambioEstadoRT cambioEstado in rt.CambioEstadoRT)
+        //    {
+        //        if (cambioEstado.fechaHoraHasta < fechaActual)
+        //        {
+        //            reservable = esReservable(cambioEstado);
+        //            esActual = true;
+        //            listaEstados.Add(cambioEstado.Estado.Nombre);
+
+        //        }
+        //        else
+        //        {
+        //            esActual = false;
+        //        }
+        //    }
+        //    return (esActual, reservable, listaEstados);
+        //}
+
+        public DataTable EsActual(DataTable listaRTdeTipoRT)
         {
-            Boolean esActual = false;
-            Boolean reservable = false;
-            DateTime fechaActual = DateTime.Now;
-
-
-            foreach (CambioEstadoRT cambioEstado in rt.CambioEstadoRT)
-            {
-                if (cambioEstado.fechaHoraHasta < fechaActual)
-                {
-                    reservable = esReservable(cambioEstado);
-                    esActual = true;
-                    listaEstados.Add(cambioEstado.Estado.Nombre);
-
-                }
-                else
-                {
-                    esActual = false;
-                }
-            }
-            return (esActual, reservable, listaEstados);
+            CambioEstadoDAO cambioEstadoBD = new CambioEstadoDAO();
+            DataTable tablaRtActuales = cambioEstadoBD.BuscarCambioEstadoRTActual(listaRTdeTipoRT);
+            DataTable tablaRtActualesReservable = esReservable(tablaRtActuales);
+            return tablaRtActualesReservable;
         }
 
-        public Boolean esReservable(CambioEstadoRT cambioEstado)
+        //public DataTable esReservable(DataTable tablaRtActuales)
+        //{
+        //    Estado estado = new Estado();
+        //    Boolean esReservable = estado.esReservable(cambioEstado.estado.Nombre);
+        //    return esReservable;
+        //}
+
+        public DataTable esReservable(DataTable tablaRtActuales)
         {
-            Estado estado = new Estado();
-            Boolean esReservable = estado.esReservable(cambioEstado.estado.Nombre);
-            return esReservable;
+            CambioEstadoDAO cambioEstadoBD = new CambioEstadoDAO();
+            DataTable tablaRtActualesReservable = cambioEstadoBD.BuscarCambioEstadoRTActualReservable(tablaRtActuales);
+            return tablaRtActualesReservable;
         }
 
     }

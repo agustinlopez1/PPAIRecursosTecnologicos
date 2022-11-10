@@ -8,13 +8,14 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class Marca
     {
+        private int idMarca;
         private string nombre;
         private Modelo modelo;
 
         public Marca(){}
-
         public string Nombre { get => nombre; set => nombre = value; }
         public Modelo Modelo { get => modelo; set => modelo = value; }
+        public int IdMarca { get => idMarca; set => idMarca = value; }
 
         //public List<Marca> getMarca()
         //{
@@ -41,19 +42,19 @@ namespace PPAIRecursosTecnologicos.Entidades
         //    return listaMarca;
         //}
 
-        //public string getNombre(RecursoTecnologico rt)
-        //{
-        //    string nombreMarca = " ";
-        //    List<Marca> listaMarca = getMarca();
+        public string getNombre(RecursoTecnologico rt)
+        {
+            string nombreMarca = " ";
+            List<Marca> listaMarca = getMarca();
 
-        //    foreach (Marca marca in listaMarca)
-        //    {
-        //        if (rt.Modelo.Nombre == marca.Modelo.Nombre)
-        //        {
-        //            nombreMarca = marca.nombre;
-        //        }
-        //    }
-        //    return nombreMarca;
-        //}
+            foreach (Marca marca in listaMarca)
+            {
+                if (rt.Modelo.Nombre == marca.Modelo.Nombre)
+                {
+                    nombreMarca = marca.nombre;
+                }
+            }
+            return nombreMarca;
+        }
     }
 }

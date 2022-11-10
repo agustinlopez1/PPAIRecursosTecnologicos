@@ -45,89 +45,125 @@ namespace PPAIRecursosTecnologicos.Gestor
 
 
         // Gestor recibe el tipo de recurso desde la pantalla y lo guarda 
-        public (List<RecursoTecnologico>, List<String>, List<String>, List<String>, List<String>) tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
+        //public (List<RecursoTecnologico>, List<String>, List<String>, List<String>, List<String>) tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
+        //{
+        //    tipoRecursoSeleccionado = tipoRecurso;
+        //    (List<RecursoTecnologico> listaRTdeTipoRT, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
+
+        //    return (listaRTdeTipoRT, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
+        //}
+
+        public DataTable tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
         {
             tipoRecursoSeleccionado = tipoRecurso;
-            (List<RecursoTecnologico> listaRTdeTipoRT, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
+            DataTable tablaRTActivo = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
 
-            return (listaRTdeTipoRT, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
+            return tablaRTActivo;
         }
 
 
         //gestor busca el rt del tipo seleccionado
-        public (List<RecursoTecnologico>, List<String>, List<String>, List<String>, List<String>) obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
+        public DataTable obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
         {
             RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
-            List<RecursoTecnologico> listaRTdeTipoRT = recursoTecnologico.esDeTipoRtSeleccionado(tipoRecursoSeleccionado);
-            (List<RecursoTecnologico> listaRTReservable, List<string> listaEstados) = recursoTecnologico.esReservable(listaRTdeTipoRT);
-            (List<string> listaMarca, List<string> listaModelos, List<string> listaCentroInvestigacion) = getDatosRT(listaRTReservable);
+            DataTable listaRTdeTipoRT = recursoTecnologico.esDeTipoRtSeleccionado(tipoRecursoSeleccionado);
 
-            return (listaRTReservable, listaEstados, listaMarca, listaModelos, listaCentroInvestigacion);
+            DataTable tablaRtActualesReservable = recursoTecnologico.esReservable(listaRTdeTipoRT);
+
+            DataTable tablaRTActivo = getDatosRT(tablaRtActualesReservable);
+
+            return tablaRTActivo;
         }
 
         //busca los datos del rt
-        public (List<string>, List<string>, List<string>) getDatosRT(List<RecursoTecnologico> listaRTReservable)
+        //public (List<string>, List<string>, List<string>) getDatosRT(List<RecursoTecnologico> listaRTReservable)
+        //{
+        //    RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
+
+        //    (List<string> listaMarca, List<string> listaModelos) = recursoTecnologico.getMarcaModelo(listaRTReservable);
+        //    List<string> listaCentroInvestigacion = recursoTecnologico.getCentroInvestigacion(listaRTReservable);
+
+        //    return (listaMarca, listaModelos, listaCentroInvestigacion);
+
+        //}
+
+        public DataTable getDatosRT(DataTable tablaRtActualesReservable)
         {
             RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
-
-            (List<string> listaMarca, List<string> listaModelos) = recursoTecnologico.getMarcaModelo(listaRTReservable);
-            List<string> listaCentroInvestigacion = recursoTecnologico.getCentroInvestigacion(listaRTReservable);
-
-            return (listaMarca, listaModelos, listaCentroInvestigacion);
-
+            DataTable tablaRtCompleto = recursoTecnologico.getRecursosTecnologicosPorNumero(tablaRtActualesReservable);
+            return tablaRtCompleto;
         }
 
         //verificar que el centro de investigacion pertenece al usuario logeado
-        public (PersonalCientifico, List<Turno>, List<String>) verificarUsuarioLogueado()
+        //public (PersonalCientifico, List<Turno>, List<String>) verificarUsuarioLogueado()
+        //{
+        //    List<String> listaEstados = new List<String>();
+        //    List<Turno> turnosPosteriorFecha = new List<Turno>();
+
+        //    Sesion sesion = new Sesion();
+        //    Usuario cientificoLogeado = sesion.getCientificoLogueado(1).Usuario;
+
+        //    Boolean bandera;
+        //    PersonalCientifico logeadoCientifico;
+        //    (bandera, logeadoCientifico) = recursoTecnologicoSeleccionado.esCientificoDelCentroDeInvestigacion(cientificoLogeado);
+
+        //    if (bandera == true)
+        //        (turnosPosteriorFecha, listaEstados)  = getTurnosRecursoTecnologicoSeleccionado();
+        //    else
+        //        MessageBox.Show("No puede seleccionar el recurso tecnologico seleccionado");
+
+        //    return (logeadoCientifico, turnosPosteriorFecha, listaEstados);
+        //}
+
+        public DataTable verificarUsuarioLogueado(DataTable tablaRTseleccionado)
         {
-            List<String> listaEstados = new List<String>();
-            List<Turno> turnosPosteriorFecha = new List<Turno>();
-
             Sesion sesion = new Sesion();
-            Usuario cientificoLogeado = sesion.getCientificoLogueado(1).Usuario;
+            DataTable usuarioLogeado = sesion.getCientificoLogueado(1);
 
-            Boolean bandera;
-            PersonalCientifico logeadoCientifico;
-            (bandera, logeadoCientifico) = recursoTecnologicoSeleccionado.esCientificoDelCentroDeInvestigacion(cientificoLogeado);
-
-            if (bandera == true)
-                (turnosPosteriorFecha, listaEstados)  = getTurnosRecursoTecnologicoSeleccionado();
-            else
-                MessageBox.Show("No puede seleccionar el recurso tecnologico seleccionado");
-
-            return (logeadoCientifico, turnosPosteriorFecha, listaEstados);
+            DataTable centroInvestigacionRtSeleccioando = recursoTecnologicoSeleccionado.esCientificoDelCentroDeInvestigacion(usuarioLogeado, tablaRTseleccionado);
+            DataTable estadoTurnosActuales = getTurnosRecursoTecnologicoSeleccionado(centroInvestigacionRtSeleccioando);
+ 
+            return estadoTurnosActuales;
         }
 
 
         //recibe el rt seleccionado desde la pantalla
-        public (List<Turno>, List<String>) tomarSeleccionRecursoTecnologico(RecursoTecnologico recursoTecnologicoSeleccionado)
+        //public (List<Turno>, List<String>) tomarSeleccionRecursoTecnologico(RecursoTecnologico recursoTecnologicoSeleccionado)
+        //{
+        //    List<String> listaEstados = new List<String>();
+        //    List<Turno> turnosPosteriorFecha = new List<Turno>();
+        //    PersonalCientifico cientificoLogeado;
+
+        //    this.recursoTecnologicoSeleccionado = recursoTecnologicoSeleccionado;
+        //    (cientificoLogeado, turnosPosteriorFecha, listaEstados) = verificarUsuarioLogueado();
+
+        //    this.pesrsonalCientificoLogeado = cientificoLogeado;
+
+        //    return (turnosPosteriorFecha, listaEstados);
+        //}
+
+        public DataTable tomarSeleccionRecursoTecnologico(string nombreRecursoSeleccionado)
         {
-            List<String> listaEstados = new List<String>();
-            List<Turno> turnosPosteriorFecha = new List<Turno>();
-            PersonalCientifico cientificoLogeado;
+            RecursoTecnologico rt = new RecursoTecnologico();
+            DataTable tablaRTseleccionado = rt.getRecursosTecnologicos(nombreRecursoSeleccionado);
 
-            this.recursoTecnologicoSeleccionado = recursoTecnologicoSeleccionado;
-            (cientificoLogeado, turnosPosteriorFecha, listaEstados) = verificarUsuarioLogueado();
-
-            this.pesrsonalCientificoLogeado = cientificoLogeado;
-
-            return (turnosPosteriorFecha, listaEstados);
+            DataTable estadoTurnosActuales = verificarUsuarioLogueado(tablaRTseleccionado);
+            return estadoTurnosActuales;
         }
 
 
-        public (List<Turno>, List<String>) getTurnosRecursoTecnologicoSeleccionado()
+        public DataTable getTurnosRecursoTecnologicoSeleccionado(DataTable asignacionPersonalLogueado)
         {
-            List<String> listaEstados = new List<String>();
-            List<Turno> turnosPosteriorFecha = new List<Turno>();
-
-            (turnosPosteriorFecha, listaEstados) = recursoTecnologicoSeleccionado.getTurnos();
-            return (turnosPosteriorFecha, listaEstados);
+            DataTable estadoTurnosActuales = recursoTecnologicoSeleccionado.getTurnos(asignacionPersonalLogueado);
+            return estadoTurnosActuales;
         }
 
         //recibe la seleccion desde la pantalla
-        public void tomarSeleccionTurno(Turno turnoSelec)
+        public DataTable tomarSeleccionTurno(DateTime fechaTurno)
         {
-            turnoSeleccionado = turnoSelec;
+            Turno turno = new Turno();
+            DataTable turnoSeleccionado = turno.BuscarTurnoPorFecha(fechaTurno);
+            return turnoSeleccionado;
         }
 
         public (Turno, string) tomarConfirmacionReserva()

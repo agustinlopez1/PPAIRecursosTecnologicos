@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.AccesoADatos;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +11,11 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class CambioEstadoTurno
     {
-        private Estado estado;
+        private int idEstado;
         private DateTime fechaHoraDesde;
         private DateTime fechaHoraHasta;
 
-        public Estado Estado { get => estado; set => estado = value; }
+        public int IdEstado { get => idEstado; set => idEstado = value; }
         public DateTime FechaHoraDesde { get => fechaHoraDesde; set => fechaHoraDesde = value; }
         public DateTime FechaHoraHasta { get => fechaHoraHasta; set => fechaHoraHasta = value; }
 
@@ -67,22 +69,33 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         }
 
-        public (Boolean, List<String>, List<CambioEstadoTurno>) EsActual(Turno turno, List<String> listaEstados, List<CambioEstadoTurno> cambioEstadoActual)
+        //public (Boolean, List<String>, List<CambioEstadoTurno>) EsActual(Turno turno, List<String> listaEstados, List<CambioEstadoTurno> cambioEstadoActual)
+        //{
+        //    Boolean esActual = false;
+        //    DateTime fechaActual = DateTime.Now;
+
+        //    foreach (CambioEstadoTurno cambioEstado in turno.CambioEstadoTurno)
+        //    {
+        //        if (cambioEstado.fechaHoraHasta > fechaActual)
+        //        {
+        //            esActual = true;
+        //            listaEstados.Add(cambioEstado.Estado.Nombre);
+        //            cambioEstadoActual.Add(cambioEstado);
+        //        }
+
+        //    }
+        //    return (esActual, listaEstados, cambioEstadoActual);
+        //}
+
+
+        public DataTable EsActual(DataTable tablaTurnosDisponibles)
         {
-            Boolean esActual = false;
-            DateTime fechaActual = DateTime.Now;
+            CambioEstadoTurnoDAO cambioEstadoBD = new CambioEstadoTurnoDAO();
+            DataTable tablaCambioEstadoActual = cambioEstadoBD.EsActual(tablaTurnosDisponibles);
 
-            foreach (CambioEstadoTurno cambioEstado in turno.CambioEstadoTurno)
-            {
-                if (cambioEstado.fechaHoraHasta > fechaActual)
-                {
-                    esActual = true;
-                    listaEstados.Add(cambioEstado.Estado.Nombre);
-                    cambioEstadoActual.Add(cambioEstado);
-                }
-
-            }
-            return (esActual, listaEstados, cambioEstadoActual);
+            Estado estado = new Estado();
+            DataTable estadoTurnosActuales = estado.getEstadoTurno(tablaTurnosDisponibles);
+            return estadoTurnosActuales;
         }
 
         public void setFechaHoraFin()

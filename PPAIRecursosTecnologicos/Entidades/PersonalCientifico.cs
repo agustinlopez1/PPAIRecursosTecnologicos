@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.AccesoADatos;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,19 +27,26 @@ namespace PPAIRecursosTecnologicos.Entidades
         public int TelefonoCelular { get => telefonoCelular; set => telefonoCelular = value; }
 
 
-        public PersonalCientifico generarPersonalCientifico()
+        //public PersonalCientifico generarPersonalCientifico()
+        //{
+        //    PersonalCientifico personalCientifico = new PersonalCientifico();
+
+        //    personalCientifico.Legajo = 1234;
+        //    personalCientifico.nombre = "Matias ";
+        //    personalCientifico.apellido = "Logeado";
+        //    personalCientifico.numeroDocumento = 21522167;
+        //    personalCientifico.correoElectronicoInstitucional = "joseflores@ci.unc";
+        //    personalCientifico.correoElectronicoPersonal = "joseflores@gmail.com";
+        //    personalCientifico.telefonoCelular = 351408591;
+
+        //    return personalCientifico;
+        //}
+
+        public DataTable generarPersonalCientifico(DataTable usuarioLogeado)
         {
-            PersonalCientifico personalCientifico = new PersonalCientifico();
-
-            personalCientifico.Legajo = 1234;
-            personalCientifico.nombre = "Matias ";
-            personalCientifico.apellido = "Logeado";
-            personalCientifico.numeroDocumento = 21522167;
-            personalCientifico.correoElectronicoInstitucional = "joseflores@ci.unc";
-            personalCientifico.correoElectronicoPersonal = "joseflores@gmail.com";
-            personalCientifico.telefonoCelular = 351408591;
-
-            return personalCientifico;
+            PersonalCientificoDAO personalCientificobd = new PersonalCientificoDAO();
+            DataTable personalCientidicoLogueado = personalCientificobd.getPersonalCientifico(usuarioLogeado);
+            return personalCientidicoLogueado;
         }
     }
 }

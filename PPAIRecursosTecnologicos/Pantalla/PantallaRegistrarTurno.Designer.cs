@@ -135,7 +135,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault3;
+//            this.BackgroundImage = global::PPAIRecursosTecnologicos.Properties.Resources.maxresdefault3;
             this.ClientSize = new System.Drawing.Size(589, 428);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.botonVolver);
