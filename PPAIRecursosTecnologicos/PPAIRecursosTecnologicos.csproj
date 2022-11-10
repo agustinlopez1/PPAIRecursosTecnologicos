@@ -52,6 +52,7 @@
     <Compile Include="AccesoADatos\CambioEstadoTurnoDAO.cs" />
     <Compile Include="AccesoADatos\CargarCombo.cs" />
     <Compile Include="AccesoADatos\CentroInvestigacionDAO.cs" />
+    <Compile Include="AccesoADatos\EstadoDAO,cs.cs" />
     <Compile Include="AccesoADatos\ModeloDAO.cs" />
     <Compile Include="AccesoADatos\PersonalCientificoDAO.cs" />
     <Compile Include="AccesoADatos\RecursoTecnologicoDAO.cs" />
@@ -106,6 +107,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Configuration\ConfigurationManager.cs" />
     <EmbeddedResource Include="Pantalla\PantallaRegistrarTurno.resx">
       <DependentUpon>PantallaRegistrarTurno.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +116,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantalla\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantalla\PantallaRegistrarReserva.resx">
       <DependentUpon>PantallaRegistrarReserva.cs</DependentUpon>

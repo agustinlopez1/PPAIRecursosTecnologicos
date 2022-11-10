@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -26,16 +27,29 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return _BD.EjecutarSelect(sql);
         }
 
-        public DataTable BuscarNombreModeloPorRt()
-        {
-            string sql = "SELECT * FROM Modelo JOIN RecursoTecnologico ON Modelo.id = RecursoTecnologico.id";
-            return _BD.EjecutarSelect(sql);
-        }
-
 
         public DataTable BuscarModelos()
         {
             string sql = "SELECT * FROM Modelo";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public (DataTable, string) BuscarModelo(List<RecursoTecnologico> listaRTdeTipoRT)
+        {
+            string idModelo = " ";
+
+            foreach (RecursoTecnologico modelo in listaRTdeTipoRT)
+            {
+                idModelo = modelo.IdModelo.ToString();
+            }
+
+            string sql = "Select nombre from Modelo where id = " + idModelo;
+            return (_BD.EjecutarSelect(sql), idModelo);
+        }
+
+        public DataTable BuscarMarca(string idModelo)
+        {
+            string sql = "select nombre from marca where idModelo = " + idModelo;
             return _BD.EjecutarSelect(sql);
         }
     }

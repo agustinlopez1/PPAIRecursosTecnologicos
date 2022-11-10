@@ -116,44 +116,16 @@ namespace PPAIRecursosTecnologicos.Entidades
         public DataTable getRecursosTecnologicos(string nombreRecursoSeleccionado)
         {
             RecursoTecnologicoDAO rtbd = new RecursoTecnologicoDAO();
-            DataTable tablaRTseleccionado =  rtbd.getRecursosTecnologicos(nombreRecursoSeleccionado);
+            DataTable tablaRTseleccionado = rtbd.getRecursosTecnologicos(nombreRecursoSeleccionado);
             return tablaRTseleccionado;
         }
 
-        //public (List<Turno>, List<String>) getTurnos()
-        //{
-        //    List<String> listaEstados = new List<String>();
-        //    List<Turno> turnosPosteriorFecha = new List<Turno>();
-
-        //    foreach (Turno turno in listaTurnos)
-        //        if (turno.esPosteriorFechaHoraActual(turno))
-        //            turnosPosteriorFecha.Add(turno);
-
-        //    listaEstados = turno.getDatos(turnosPosteriorFecha);
-
-        //    return (turnosPosteriorFecha, listaEstados);
-        //}
         public DataTable getTurnos(DataTable asignacionPersonalLogueado)
         {
             Turno turno = new Turno();
             DataTable estadoTurnosActuales = turno.getTurnos(asignacionPersonalLogueado);
             return estadoTurnosActuales;
         }
-
-        //public List<RecursoTecnologico> esDeTipoRtSeleccionado(string tipoRtSeleccionado)
-        //{
-        //    List<RecursoTecnologico> listaRecursosTecnologicos = getRecursosTecnologicos();
-        //    List<RecursoTecnologico> listaRtTipoSelecc = new List<RecursoTecnologico>();
-
-        //    foreach (RecursoTecnologico rt in listaRecursosTecnologicos)
-        //    {
-        //        if (rt.tipoRecurso.Nombre == tipoRtSeleccionado)
-        //        {
-        //            listaRtTipoSelecc.Add(rt);
-        //        }
-        //    }
-        //    return listaRtTipoSelecc;
-        //}
 
         public DataTable esDeTipoRtSeleccionado(string tipoRtSeleccionado)
         {
@@ -162,55 +134,17 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tablaTipoRt;
         }
 
-        //public (List<RecursoTecnologico>, List<String>) esReservable(DataTable listaRTdeTipoRT)
-        //{
-        //    CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-        //    List<RecursoTecnologico> listaRTReservable = new List<RecursoTecnologico>();
-
-        //    Boolean esActual = false;
-        //    Boolean reservable = false;
-        //    List<String> listaEstados = new List<String>();
-
-        //    foreach (RecursoTecnologico rt in listaRTdeTipoRT)
-        //    {
-        //        (esActual, reservable, listaEstados) = cambioEstadoRT.EsActual(rt, listaEstados);
-        //        if (esActual == true && reservable == true)
-        //        {
-        //            listaRTReservable.Add(rt);
-        //        }
-        //    }
-
-        //    return (listaRTReservable, listaEstados);
-        //}
-
-        //public (List<RecursoTecnologico>, List<String>) esReservable(DataTable listaRTdeTipoRT)
-        //{
-        //    CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-        //    List<RecursoTecnologico> listaRTReservable = new List<RecursoTecnologico>();
-
-        //    Boolean esActual = false;
-        //    Boolean reservable = false;
-        //    List<String> listaEstados = new List<String>();
-
-
-
-        //    foreach (RecursoTecnologico rt in listaRTdeTipoRT)
-        //    {
-        //        (esActual, reservable, listaEstados) = cambioEstadoRT.EsActual(rt, listaEstados);
-        //        if (esActual == true && reservable == true)
-        //        {
-        //            listaRTReservable.Add(rt);
-        //        }
-        //    }
-
-        //    return (listaRTReservable, listaEstados);
-        //}
-
-        public DataTable esReservable(DataTable listaRTdeTipoRT)
+        public Boolean esReservable(List<RecursoTecnologico> listaRTdeTipoRT)
         {
-            CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-            DataTable tablaRtActualesReservable = cambioEstadoRT.EsActual(listaRTdeTipoRT);
-            return tablaRtActualesReservable;
+            Boolean bandera = false;
+            foreach(RecursoTecnologico rt in listaRTdeTipoRT)
+            {
+                if (rt.idCambioEstadoRT == 1)
+                    bandera = true;
+                else
+                    bandera = false;
+            }
+            return bandera;
         }
 
         //busca marca y modelo
@@ -276,8 +210,8 @@ namespace PPAIRecursosTecnologicos.Entidades
         public (Turno, string) reservar(Estado estadoReservado, Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
         {
             String nombreEstadoActual = "";
-            nombreEstadoActual = turno.reservar(estadoReservado, turnoSeleccionado);
-            centroInvestigacion.asignarTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
+           // nombreEstadoActual = turno.reservar(estadoReservado, turnoSeleccionado);
+            //   centroInvestigacion.asignarTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
 
             return (turnoSeleccionado, nombreEstadoActual);
         }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAIRecursosTecnologicos.Entidades;
+using PPAIRecursosTecnologicos.AccesoADatos;
 
 namespace PPAIRecursosTecnologicos.Pantalla
 {
@@ -27,20 +28,14 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         // Se carga el combo box
-        //private void pedirSeleccionTipoRecursoTecnologico()
-        //{
-        //    DataTable listagestor = gestor.buscarTipoRecursoTecnologico();
-
-        //    foreach (String tipo in listagestor)
-        //    {
-        //        comboTipoRecurso.Items.Add(tipo);
-        //    }
-        //}
-
         private void pedirSeleccionTipoRecursoTecnologico()
         {
-            DataTable listagestor = gestor.buscarTipoRecursoTecnologico();
-            comboTipoRecurso.Items.Add(listagestor); 
+            DataTable tablaTipoRT = gestor.buscarTipoRecursoTecnologico();
+            Utils util = new Utils();
+            List<string> listaTiport = util.ObtenerListaTipoRecursoTec(tablaTipoRT);
+
+            comboTipoRecurso.DataSource = listaTiport;
+            comboTipoRecurso.DisplayMember = "nombre";
         }
 
         // Verifica que se haya elegido un recurso para habilitar el boton "Seleccionar"
@@ -54,30 +49,24 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
 
         // Accion que se realiza al hacer click en "Seleccionar"
-        //private void botonSeleccionTipoRecurso_Click(object sender, EventArgs e)
-        //{
-        //    string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
-
-        //    (List<RecursoTecnologico> listagestor, List<String> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
-
-        //    this.gestorLista = listagestor;
-
-        //    pedirSeleccionRecursoTecnologico(listagestor, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
-        //}
-
         private void botonSeleccionTipoRecurso_Click(object sender, EventArgs e)
         {
+            string nombreEstadoRT = "";
+            string nombreCentroIvestigacion = "";
+            string nombreModelo = "";
+            string nombreMarca = "";
+            List<RecursoTecnologico> listaRTdeTipoRT = new List<RecursoTecnologico>();
+
             string tipoRecursoSeleccionado = tomarSeleccionTipoRecursoTecnologico();
+            (nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca, listaRTdeTipoRT) = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
 
-            DataTable tablaRTActivo = gestor.tomarSeleccionTipoRecursoTecnologico(tipoRecursoSeleccionado);
-
-            pedirSeleccionRecursoTecnologico(tablaRTActivo);
+            pedirSeleccionRecursoTecnologico(nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca, listaRTdeTipoRT);
         }
 
         // La pantalla le envía el tipo de recurso seleccionado al gestor para setear
         private string tomarSeleccionTipoRecursoTecnologico()
         {
-            string tipoRecursoSeleccionado = comboTipoRecurso.SelectedItem.ToString();
+            string tipoRecursoSeleccionado = comboTipoRecurso.SelectedValue.ToString();
             return tipoRecursoSeleccionado;
         }
 
@@ -97,7 +86,7 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         //carga grilla con los recursos tecnologicos reservables
-        private void pedirSeleccionRecursoTecnologico(List<RecursoTecnologico> listagestor, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion)
+        private void pedirSeleccionRecursoTecnologico(string nombreEstadoRT, string nombreCentroIvestigacion, string nombreModelo, string nombreMarca, List<RecursoTecnologico> listaRTdeTipoRT)
         {
 
             int columna = 0;
@@ -109,11 +98,11 @@ namespace PPAIRecursosTecnologicos.Pantalla
 
             grid_rt.Rows.Clear();
 
-            foreach (RecursoTecnologico rt in listagestor)
+            foreach (RecursoTecnologico rt in listaRTdeTipoRT)
             {
                 grid_rt.Rows.Add();
                 //centro investigacion
-                grid_rt.Rows[fila].Cells[columna].Value = listaCentroInvestigacion[centroInvestigacion];
+                grid_rt.Rows[fila].Cells[columna].Value = nombreCentroIvestigacion;
                 centroInvestigacion++;
                 columna++;
 
@@ -126,18 +115,18 @@ namespace PPAIRecursosTecnologicos.Pantalla
                 columna++;
 
                 //estado
-                grid_rt.Rows[fila].Cells[columna].Value = listaEstados[estado];
+                grid_rt.Rows[fila].Cells[columna].Value = nombreEstadoRT;
                 columna++;
                 estado++;
 
 
                 //marca
-                grid_rt.Rows[fila].Cells[columna].Value = listaMarca[marca];
+                grid_rt.Rows[fila].Cells[columna].Value = nombreMarca;
                 columna++;
                 marca++;
 
                 //modelo
-                grid_rt.Rows[fila].Cells[columna].Value = listaModelo[modelo];
+                grid_rt.Rows[fila].Cells[columna].Value = nombreModelo;
                 columna++;
                 modelo++;
 

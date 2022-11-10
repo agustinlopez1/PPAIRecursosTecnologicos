@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\PPAIRecursosTecnologicos",
+    "\\PPAIRecursosTecnologicos\\AccesoADatos",
     "\\PPAIRecursosTecnologicos\\Gestor",
     "\\PPAIRecursosTecnologicos\\obj",
     "\\PPAIRecursosTecnologicos\\Pantalla"
   ],
-  "SelectedNode": "\\PPAIRecursosTecnologicos\\Pantalla\\MenuPrincipal.cs",
+  "SelectedNode": "\\PPAIRecursosTecnologicos\\AccesoADatos\\CargarCombo.cs",
   "PreviewInSolutionExplorer": false
 }

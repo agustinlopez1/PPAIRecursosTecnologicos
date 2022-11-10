@@ -35,23 +35,23 @@ namespace PPAIRecursosTecnologicos.Pantalla
             int fila = 0;
             int estado = 0;
 
-            listaTurnos = turnosPosteriorFecha;
+//            listaTurnos = turnosPosteriorFecha;
 
             grid_turno.Rows.Clear();
 
-            foreach (Turno turno in turnosPosteriorFecha)
+          //  foreach (Turno turno in turnosPosteriorFecha)
             {
                 grid_turno.Rows.Add();
                 //fecha hora inicio
-                grid_turno.Rows[fila].Cells[columna].Value = turno.FechaHoraInicio;
+             //   grid_turno.Rows[fila].Cells[columna].Value = turno.FechaHoraInicio;
                 columna++;
 
                 //fecha hora fin
-                grid_turno.Rows[fila].Cells[columna].Value = turno.FechaHoraFin;
+               // grid_turno.Rows[fila].Cells[columna].Value = turno.FechaHoraFin;
                 columna++;
 
                 //estado
-                grid_turno.Rows[fila].Cells[columna].Value = listaEstados[estado];
+                //grid_turno.Rows[fila].Cells[columna].Value = listaEstados[estado];
                 columna++;
                 estado++;
 
@@ -92,22 +92,22 @@ namespace PPAIRecursosTecnologicos.Pantalla
         public void mostrarDatosTurno(DataTable turnoSeleccionado)
         {
 
-            String datosTurno = "Datos del turno:" +
-                                "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio +
-                                "\n Fecha hora fin: " + turnoSeleccionado.FechaHoraFin +
-                                "\n Fecha generacion: " + turnoSeleccionado.FechaGeneracion;
+            //String datosTurno = "Datos del turno:" +
+            //                    "\n Fecha hora inicio: " + turnoSeleccionado.FechaHoraInicio +
+            //                    "\n Fecha hora fin: " + turnoSeleccionado.FechaHoraFin +
+            //                    "\n Fecha generacion: " + turnoSeleccionado.FechaGeneracion;
 
-            DialogResult dialogResult = MessageBox.Show(datosTurno, "Confirmar turno", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                MessageBox.Show("Turno confirmado correctamente");
-                (Turno turnoActualizado, string nombreEstadoActual) = gestorRegistrar.tomarConfirmacionReserva();
-                mostrarTurnoSeleccionado(nombreEstadoActual, turnoActualizado);
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("No se confirmo el turno seleccionado");
-            }
+            //DialogResult dialogResult = MessageBox.Show(datosTurno, "Confirmar turno", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    MessageBox.Show("Turno confirmado correctamente");
+            //    (Turno turnoActualizado, string nombreEstadoActual) = gestorRegistrar.tomarConfirmacionReserva();
+            //    mostrarTurnoSeleccionado(nombreEstadoActual, turnoActualizado);
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //    MessageBox.Show("No se confirmo el turno seleccionado");
+            //}
 
         }
 

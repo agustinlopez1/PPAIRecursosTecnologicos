@@ -28,9 +28,9 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return _BD.EjecutarSelect(sql);
         }
 
-        public DataTable BuscarRtPorTipo(string idTipoRecurso)
+        public DataTable BuscarRtPorTipo(string nombreRecursoSeleccionado)
         {
-            string sql = "select * from recurso recursoTecnologico.id ";
+            string sql = "select rt.* FROM RecursoTecnologico rt JOIN tipoRecurso trt ON rt.idTipoRecurso = trt.id where trt.nombre = '" + nombreRecursoSeleccionado + "'";
             return _BD.EjecutarSelect(sql);
         }
 

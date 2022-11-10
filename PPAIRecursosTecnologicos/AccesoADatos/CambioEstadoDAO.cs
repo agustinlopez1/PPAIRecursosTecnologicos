@@ -24,13 +24,26 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
         //Usar para reportes
         public DataTable BuscarCambioEstadoRTActual(DataTable listaRTdeTipoRT)
         {
-            string sql = "SELECT * FROM cambioEstado WHERE FechaHoraHasta = null and UNIR TABLA DE RT CON TABLA DE CAMBIO ESTADO Y BUSCAR CUAL ES ACTUAL Y RESERVABLE";
+            string sql = "Select * from CambioEstadoRT crt JOIN " + listaRTdeTipoRT + " rt on rt.idCambioEstadoRT = crt.id";
             return _BD.EjecutarSelect(sql);
         }
 
         public DataTable BuscarCambioEstadoRTActualReservable(DataTable tablaRtActuales)
         {
-            string sql = "SELECT * FROM cambioEstado WHERE FechaHoraHasta = null and UNIR TABLA DE RT CON TABLA DE CAMBIO ESTADO Y BUSCAR CUAL ES ACTUAL Y RESERVABLE";
+            string sql = "select * from Estado e join " + tablaRtActuales + " rt where e.id = rt.idEstado";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public DataTable BuscarCambioEstadoActual(List<RecursoTecnologico> listaRTdeTipoRT)
+        {
+            string idCambioEstado = " ";
+
+            foreach (RecursoTecnologico crt in listaRTdeTipoRT)
+            {
+                 idCambioEstado = crt.IdCambioEstadoRT.ToString();
+            }
+
+            string sql = "Select e.nombre from CambioEstadoRT crt join Estado e on crt.idEstado = e.id where crt.id =" + idCambioEstado;
             return _BD.EjecutarSelect(sql);
         }
     }

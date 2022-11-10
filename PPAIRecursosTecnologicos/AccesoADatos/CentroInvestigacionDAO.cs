@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAIRecursosTecnologicos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,5 +24,23 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return _BD.EjecutarSelect(sql);
         }
 
+        public DataTable getCentroInvestigacion()
+        {
+            string sql = "select * from CentroInvestigacion";
+            return _BD.EjecutarSelect(sql);
+        }
+
+        public DataTable BuscarCentroInvestigacion(List<RecursoTecnologico> listaRTdeTipoRT)
+        {
+            string idCentroInvestigacion = " ";
+
+            foreach (RecursoTecnologico cinv in listaRTdeTipoRT)
+            {
+                idCentroInvestigacion = cinv.IdCentroInvestigacion.ToString();
+            }
+
+            string sql = "Select nombre from CentroInvestigacion where id = " + idCentroInvestigacion;
+            return _BD.EjecutarSelect(sql);
+        }
     }
 }

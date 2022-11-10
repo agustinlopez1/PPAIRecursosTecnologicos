@@ -25,6 +25,10 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return _BD.EjecutarSelect(sql);
         }
 
-
+        public DataTable getCambioEstadoTurno()
+        {
+            string sql = "buscar cambio de estado actual";
+            return _BD.EjecutarSelect(sql);
+        }
     }
 }

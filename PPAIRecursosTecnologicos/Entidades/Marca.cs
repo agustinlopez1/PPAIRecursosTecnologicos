@@ -42,19 +42,19 @@ namespace PPAIRecursosTecnologicos.Entidades
         //    return listaMarca;
         //}
 
-        public string getNombre(RecursoTecnologico rt)
-        {
-            string nombreMarca = " ";
-            List<Marca> listaMarca = getMarca();
+        //public string getNombre(RecursoTecnologico rt)
+        //{
+        //    string nombreMarca = " ";
+        //    List<Marca> listaMarca = getMarca();
 
-            foreach (Marca marca in listaMarca)
-            {
-                if (rt.Modelo.Nombre == marca.Modelo.Nombre)
-                {
-                    nombreMarca = marca.nombre;
-                }
-            }
-            return nombreMarca;
-        }
+        //    foreach (Marca marca in listaMarca)
+        //    {
+        //        if (rt.Modelo.Nombre == marca.Modelo.Nombre)
+        //        {
+        //            nombreMarca = marca.nombre;
+        //        }
+        //    }
+        //    return nombreMarca;
+        //}
     }
 }

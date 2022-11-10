@@ -40,5 +40,18 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             string sql = "buscar turno por fehca";
             return _BD.EjecutarSelect(sql);
         }
+
+        public DataTable getTurnos()
+        {
+            string sql = "select * from Turno";
+            return _BD.EjecutarSelect(sql);
+        }
+
+
+        public DataTable BuscarTurnoPorFecha(DateTime fechaTurno)
+        {
+            string sql = "";
+            return _BD.EjecutarSelect(sql);
+        }
     }
 }

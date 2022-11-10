@@ -20,51 +20,18 @@ namespace PPAIRecursosTecnologicos.Entidades
         public int IdCentroInvestigacion { get => idCentroInvestigacion; set => idCentroInvestigacion = value; }
 
 
-        public List<CentroInvestigacion> getCentroInvestigacion()
+        public DataTable getCentroInvestigacion()
         {
-
-            List<CentroInvestigacion> listaCentroInvestigacion = new List<CentroInvestigacion>();
-
-            AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion = new AsignacionCientificoDeCentroInvestigacion();
-            AsignacionCientificoDeCentroInvestigacion asignacionCientifico = asignacionCientificoDeCentroInvestigacion.getAsignacionCientificoDeCentroInvestigacion();
-
-            CentroInvestigacion CentroInvestigacion1 = new CentroInvestigacion();
-            CentroInvestigacion1.nombre = "Centro Investigacion uno";
-            CentroInvestigacion1.asignacionCientificoDeCentroInvestigacion = asignacionCientifico;
-            listaCentroInvestigacion.Add(CentroInvestigacion1);
-
-
-            CentroInvestigacion CentroInvestigacion2 = new CentroInvestigacion();
-            CentroInvestigacion2.nombre = "Centro Investigacion dos";
-            CentroInvestigacion2.asignacionCientificoDeCentroInvestigacion = asignacionCientifico;
-            listaCentroInvestigacion.Add(CentroInvestigacion2);
-
-            CentroInvestigacion CentroInvestigacion3 = new CentroInvestigacion();
-            CentroInvestigacion3.nombre = "Centro Investigacion tres";
-            CentroInvestigacion3.asignacionCientificoDeCentroInvestigacion = asignacionCientifico;
-            listaCentroInvestigacion.Add(CentroInvestigacion3);
-
-            return listaCentroInvestigacion;
-
+            CentroInvestigacionDAO centroInvestigacionbd = new CentroInvestigacionDAO();
+            DataTable tablaCentroInvestigacion = centroInvestigacionbd.getCentroInvestigacion();
+            return tablaCentroInvestigacion;
         }
 
-        public string getNombre(RecursoTecnologico rt)
-        {
-            string nombreCentroInvestigacion = rt.CentroInvestigacion.nombre;
-
-            return nombreCentroInvestigacion;
-        }
-
-
-        //public (bool, PersonalCientifico) esAsignado(Usuario usuario)
+        //public string getNombre(RecursoTecnologico rt)
         //{
-        //    Boolean bandera;
-        //    PersonalCientifico logeadoCientifico;
+        //    string nombreCentroInvestigacion = rt.CentroInvestigacion.nombre;
 
-        //    AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion = new AsignacionCientificoDeCentroInvestigacion();
-        //    (bandera, logeadoCientifico) = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuario);
-
-        //    return (bandera, logeadoCientifico);
+        //    return nombreCentroInvestigacion;
         //}
 
         public DataTable esAsignado(DataTable usuarioLogeado, DataTable tablaRTseleccionado)
@@ -79,9 +46,9 @@ namespace PPAIRecursosTecnologicos.Entidades
             return centroInvestigacionRtSeleccioando;
         }
 
-        public void asignarTurno(Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
-        {
-            asignacionCientificoDeCentroInvestigacion.setTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
-        }
+        //public void asignarTurno(Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
+        //{
+        //    asignacionCientificoDeCentroInvestigacion.setTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
+        //}
     }
 }

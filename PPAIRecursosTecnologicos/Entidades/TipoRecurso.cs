@@ -10,6 +10,13 @@ namespace PPAIRecursosTecnologicos.Entidades
 {
     public class TipoRecurso
     {
+        private int idTipoRecurso;
+        private string nombre;
+        private string descripcion;
+
+        public int IdTipoRecurso { get => idTipoRecurso; set => idTipoRecurso = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Descripcion { get => descripcion; set => descripcion = value; }
 
         public TipoRecurso() { }
 
@@ -71,15 +78,15 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tabla;
         }
 
-        public DataTable getTipoRecurso()
-        {
-            DataTable tabla = new DataTable();
-            TipoRecursoTecnologicoDAO tipoRecursoTeconologico = new TipoRecursoTecnologicoDAO();
+        //public DataTable getTipoRecurso()
+        //{
+        //    DataTable tabla = new DataTable();
+        //    TipoRecursoTecnologicoDAO tipoRecursoTeconologico = new TipoRecursoTecnologicoDAO();
 
-            tabla = tipoRecursoTeconologico.BuscarTipoRecursos();
+        //    tabla = tipoRecursoTeconologico.BuscarTipoRecursos();
 
-            return tabla;
-        }
+        //    return tabla;
+        //}
 
     }
 

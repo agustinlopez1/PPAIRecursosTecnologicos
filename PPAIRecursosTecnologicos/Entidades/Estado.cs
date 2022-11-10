@@ -16,46 +16,11 @@ namespace PPAIRecursosTecnologicos.Entidades
         public string Nombre { get => nombre; set => nombre = value; }
         public string Ambito { get => ambito; set => ambito = value; }
 
-        public List<Estado> getEstado()
+        public DataTable getEstado()
         {
-            List<Estado> listaEstado = new List<Estado>();
-
-            Estado estado1 = new Estado();
-            estado1.nombre = "dado de baja";
-            estado1.ambito = "recurso tecnologico";
-            listaEstado.Add(estado1);
-
-            Estado estado2 = new Estado();
-            estado2.nombre = "baja definitiva";
-            estado2.ambito = "recurso tecnologico";
-            listaEstado.Add(estado2);
-
-            Estado estado3 = new Estado();
-            estado3.nombre = "disponible";
-            estado3.ambito = "turno";
-            listaEstado.Add(estado3);
-
-            Estado estado4 = new Estado();
-            estado4.nombre = "en mantenimiento";
-            estado4.ambito = "recurso tecnologico";
-            listaEstado.Add(estado4);
-
-            Estado estado5 = new Estado();
-            estado5.nombre = "en inicio de mantenimiento correctivo";
-            estado5.ambito = "recurso tecnologico";
-            listaEstado.Add(estado5);
-
-            Estado estado6 = new Estado();
-            estado6.nombre = "con reserva pendiente de confirmacion";
-            estado6.ambito = "turno";
-            listaEstado.Add(estado6);
-
-            Estado estado7 = new Estado();
-            estado7.nombre = "reservado";
-            estado7.ambito = "turno";
-            listaEstado.Add(estado7);
-
-            return listaEstado;
+            EstadoDAO estadobd = new EstadoDAO();
+            DataTable tablaEstados = estadobd.getEstado();
+            return tablaEstados;
         }
 
         public Boolean esReservable(string estadoActual)
@@ -72,27 +37,27 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         public Estado esAmbitoTurno()
         {
-            List<Estado> listaEstados = getEstado();
+            DataTable listaEstados = getEstado();
             Estado estadoReservado;
 
-            foreach(Estado estado in listaEstados)
-            {
-                if(estado.ambito == "turno")
-                {
-                    if(estado.nombre == "reservado")
-                    {
-                        estadoReservado = estado;
-                        return estadoReservado;
-                    }
-                }
-            }
+            //foreach (Estado estado in listaEstados)
+            //{
+            //    if (estado.ambito == "turno")
+            //    {
+            //        if (estado.nombre == "reservado")
+            //        {
+            //            estadoReservado = estado;
+            //            return estadoReservado;
+            //        }
+            //    }
+            //}
             return null;
         }
 
         public DataTable getEstadoTurno(DataTable tablaTurnosDisponibles)
         {
             TurnoDAO turnobd = new TurnoDAO();
-            DataTable estadoTurnosActuales =  turnobd.BuscarEstadoPorCambioEstado(tablaTurnosDisponibles);
+            DataTable estadoTurnosActuales = turnobd.BuscarEstadoPorCambioEstado(tablaTurnosDisponibles);
             return estadoTurnosActuales;
         }
     }

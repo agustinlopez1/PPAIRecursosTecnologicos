@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PPAIRecursosTecnologicos.Pantalla;
 using System.Windows.Forms;
 using System.Data;
+using PPAIRecursosTecnologicos.AccesoADatos;
 
 namespace PPAIRecursosTecnologicos.Gestor
 {
@@ -27,15 +28,6 @@ namespace PPAIRecursosTecnologicos.Gestor
         //  public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
         public Sesion Sesion { get => sesion; set => sesion = value; }
 
-        // Le solicito a "Tipo de Recursos Tecnologicos" que me devuelva una lista de todos.
-        //public List<string> buscarTipoRecursoTecnologico()
-        //{
-        //    TipoRecurso tipoRecurso = new TipoRecurso();
-        //    this.tiposRecursos = tipoRecurso.getNombre();
-
-        //    return tiposRecursos;
-        //}
-
         public DataTable buscarTipoRecursoTecnologico()
         {
             TipoRecurso tipoRecurso = new TipoRecurso();
@@ -45,53 +37,69 @@ namespace PPAIRecursosTecnologicos.Gestor
 
 
         // Gestor recibe el tipo de recurso desde la pantalla y lo guarda 
-        //public (List<RecursoTecnologico>, List<String>, List<String>, List<String>, List<String>) tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
-        //{
-        //    tipoRecursoSeleccionado = tipoRecurso;
-        //    (List<RecursoTecnologico> listaRTdeTipoRT, List<string> listaEstados, List<String> listaMarca, List<String> listaModelo, List<string> listaCentroInvestigacion) = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
-
-        //    return (listaRTdeTipoRT, listaEstados, listaMarca, listaModelo, listaCentroInvestigacion);
-        //}
-
-        public DataTable tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
+        public (string, string, string, string, List<RecursoTecnologico>) tomarSeleccionTipoRecursoTecnologico(string tipoRecurso)
         {
             tipoRecursoSeleccionado = tipoRecurso;
-            DataTable tablaRTActivo = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
+            string nombreEstadoRT = "";
+            string nombreCentroIvestigacion = "";
+            string nombreModelo = "";
+            string nombreMarca = "";
+            List<RecursoTecnologico> listaRTdeTipoRT = new List<RecursoTecnologico>();
 
-            return tablaRTActivo;
+            (nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca, listaRTdeTipoRT) = obtenerRecursoTecnologicoActivo(tipoRecursoSeleccionado);
+
+            return (nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca, listaRTdeTipoRT);
         }
 
 
         //gestor busca el rt del tipo seleccionado
-        public DataTable obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
+        public (string, string, string, string, List<RecursoTecnologico>) obtenerRecursoTecnologicoActivo(string tipoRecursoSeleccionado)
         {
+            string nombreEstadoRT = "";
+            string nombreCentroIvestigacion = "";
+            string nombreModelo = "";
+            string nombreMarca = "";
+
             RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
-            DataTable listaRTdeTipoRT = recursoTecnologico.esDeTipoRtSeleccionado(tipoRecursoSeleccionado);
+            DataTable tablaRTdeTipoRT = recursoTecnologico.esDeTipoRtSeleccionado(tipoRecursoSeleccionado);
 
-            DataTable tablaRtActualesReservable = recursoTecnologico.esReservable(listaRTdeTipoRT);
+            Utils util = new Utils();
+            List< RecursoTecnologico>  listaRTdeTipoRT = util.ObtenerListaRtTipoSeleccionado(tablaRTdeTipoRT);
 
-            DataTable tablaRTActivo = getDatosRT(tablaRtActualesReservable);
+            if (recursoTecnologico.esReservable(listaRTdeTipoRT))
+            {
+                (nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca) = getDatosRT(listaRTdeTipoRT);
+            }
 
-            return tablaRTActivo;
+            return (nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca, listaRTdeTipoRT);
         }
 
         //busca los datos del rt
-        //public (List<string>, List<string>, List<string>) getDatosRT(List<RecursoTecnologico> listaRTReservable)
-        //{
-        //    RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
-
-        //    (List<string> listaMarca, List<string> listaModelos) = recursoTecnologico.getMarcaModelo(listaRTReservable);
-        //    List<string> listaCentroInvestigacion = recursoTecnologico.getCentroInvestigacion(listaRTReservable);
-
-        //    return (listaMarca, listaModelos, listaCentroInvestigacion);
-
-        //}
-
-        public DataTable getDatosRT(DataTable tablaRtActualesReservable)
+        public (string, string, string, string) getDatosRT(List<RecursoTecnologico> listaRTdeTipoRT)
         {
-            RecursoTecnologico recursoTecnologico = new RecursoTecnologico();
-            DataTable tablaRtCompleto = recursoTecnologico.getRecursosTecnologicosPorNumero(tablaRtActualesReservable);
-            return tablaRtCompleto;
+            //buscar estado
+            CambioEstadoDAO cambioEstadoRT = new CambioEstadoDAO();
+            DataTable estadoRT = cambioEstadoRT.BuscarCambioEstadoActual(listaRTdeTipoRT);
+
+            Utils util = new Utils();
+            string nombreEstadoRT = util.ObtenerListaEstado(estadoRT);
+
+            //busacr centro de investigacion
+            CentroInvestigacionDAO centroInvestigacion = new CentroInvestigacionDAO();
+            DataTable tablaCentroInvestigacion = centroInvestigacion.BuscarCentroInvestigacion(listaRTdeTipoRT);
+
+            string nombreCentroIvestigacion = util.ObtenerListaCentroInvestigacion(tablaCentroInvestigacion);
+
+            //buscar modelo
+            ModeloDAO modelo = new ModeloDAO();
+            (DataTable tablaModelo, string idModelo) = modelo.BuscarModelo(listaRTdeTipoRT);
+            string nombreModelo = util.ObtenerListaModelo(tablaModelo);
+
+            //buscar marca
+            DataTable tablaMarca = modelo.BuscarMarca(idModelo);
+            string nombreMarca = util.ObtenerListaMarca(tablaMarca);
+
+            return (nombreEstadoRT, nombreCentroIvestigacion, nombreModelo, nombreMarca);
         }
 
         //verificar que el centro de investigacion pertenece al usuario logeado
