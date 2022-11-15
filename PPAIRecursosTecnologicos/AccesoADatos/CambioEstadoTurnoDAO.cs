@@ -19,9 +19,9 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         Acceso_base_dato _BD = new Acceso_base_dato();
 
-        public DataTable EsActual(DataTable tablaTurnosDisponibles)
+        public DataTable EsActual(string idTurno)
         {
-            string sql = "buscar cambio de estado actual";
+            string sql = "select cet.* from turno t join CambioEstadoTurno cet on cet.id = t.idCambioEstadoTurno where t.id = " + idTurno;
             return _BD.EjecutarSelect(sql);
         }
 

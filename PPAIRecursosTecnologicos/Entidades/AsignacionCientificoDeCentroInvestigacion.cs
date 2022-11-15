@@ -19,22 +19,25 @@ namespace PPAIRecursosTecnologicos.Entidades
         public int IdAsignacionCientificoCI { get => idAsignacionCientificoCI; set => idAsignacionCientificoCI = value; }
 
 
-        public DataTable getAsignacionCientificoDeCentroInvestigacion(DataTable usuarioLogeado)
+        //public DataTable getAsignacionCientificoDeCentroInvestigacion(DataTable usuarioLogeado)
+        //{
+        //    PersonalCientifico personalCientifico = new PersonalCientifico();
+        //    DataTable personalCientificoLogueado = personalCientifico.generarPersonalCientifico(usuarioLogeado);
+
+        //    AsignacionCientificaCAO asignacionbd = new AsignacionCientificaCAO();
+        //    DataTable asignacionPersonal = asignacionbd.BuscarAsignacionPersonal(personalCientificoLogueado);
+        //    return asignacionPersonal;
+        //}
+
+        public DataTable esTuCientifico(DataTable usuarioLogeado, int idCentro)
         {
             PersonalCientifico personalCientifico = new PersonalCientifico();
-            DataTable personalCientificoLogueado = personalCientifico.generarPersonalCientifico(usuarioLogeado);
+            string legajoPc = personalCientifico.generarPersonalCientifico(usuarioLogeado);
 
-            AsignacionCientificaCAO asignacionbd = new AsignacionCientificaCAO();
-            DataTable asignacionPersonal = asignacionbd.BuscarAsignacionPersonal(personalCientificoLogueado);
-            return asignacionPersonal;
-        }
+            AsignacionCientificaCAO ACbd = new AsignacionCientificaCAO();
+            DataTable tablaAsignacion = ACbd.BuscarAsignacionPorLegajo(legajoPc, idCentro);
 
-        public DataTable esTuCientifico(DataTable usuarioLogeado)
-        {
-            PersonalCientifico personalCientifico = new PersonalCientifico();
-            DataTable asignacionPersonalLogueado = personalCientifico.generarPersonalCientifico(usuarioLogeado);
-
-            return asignacionPersonalLogueado;
+            return tablaAsignacion;
         }
 
         //public void setTurno(Turno turnoSeleccionado, PersonalCientifico personalCientificoLogueado)

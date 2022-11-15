@@ -21,7 +21,7 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         public DataTable getUsuarioPorId(int id)
         {
-            string sql = "SELECT * FROM usuario where id = " + id;
+            string sql = "SELECT * FROM usuario where idUsuario = " + id;
             return _BD.EjecutarSelect(sql);
         }
 

@@ -23,15 +23,15 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         Acceso_base_dato _BD = new Acceso_base_dato();
 
-        public DataTable esPosteriorFechaHoraActual(DataTable asignacionPersonalLogueado)
+        public DataTable getTurnoPorId(string idTurno)
         {
-            string sql = "buscar turno con fecha inicio mayor a la fecha actual de la asignacion del usuario logueado";
+            string sql = "select * from turno where id = " +idTurno;
             return _BD.EjecutarSelect(sql);
         }
 
-        public DataTable BuscarEstadoPorCambioEstado(DataTable tablaTurnosDisponibles)
+        public DataTable BuscarEstadoPorCambioEstado(string idEstadoTurno)
         {
-            string sql = "buscar turno de cambio de estado actual";
+            string sql = "select * from estado where id = "+ idEstadoTurno;
             return _BD.EjecutarSelect(sql);
         }
 

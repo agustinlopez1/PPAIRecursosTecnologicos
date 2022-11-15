@@ -66,10 +66,5 @@ namespace PPAIRecursosTecnologicos.Entidades
             DataTable tablaUsuarios = usuariobd.getUsuarioPorId(id);
             return tablaUsuarios;
         }
-        //public PersonalCientifico getCientifico()
-        //{
-        //    PersonalCientifico personalCientifico = new PersonalCientifico();
-        //    personalCientifico.
-        //}
     }
 }

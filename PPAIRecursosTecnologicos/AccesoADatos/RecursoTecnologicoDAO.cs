@@ -42,7 +42,7 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         public DataTable getRecursosTecnologicos(string nombreRecursoSeleccionado)
         {
-            string sql = "buscar tabla completa de rt para buscar el personal asociado";
+            string sql = "select * from RecursoTecnologico where nombre = '" + nombreRecursoSeleccionado + "'";
             return _BD.EjecutarSelect(sql);
         }
     }

@@ -100,5 +100,90 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             }
             return nombreMarca;
         }
+
+        public int ObtenerIdCentroInvestigacionRTSeleccionado(DataTable tabla)
+        {
+            int idCentro = -1;
+
+            foreach (DataRow rtTipoSelec in tabla.Rows)
+            {
+                RecursoTecnologico Rt = new RecursoTecnologico();
+                idCentro = Convert.ToInt32(rtTipoSelec["idCentroInvestigacion"]);
+            }
+
+            return idCentro;
+        }
+
+        public string ObtenerNombreUsuarioLogueado(DataTable tabla)
+        {
+            string nombreUsuario = "";
+
+            foreach (DataRow usuario in tabla.Rows)
+            {
+                nombreUsuario = Convert.ToString(usuario["usuario"]);
+            }
+
+            return nombreUsuario;
+        }
+
+        public string ObtenerLegajoPersonalCientifico(DataTable tabla)
+        {
+            string legajoPc = "";
+
+            foreach (DataRow personal in tabla.Rows)
+            {
+                legajoPc = Convert.ToString(personal["legajo"]);
+            }
+
+            return legajoPc;
+        }
+
+        public string ObtenerIdTurno(DataTable tabla)
+        {
+            string idTurno = "";
+
+            foreach (DataRow asignacion in tabla.Rows)
+            {
+                idTurno = Convert.ToString(asignacion["IdTurno"]);
+            }
+
+            return idTurno;
+        }
+
+        public DateTime ObtenerFechaTurno(DataTable tabla)
+        {
+            DateTime fechaTurno = DateTime.Now;
+
+            foreach (DataRow asignacion in tabla.Rows)
+            {
+                fechaTurno = Convert.ToDateTime(asignacion["fechaHoraInicio"]);
+            }
+
+            return fechaTurno;
+        }
+
+        public DateTime ObtenerFechaCambioEstadoTurno(DataTable tabla)
+        {
+            DateTime fechaCambioEstadoTurno = DateTime.Now;
+
+            foreach (DataRow asignacion in tabla.Rows)
+            {
+                fechaCambioEstadoTurno = Convert.ToDateTime(asignacion["fechaHoraInicio"]);
+            }
+
+            return fechaCambioEstadoTurno;
+        }
+
+        public string ObtenerIdEstado(DataTable tabla)
+        {
+            string idCambioEstado = " ";
+
+            foreach (DataRow asignacion in tabla.Rows)
+            {
+                idCambioEstado = Convert.ToString(asignacion["idEstado"]);
+            }
+
+            return idCambioEstado;
+        }
     }
 }

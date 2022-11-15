@@ -26,13 +26,24 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tablaCambioEstadoTurno;
         }
 
-        public DataTable EsActual(DataTable tablaTurnosDisponibles)
+        public DataTable EsActual(string idTurno)
         {
             CambioEstadoTurnoDAO cambioEstadoBD = new CambioEstadoTurnoDAO();
-            DataTable tablaCambioEstadoActual = cambioEstadoBD.EsActual(tablaTurnosDisponibles);
+            DataTable tablaTurno = cambioEstadoBD.EsActual(idTurno);
+
+            DataTable estadoTurnosActuales = new DataTable();
 
             Estado estado = new Estado();
-            DataTable estadoTurnosActuales = estado.getEstadoTurno(tablaTurnosDisponibles);
+            Utils util = new Utils();
+            string idEstadoTurno = util.ObtenerIdEstado(tablaTurno);
+            DateTime fechaCambioEstadoTurno = util.ObtenerFechaCambioEstadoTurno(tablaTurno);
+
+            DateTime fechaActual = DateTime.Now;
+
+            if (fechaCambioEstadoTurno > fechaActual)
+            {
+                estadoTurnosActuales = estado.getEstadoTurno(idEstadoTurno);
+            }
             return estadoTurnosActuales;
         }
 

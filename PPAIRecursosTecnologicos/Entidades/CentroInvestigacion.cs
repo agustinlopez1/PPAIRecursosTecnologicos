@@ -34,16 +34,12 @@ namespace PPAIRecursosTecnologicos.Entidades
         //    return nombreCentroInvestigacion;
         //}
 
-        public DataTable esAsignado(DataTable usuarioLogeado, DataTable tablaRTseleccionado)
+        public DataTable esAsignado(DataTable usuarioLogeado, int idCentro)
         {
             AsignacionCientificoDeCentroInvestigacion asignacionCientificoDeCentroInvestigacion = new AsignacionCientificoDeCentroInvestigacion();
-            CentroInvestigacionDAO centroInvestigacionbd = new CentroInvestigacionDAO();
+            DataTable asignacionPersonalLogueado = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuarioLogeado, idCentro);
 
-            DataTable asignacionPersonalLogueado = asignacionCientificoDeCentroInvestigacion.esTuCientifico(usuarioLogeado);
-
-            DataTable centroInvestigacionRtSeleccioando = centroInvestigacionbd.BuscarCentroInvestigacionRtSeleccionado(tablaRTseleccionado, asignacionPersonalLogueado);
-
-            return centroInvestigacionRtSeleccioando;
+            return asignacionPersonalLogueado;
         }
 
         //public void asignarTurno(Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)

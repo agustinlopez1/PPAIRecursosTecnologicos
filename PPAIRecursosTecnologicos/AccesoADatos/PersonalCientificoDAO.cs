@@ -27,9 +27,9 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         Acceso_base_dato _BD = new Acceso_base_dato();
 
-        public DataTable getPersonalCientifico(DataTable usuarioLogeado)
+        public DataTable getPersonalCientifico(string nombreUsuario)
         {
-            string sql = "buscar personal cientidifoco con un join con usuario logueado";
+            string sql = "select legajo from PersonalCientifico where nombre = '" + nombreUsuario + "'";
             return _BD.EjecutarSelect(sql);
         }
 

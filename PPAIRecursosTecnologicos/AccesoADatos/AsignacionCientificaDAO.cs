@@ -19,9 +19,9 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         Acceso_base_dato _BD = new Acceso_base_dato();
 
-        public DataTable BuscarAsignacionPersonal(DataTable personalCientificoLogueado)
+        public DataTable BuscarAsignacionPorLegajo(string legajoPc, int idCentro)
         {
-            string sql = "SELECT * FROM usuario where id = " + personalCientificoLogueado;
+            string sql = "select * from AsignacionCientificoCI join  CentroInvestigacion ci on ci.idAsignacionCientificoCI = AsignacionCientificoCI.id where AsignacionCientificoCI.idPersonalCientifico = " + legajoPc + " and ci.id = " + idCentro;
             return _BD.EjecutarSelect(sql);
         }
 

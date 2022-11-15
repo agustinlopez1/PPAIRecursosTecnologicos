@@ -33,16 +33,38 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         public DataTable getTurnos(DataTable asignacionPersonalLogueado)
         {
-            DataTable tablaTurnosDisponibles = esPosteriorFechaHoraActual(asignacionPersonalLogueado);
-            DataTable estadoTurnosActuales = BuscarTurnoReservable(tablaTurnosDisponibles);
+            Utils util = new Utils();
+            string idTurno = util.ObtenerIdTurno(asignacionPersonalLogueado);
+            DataTable estadoTurnosActuales = new DataTable();
+
+            (Boolean bandera, DataTable tablaTurnosDisponibles) = esPosteriorFechaHoraActual(idTurno);
+
+            if(bandera)
+            {
+                estadoTurnosActuales = BuscarTurnoReservable(idTurno);
+            }
+
             return estadoTurnosActuales;
         }
 
-        public DataTable esPosteriorFechaHoraActual(DataTable asignacionPersonalLogueado)
+        public (Boolean, DataTable) esPosteriorFechaHoraActual(string idTurno)
         {
+            bool bandera;
             TurnoDAO turnobd = new TurnoDAO();
-            DataTable tablaTurnosDisponibles = turnobd.esPosteriorFechaHoraActual(asignacionPersonalLogueado);
-            return tablaTurnosDisponibles;
+            DataTable tablaTurnos = turnobd.getTurnoPorId(idTurno);
+
+            Utils util = new Utils();
+            DateTime fechaTurno = util.ObtenerFechaTurno(tablaTurnos);
+
+            DateTime fechaActual = DateTime.Now;
+            if (fechaTurno > fechaActual)
+            {
+                bandera = true;
+            }
+            else
+                bandera = false;
+
+            return (bandera, tablaTurnos);
         }
 
         //public DataTable BuscarTurnoReservable(DataTable tablaTurnosDisponibles)
@@ -59,10 +81,10 @@ namespace PPAIRecursosTecnologicos.Entidades
         //    return listaEstados;
         //}
 
-        public DataTable BuscarTurnoReservable(DataTable tablaTurnosDisponibles)
+        public DataTable BuscarTurnoReservable(string idTurno)
         {
             CambioEstadoTurno cambioEstadoT = new CambioEstadoTurno();
-            DataTable estadoTurnosActuales = cambioEstadoT.EsActual(tablaTurnosDisponibles);
+            DataTable estadoTurnosActuales = cambioEstadoT.EsActual(idTurno);
             return estadoTurnosActuales;
         }
 

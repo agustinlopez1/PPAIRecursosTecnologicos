@@ -113,11 +113,15 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         //}
 
-        public DataTable getRecursosTecnologicos(string nombreRecursoSeleccionado)
+        public (DataTable, int) getRecursosTecnologicos(string nombreRecursoSeleccionado)
         {
             RecursoTecnologicoDAO rtbd = new RecursoTecnologicoDAO();
             DataTable tablaRTseleccionado = rtbd.getRecursosTecnologicos(nombreRecursoSeleccionado);
-            return tablaRTseleccionado;
+            Utils util = new Utils();
+            int idCentro = util.ObtenerIdCentroInvestigacionRTSeleccionado(tablaRTseleccionado);
+
+
+            return (tablaRTseleccionado, idCentro);
         }
 
         public DataTable getTurnos(DataTable asignacionPersonalLogueado)
@@ -190,20 +194,11 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tablaRt;
         }
 
-        //public (bool, PersonalCientifico) esCientificoDelCentroDeInvestigacion(Usuario cientificoLogeado)
-        //{
-        //    Boolean bandera;
-        //    PersonalCientifico logeadoCientifico;
 
-        //    (bandera, logeadoCientifico) = centroInvestigacion.esAsignado(cientificoLogeado);
-        //    return (bandera, logeadoCientifico);
-        //}
-
-        public DataTable esCientificoDelCentroDeInvestigacion(DataTable usuarioLogeado, DataTable tablaRTseleccionado)
+        public DataTable esCientificoDelCentroDeInvestigacion(DataTable usuarioLogeado, int idCentro)
         {
-
             CentroInvestigacion centroInvestigacion = new CentroInvestigacion();
-            DataTable centroInvestigacionRtSeleccioando = centroInvestigacion.esAsignado(usuarioLogeado, tablaRTseleccionado);
+            DataTable centroInvestigacionRtSeleccioando = centroInvestigacion.esAsignado(usuarioLogeado, idCentro);
             return centroInvestigacionRtSeleccioando;
         }
 

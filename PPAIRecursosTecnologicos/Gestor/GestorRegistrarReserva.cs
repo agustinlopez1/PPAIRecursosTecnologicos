@@ -123,12 +123,14 @@ namespace PPAIRecursosTecnologicos.Gestor
         //    return (logeadoCientifico, turnosPosteriorFecha, listaEstados);
         //}
 
-        public DataTable verificarUsuarioLogueado(DataTable tablaRTseleccionado)
+        public DataTable verificarUsuarioLogueado(DataTable tablaRTseleccionado, int idCentro)
         {
             Sesion sesion = new Sesion();
             DataTable usuarioLogeado = sesion.getCientificoLogueado(1);
+            RecursoTecnologico rt = new RecursoTecnologico();
 
-            DataTable centroInvestigacionRtSeleccioando = recursoTecnologicoSeleccionado.esCientificoDelCentroDeInvestigacion(usuarioLogeado, tablaRTseleccionado);
+            DataTable centroInvestigacionRtSeleccioando = rt.esCientificoDelCentroDeInvestigacion(usuarioLogeado, idCentro);
+            
             DataTable estadoTurnosActuales = getTurnosRecursoTecnologicoSeleccionado(centroInvestigacionRtSeleccioando);
  
             return estadoTurnosActuales;
@@ -153,9 +155,9 @@ namespace PPAIRecursosTecnologicos.Gestor
         public DataTable tomarSeleccionRecursoTecnologico(string nombreRecursoSeleccionado)
         {
             RecursoTecnologico rt = new RecursoTecnologico();
-            DataTable tablaRTseleccionado = rt.getRecursosTecnologicos(nombreRecursoSeleccionado);
+           (DataTable tablaRTseleccionado, int idCentro) = rt.getRecursosTecnologicos(nombreRecursoSeleccionado);
 
-            DataTable estadoTurnosActuales = verificarUsuarioLogueado(tablaRTseleccionado);
+            DataTable estadoTurnosActuales = verificarUsuarioLogueado(tablaRTseleccionado, idCentro);
             return estadoTurnosActuales;
         }
 

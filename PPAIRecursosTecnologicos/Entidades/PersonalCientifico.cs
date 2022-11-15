@@ -42,11 +42,19 @@ namespace PPAIRecursosTecnologicos.Entidades
         //    return personalCientifico;
         //}
 
-        public DataTable generarPersonalCientifico(DataTable usuarioLogeado)
+        public string generarPersonalCientifico(DataTable usuarioLogeado)
         {
             PersonalCientificoDAO personalCientificobd = new PersonalCientificoDAO();
-            DataTable personalCientidicoLogueado = personalCientificobd.getPersonalCientifico(usuarioLogeado);
-            return personalCientidicoLogueado;
+            Utils util = new Utils();
+
+            //obtiene nombre usuario logueado
+            string nombreUsuario = util.ObtenerNombreUsuarioLogueado(usuarioLogeado);
+
+            DataTable personalCientidicoLogueado = personalCientificobd.getPersonalCientifico(nombreUsuario);
+
+            //obtiene legajo del usuario logueado
+            string legajoPc = util.ObtenerLegajoPersonalCientifico(personalCientidicoLogueado);
+            return legajoPc;
         }
     }
 }
