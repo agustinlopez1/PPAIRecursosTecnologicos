@@ -12,15 +12,20 @@ namespace PPAIRecursosTecnologicos.Entidades
     {
         private string nombre;
         private string ambito;
+        private int id;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Ambito { get => ambito; set => ambito = value; }
+        public int Id { get => id; set => id = value; }
 
-        public DataTable getEstado()
+        public List<Estado> getEstado()
         {
             EstadoDAO estadobd = new EstadoDAO();
             DataTable tablaEstados = estadobd.getEstado();
-            return tablaEstados;
+
+            Utils util = new Utils();
+            List<Estado> listaEstados = util.ObtenerTablaEstado(tablaEstados);
+            return listaEstados;
         }
 
         public Boolean esReservable(string estadoActual)
@@ -35,23 +40,23 @@ namespace PPAIRecursosTecnologicos.Entidades
             }
         }
 
-        public Estado esAmbitoTurno()
+        public int esAmbitoTurno()
         {
-            DataTable listaEstados = getEstado();
-            Estado estadoReservado;
+            List<Estado> listaEstados = getEstado();
+            int estadoReservado = -1;
 
-            //foreach (Estado estado in listaEstados)
-            //{
-            //    if (estado.ambito == "turno")
-            //    {
-            //        if (estado.nombre == "reservado")
-            //        {
-            //            estadoReservado = estado;
-            //            return estadoReservado;
-            //        }
-            //    }
-            //}
-            return null;
+            foreach (Estado estado in listaEstados)
+            {
+                if (estado.ambito == "turno")
+                {
+                    if (estado.nombre == "reservado")
+                    {
+                        estadoReservado = estado.id;
+                        return estadoReservado;
+                    }
+                }
+            }
+            return estadoReservado;
         }
 
         public DataTable getEstadoTurno(string idEstadoTurno)

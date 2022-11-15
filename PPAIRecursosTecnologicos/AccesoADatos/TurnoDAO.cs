@@ -35,12 +35,6 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return _BD.EjecutarSelect(sql);
         }
 
-        public DataTable BuscarEstadoPorCambioEstado(DateTime fechaTurno)
-        {
-            string sql = "buscar turno por fehca";
-            return _BD.EjecutarSelect(sql);
-        }
-
         public DataTable getTurnos()
         {
             string sql = "select * from Turno";
@@ -50,8 +44,14 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         public DataTable BuscarTurnoPorFecha(DateTime fechaTurno)
         {
-            string sql = "";
+            string sql = "select * from turno where fechaHoraInicio = '" + fechaTurno + "'";
             return _BD.EjecutarSelect(sql);
+        }
+
+        public void setNuevoCambioEstado(int nuevoIdcmt, string idTurnoSeleccionado)
+        {
+            string sql = "UPDATE Turno SET idCambioEstadoTurno = "+ nuevoIdcmt+" where id = " + idTurnoSeleccionado;
+             _BD.EjecutarInsert(sql);
         }
     }
 }

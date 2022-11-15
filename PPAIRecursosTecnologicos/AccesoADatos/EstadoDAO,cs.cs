@@ -23,5 +23,11 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             string sql = "SELECT * FROM Estado";
             return _BD.EjecutarSelect(sql);
         }
+
+        public DataTable getEstadoPorId(int idEstadoReservado)
+        {
+            string sql = "SELECT nombre FROM Estado where id = " + idEstadoReservado;
+            return _BD.EjecutarSelect(sql);
+        }
     }
 }

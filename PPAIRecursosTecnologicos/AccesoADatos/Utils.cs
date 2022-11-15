@@ -107,7 +107,6 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
             foreach (DataRow rtTipoSelec in tabla.Rows)
             {
-                RecursoTecnologico Rt = new RecursoTecnologico();
                 idCentro = Convert.ToInt32(rtTipoSelec["idCentroInvestigacion"]);
             }
 
@@ -162,13 +161,13 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return fechaTurno;
         }
 
-        public DateTime ObtenerFechaCambioEstadoTurno(DataTable tabla)
+        public bool ObtenerFechaCambioEstadoTurno(DataTable tabla)
         {
-            DateTime fechaCambioEstadoTurno = DateTime.Now;
+            bool fechaCambioEstadoTurno = true;
 
             foreach (DataRow asignacion in tabla.Rows)
             {
-                fechaCambioEstadoTurno = Convert.ToDateTime(asignacion["fechaHoraInicio"]);
+                fechaCambioEstadoTurno = Convert.IsDBNull(asignacion["fechaHoraHasta"]);
             }
 
             return fechaCambioEstadoTurno;
@@ -184,6 +183,117 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             }
 
             return idCambioEstado;
+        }
+
+        public List<string> ObtenerEstado(DataTable tabla)
+        {
+            List<string> listaestado = new List<string>();
+
+            foreach (DataRow rtTipoSelec in tabla.Rows)
+            {
+                Estado e = new Estado();
+                e.Nombre = Convert.ToString(rtTipoSelec["nombre"]);
+                listaestado.Add(e.Nombre);
+            }
+
+            return listaestado;
+        }
+
+        public List<Turno> ObtenerTurno(DataTable tabla)
+        {
+            List<Turno> listaTurno = new List<Turno>();
+
+            foreach (DataRow turno in tabla.Rows)
+            {
+                Turno e = new Turno();
+                e.FechaHoraInicio = Convert.ToDateTime(turno["fechaHoraInicio"]);
+                e.FechaHoraFin = Convert.ToDateTime(turno["fechaHoraFin"]);
+
+                listaTurno.Add(e);
+            }
+
+            return listaTurno;
+        }
+
+        public List<Turno> ObtenerTablaTurnoSeleccionado(DataTable tabla)
+        {
+            List<Turno> listaTurno = new List<Turno>();
+
+            foreach (DataRow turno in tabla.Rows)
+            {
+                Turno e = new Turno();
+                e.FechaHoraInicio = Convert.ToDateTime(turno["fechaHoraInicio"]);
+                e.FechaHoraFin = Convert.ToDateTime(turno["fechaHoraFin"]);
+
+                listaTurno.Add(e);
+            }
+
+            return listaTurno;
+        }
+
+        public List<Estado> ObtenerTablaEstado(DataTable tabla)
+        {
+            List<Estado> listaestado = new List<Estado>();
+
+            foreach (DataRow estado in tabla.Rows)
+            {
+                Estado e = new Estado();
+                e.Nombre = Convert.ToString(estado["nombre"]);
+                e.Ambito = Convert.ToString(estado["ambito"]);
+                e.Id = Convert.ToInt32(estado["id"]);
+
+                listaestado.Add(e);
+            }
+
+            return listaestado;
+        }
+
+        public string ObtenerIdCambioEstado(DataTable tabla)
+        {
+            string idCambioEstadoTurnoSelec = " ";
+
+            foreach (DataRow asignacion in tabla.Rows)
+            {
+                idCambioEstadoTurnoSelec = Convert.ToString(asignacion["idCambioEstadoTurno"]);
+            }
+
+            return idCambioEstadoTurnoSelec;
+        }
+
+        public string ObtenerIdUsuario(DataTable tabla)
+        {
+            string idUsuario = "";
+
+            foreach (DataRow usuario in tabla.Rows)
+            {
+                idUsuario = Convert.ToString(usuario["idUsuario"]);
+            }
+
+            return idUsuario;
+        }
+
+        public int BuscarUltimoId(DataTable tabla)
+        {
+            int ultimoId = 0;
+
+            foreach (DataRow usuario in tabla.Rows)
+            {
+                ultimoId = Convert.ToInt32(usuario["id"]);
+            }
+
+            return ultimoId;
+        }
+
+        public string ObtenerIdTurnoSelec(DataTable tabla)
+        {
+            string idTurno = "";
+
+            foreach (DataRow asignacion in tabla.Rows)
+            {
+                idTurno = Convert.ToString(asignacion["id"]);
+            }
+
+            return idTurno;
         }
     }
 }

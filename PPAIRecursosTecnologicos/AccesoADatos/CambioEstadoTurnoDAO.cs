@@ -27,8 +27,14 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
 
         public DataTable getCambioEstadoTurno()
         {
-            string sql = "buscar cambio de estado actual";
+            string sql = "select id from CambioEstadoTurno";
             return _BD.EjecutarSelect(sql);
+        }
+
+        public void SetFechaHoraHasta(string idCambioEstadoTurnoSelec, DateTime fechaActual, int idEstadoReservado)
+        {
+            string sql = "UPDATE CambioEstadoTurno SET fechaHoraHasta = '" + fechaActual + "'  where id = " + idCambioEstadoTurnoSelec;
+            _BD.EjecutarInsert(sql);
         }
     }
 }

@@ -37,82 +37,6 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         Turno turno = new Turno();
 
-        //public List<RecursoTecnologico> getRecursosTecnologicos()
-        //{
-        //    Modelo modelo = new Modelo();
-        //    DataTable listaModelo = modelo.getModelo();
-
-        //    TipoRecurso tipoRt = new TipoRecurso();
-        //    DataTable listaTiposRt = tipoRt.getTipoRecurso();
-
-        //    CentroInvestigacion centroInvestigacion = new CentroInvestigacion();
-        //    List<CentroInvestigacion> listaCentroInv = centroInvestigacion.getCentroInvestigacion();
-
-        //    CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-        //    (List<CambioEstadoRT> listaCambioEstadoRT1, List<CambioEstadoRT> listaCambioEstadoRT2) = cambioEstadoRT.getCambioEstadoRT();
-
-        //    List<RecursoTecnologico> listaRecursosTecnologicos = new List<RecursoTecnologico>();
-
-        //    List<Turno> turnos = turno.getTurnos();
-
-
-        //    //BALANZA DE PRECISION RESERVABLE
-        //    RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico();
-        //    recursoTecnologico1.nombre = "recurso tipo Balanza de precisión";
-        //    recursoTecnologico1.numeroRT = 1;
-        //    recursoTecnologico1.imagen = "imagen1";
-        //    recursoTecnologico1.fechaAlta = DateTime.Now;
-        //    recursoTecnologico1.periodicidadMantenimientoPrev = "cada 10 meses";
-        //    recursoTecnologico1.duracionMantenimientoPrev = "1 semana";
-        //    recursoTecnologico1.fraccionHorarioTurnos = "15 minutos";
-        //    recursoTecnologico1.tipoRecurso = listaTiposRt[0];
-        //    recursoTecnologico1.centroInvestigacion = listaCentroInv[0];
-        //    recursoTecnologico1.cambioEstadoRT = listaCambioEstadoRT1;
-        //    recursoTecnologico1.modelo = listaModelo[0];
-        //    recursoTecnologico1.listaTurnos = turnos;
-
-        //    listaRecursosTecnologicos.Add(recursoTecnologico1);
-
-        //    // BALANZA DE PRECISION RESERVABLE
-        //    RecursoTecnologico recursoTecnologico2 = new RecursoTecnologico();
-        //    recursoTecnologico2.nombre = "recurso tipo BALANZA DE PRECISION";
-        //    recursoTecnologico2.numeroRT = 2;
-        //    recursoTecnologico2.imagen = "imagen2";
-        //    recursoTecnologico2.fechaAlta = DateTime.Now;
-        //    recursoTecnologico2.periodicidadMantenimientoPrev = "cada 3 meses";
-        //    recursoTecnologico2.duracionMantenimientoPrev = "45 semana";
-        //    recursoTecnologico2.fraccionHorarioTurnos = "15 minutos";
-        //    recursoTecnologico2.tipoRecurso = listaTiposRt[0];
-        //    recursoTecnologico2.centroInvestigacion = listaCentroInv[1];
-        //    recursoTecnologico2.cambioEstadoRT = listaCambioEstadoRT2;
-        //    recursoTecnologico2.modelo = listaModelo[1];
-        //    recursoTecnologico2.listaTurnos = turnos;
-
-
-        //    listaRecursosTecnologicos.Add(recursoTecnologico2);
-
-        //    // RESONADOR CON ESTADO RESERVABLE
-        //    RecursoTecnologico recursoTecnologico3 = new RecursoTecnologico();
-        //    recursoTecnologico3.nombre = "recurso tipo Resonador Magnetico";
-        //    recursoTecnologico3.numeroRT = 3;
-        //    recursoTecnologico3.imagen = "imagen3";
-        //    recursoTecnologico3.fechaAlta = DateTime.Now;
-        //    recursoTecnologico3.periodicidadMantenimientoPrev = "cada 1 año";
-        //    recursoTecnologico3.duracionMantenimientoPrev = "9 meses";
-        //    recursoTecnologico3.fraccionHorarioTurnos = "15 minutos";
-        //    recursoTecnologico3.tipoRecurso = listaTiposRt[2];
-        //    recursoTecnologico3.centroInvestigacion = listaCentroInv[2];
-        //    recursoTecnologico3.cambioEstadoRT = listaCambioEstadoRT1;
-        //    recursoTecnologico3.modelo = listaModelo[2];
-        //    recursoTecnologico3.listaTurnos = turnos;
-
-
-        //    listaRecursosTecnologicos.Add(recursoTecnologico3);
-
-        //    return listaRecursosTecnologicos;
-
-        //}
-
         public (DataTable, int) getRecursosTecnologicos(string nombreRecursoSeleccionado)
         {
             RecursoTecnologicoDAO rtbd = new RecursoTecnologicoDAO();
@@ -124,11 +48,11 @@ namespace PPAIRecursosTecnologicos.Entidades
             return (tablaRTseleccionado, idCentro);
         }
 
-        public DataTable getTurnos(DataTable asignacionPersonalLogueado)
+        public (DataTable , DataTable) getTurnos(DataTable asignacionPersonalLogueado)
         {
             Turno turno = new Turno();
-            DataTable estadoTurnosActuales = turno.getTurnos(asignacionPersonalLogueado);
-            return estadoTurnosActuales;
+            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = turno.getTurnos(asignacionPersonalLogueado);
+            return (estadoTurnosActuales, tablaTurnos);
         }
 
         public DataTable esDeTipoRtSeleccionado(string tipoRtSeleccionado)
@@ -151,42 +75,6 @@ namespace PPAIRecursosTecnologicos.Entidades
             return bandera;
         }
 
-        //busca marca y modelo
-        //public (List<string>, List<string>) getMarcaModelo(List<RecursoTecnologico> listaRTReservable)
-        //{
-        //    Modelo modelo = new Modelo();
-
-        //    List<string> listaModelos = new List<string>();
-        //    List<string> listaMarca = new List<string>();
-
-        //    string nombreModelo = " ";
-        //    string nombreMarca = " ";
-
-        //    foreach (RecursoTecnologico rt in listaRTReservable)
-        //    {
-        //        (nombreMarca, nombreModelo) = modelo.getMarcaModelo(rt);
-        //        listaModelos.Add(nombreModelo);
-        //        listaMarca.Add(nombreMarca);
-        //    }
-
-        //    return (listaMarca, listaModelos);
-        //}
-
-        //public List<string> getCentroInvestigacion(List<RecursoTecnologico> listaRTReservable)
-        //{
-        //    CentroInvestigacion centroInvestigacion = new CentroInvestigacion();
-        //    List<string> listaCentroInvestigacion = new List<string>();
-        //    string nombreCentroInvestigacion = " ";
-
-        //    foreach (RecursoTecnologico rt in listaRTReservable)
-        //    {
-        //        nombreCentroInvestigacion = centroInvestigacion.getNombre(rt);
-        //        listaCentroInvestigacion.Add(nombreCentroInvestigacion);
-        //    }
-
-        //    return listaCentroInvestigacion;
-        //}
-
         public DataTable getRecursosTecnologicosPorNumero(DataTable tablaRtActualesReservable)
         {
             RecursoTecnologicoDAO rtbd = new RecursoTecnologicoDAO();
@@ -202,16 +90,19 @@ namespace PPAIRecursosTecnologicos.Entidades
             return centroInvestigacionRtSeleccioando;
         }
 
-        public (Turno, string) reservar(Estado estadoReservado, Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
+        public void reservar(int idEstadoReservado, DataTable turnoSeleccionado, DataTable usuarioLogeado)
         {
-            String nombreEstadoActual = "";
-           // nombreEstadoActual = turno.reservar(estadoReservado, turnoSeleccionado);
-            //   centroInvestigacion.asignarTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
+            AsignacionCientificoDeCentroInvestigacion ac = new AsignacionCientificoDeCentroInvestigacion();
+            
+            Utils util = new Utils();
+            string idTurnoSeleccionado = util.ObtenerIdTurnoSelec(turnoSeleccionado);
+            string idUsuario = util.ObtenerIdUsuario(usuarioLogeado);
 
-            return (turnoSeleccionado, nombreEstadoActual);
+            int nuevoIdcmt = ac.Reservar(turnoSeleccionado, idEstadoReservado);
+
+            CentroInvestigacion ci = new CentroInvestigacion();
+            ci.asignarTurno(idTurnoSeleccionado, idUsuario, nuevoIdcmt);
         }
-
-
 
     }
 }

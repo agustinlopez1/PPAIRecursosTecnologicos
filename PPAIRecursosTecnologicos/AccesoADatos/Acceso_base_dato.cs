@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Configuration;
-
+using PPAIRecursosTecnologicos.Entidades;
 
 namespace PPAIRecursosTecnologicos.AccesoADatos
 {
@@ -84,6 +84,26 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             }
             Desconectar();
             return tabla;
+        }
+
+        public void EjecutarInsert(string sql)
+        {
+            Conectar();
+            Cmd.CommandText = sql;
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error en la Base de Datos\n"
+                + "Con el comando: \n"
+                + sql + "\n"
+                + "El error en la base de datos:\n"
+                + e.Message);
+                ControlTransaccion = TipoEstado.error;
+            }
+            Desconectar();
         }
     }
 }

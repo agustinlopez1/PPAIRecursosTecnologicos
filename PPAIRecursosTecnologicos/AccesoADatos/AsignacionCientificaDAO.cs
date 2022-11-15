@@ -25,6 +25,22 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             return _BD.EjecutarSelect(sql);
         }
 
+        public void New(int idEstadoReservado, DateTime fechaActual, int nuevoIdcmt)
+        {
+            string sql = "INSERT INTO CambioEstadoTurno Values (" + nuevoIdcmt + ", '" + fechaActual + "', NULL, "+ idEstadoReservado+ ")";
+            _BD.EjecutarInsert(sql);
+        }
 
+        public void setTurno(string idTurnoSeleccionado, string idUsuario, int nuevoId)
+        {
+            string sql = "INSERT INTO AsignacionCientificoCI Values (" + nuevoId + ", " + idUsuario + ", "+ idTurnoSeleccionado + ")";
+            _BD.EjecutarInsert(sql);
+        }
+
+        public DataTable getAC()
+        {
+            string sql = "select id from AsignacionCientificoCI";
+            return _BD.EjecutarSelect(sql);
+        }
     }
 }

@@ -142,48 +142,19 @@ namespace PPAIRecursosTecnologicos.Pantalla
         }
 
         //le envia al gestor el rt seleccionado
-        //   private RecursoTecnologico tomarSeleccionRecursoTecnologico()
-        //private void tomarSeleccionRecursoTecnologico()
-        //{
-        //    string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
-        //    RecursoTecnologico recursoSeleccionado = new RecursoTecnologico();
-
-        //    foreach (RecursoTecnologico rt in gestorLista)
-        //    {
-        //        if (rt.Nombre == nombreRecursoSeleccionado)
-        //        {
-        //            recursoSeleccionado = rt;
-        //        }
-        //    }
-
-        //    MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
-
-        //    List<String> listaEstados = new List<String>();
-        //    List<Turno> turnosPosteriorFecha = new List<Turno>();
-
-        //    (turnosPosteriorFecha, listaEstados) = this.gestor.tomarSeleccionRecursoTecnologico(recursoSeleccionado);
-
-        //    PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
-        //    pantallaRegistrarTurno.Show();
-        //    pantallaRegistrarTurno.tomarGestor(gestor);
-        //    pantallaRegistrarTurno.pedirSeleccionTurno(turnosPosteriorFecha, listaEstados);
-
-        //    //return recursoSeleccionado;
-        //}
-
-        private void tomarSeleccionRecursoTecnologico()
+         private void tomarSeleccionRecursoTecnologico()
         {
             string nombreRecursoSeleccionado = grid_rt.CurrentRow.Cells[1].Value.ToString();
             //buscar nombre del recurso seleccionado
 
             MessageBox.Show("Recurso seleccionado " + nombreRecursoSeleccionado);
 
-            DataTable estadoTurnosActuales = this.gestor.tomarSeleccionRecursoTecnologico(nombreRecursoSeleccionado);
+            (List<string> listaestado, List<Turno> listaTurno) = this.gestor.tomarSeleccionRecursoTecnologico(nombreRecursoSeleccionado);
 
             PantallaRegistrarTurno pantallaRegistrarTurno = new PantallaRegistrarTurno();
             pantallaRegistrarTurno.Show();
             pantallaRegistrarTurno.tomarGestor(gestor);
-            pantallaRegistrarTurno.pedirSeleccionTurno(estadoTurnosActuales);
+            pantallaRegistrarTurno.pedirSeleccionTurno(listaestado, listaTurno);
 
             //return recursoSeleccionado;
         }

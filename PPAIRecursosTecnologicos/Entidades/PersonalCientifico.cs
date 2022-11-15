@@ -27,21 +27,6 @@ namespace PPAIRecursosTecnologicos.Entidades
         public int TelefonoCelular { get => telefonoCelular; set => telefonoCelular = value; }
 
 
-        //public PersonalCientifico generarPersonalCientifico()
-        //{
-        //    PersonalCientifico personalCientifico = new PersonalCientifico();
-
-        //    personalCientifico.Legajo = 1234;
-        //    personalCientifico.nombre = "Matias ";
-        //    personalCientifico.apellido = "Logeado";
-        //    personalCientifico.numeroDocumento = 21522167;
-        //    personalCientifico.correoElectronicoInstitucional = "joseflores@ci.unc";
-        //    personalCientifico.correoElectronicoPersonal = "joseflores@gmail.com";
-        //    personalCientifico.telefonoCelular = 351408591;
-
-        //    return personalCientifico;
-        //}
-
         public string generarPersonalCientifico(DataTable usuarioLogeado)
         {
             PersonalCientificoDAO personalCientificobd = new PersonalCientificoDAO();

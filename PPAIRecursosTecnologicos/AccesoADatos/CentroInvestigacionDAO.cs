@@ -42,5 +42,11 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
             string sql = "Select nombre from CentroInvestigacion where id = " + idCentroInvestigacion;
             return _BD.EjecutarSelect(sql);
         }
+
+        public void asignarTurno(int nuevoIdAc)
+        {
+            string sql = "INSERT INTO CentroInvestigacion Values ('centro investigacion uno', "+ nuevoIdAc + ")";
+            _BD.EjecutarInsert(sql);
+        }
     }
 }

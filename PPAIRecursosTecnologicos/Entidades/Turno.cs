@@ -31,20 +31,20 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tablaTurnos;
         }
 
-        public DataTable getTurnos(DataTable asignacionPersonalLogueado)
+        public (DataTable, DataTable) getTurnos(DataTable asignacionPersonalLogueado)
         {
             Utils util = new Utils();
             string idTurno = util.ObtenerIdTurno(asignacionPersonalLogueado);
             DataTable estadoTurnosActuales = new DataTable();
 
-            (Boolean bandera, DataTable tablaTurnosDisponibles) = esPosteriorFechaHoraActual(idTurno);
+            (Boolean bandera, DataTable tablaTurnos) = esPosteriorFechaHoraActual(idTurno);
 
             if(bandera)
             {
                 estadoTurnosActuales = BuscarTurnoReservable(idTurno);
             }
 
-            return estadoTurnosActuales;
+            return (estadoTurnosActuales, tablaTurnos);
         }
 
         public (Boolean, DataTable) esPosteriorFechaHoraActual(string idTurno)
@@ -67,19 +67,6 @@ namespace PPAIRecursosTecnologicos.Entidades
             return (bandera, tablaTurnos);
         }
 
-        //public DataTable BuscarTurnoReservable(DataTable tablaTurnosDisponibles)
-        //{
-        //    List<String> listaEstados = new List<String>();
-        //    List<CambioEstadoTurno> cambioEstadoActual = new List<CambioEstadoTurno>();
-        //    Boolean esActual;
-
-        //    foreach (Turno turno in turnos)
-        //    {
-        //        (esActual, listaEstados, cambioEstadoActual) = cambioEstadoT.EsActual(turno, listaEstados, cambioEstadoActual);
-        //    }
-        //    this.cambioEstadoTurnoActual = cambioEstadoActual;
-        //    return listaEstados;
-        //}
 
         public DataTable BuscarTurnoReservable(string idTurno)
         {
@@ -87,29 +74,6 @@ namespace PPAIRecursosTecnologicos.Entidades
             DataTable estadoTurnosActuales = cambioEstadoT.EsActual(idTurno);
             return estadoTurnosActuales;
         }
-
-        //public String reservar(Estado estadoReservado, Turno turnoSeleccionado)
-        //{
-        //    List<CambioEstadoTurno> listaCambioEstadoTurno2;
-        //    String nombreEstadoActual = "";
-
-        //    foreach (CambioEstadoTurno cambioEstado in this.cambioEstadoTurnoActual)
-        //    {
-        //        foreach (CambioEstadoTurno cambioEstadoTurno in turnoSeleccionado.cambioEstadoTurno)
-        //        {
-        //            if (cambioEstadoTurno == cambioEstado)
-        //            {
-        //                cambioEstadoTurno.setFechaHoraFin();
-        //                listaCambioEstadoTurno2 = cambioEstadoTurno.New();
-        //                turnoSeleccionado.cambioEstadoTurno = listaCambioEstadoTurno2;
-        //                cambioEstadoTurno.Estado = estadoReservado;
-        //                nombreEstadoActual = cambioEstadoTurno.Estado.Nombre;
-        //            }
-        //        }
-        //    }
-
-        //    return nombreEstadoActual;
-        //}
 
         public DataTable BuscarTurnoPorFecha(DateTime fechaTurno)
         {

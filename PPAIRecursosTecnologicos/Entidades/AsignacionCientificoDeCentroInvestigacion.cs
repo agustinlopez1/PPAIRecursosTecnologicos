@@ -40,12 +40,40 @@ namespace PPAIRecursosTecnologicos.Entidades
             return tablaAsignacion;
         }
 
-        //public void setTurno(Turno turnoSeleccionado, PersonalCientifico personalCientificoLogueado)
-        //{
-        //    AsignacionCientificoDeCentroInvestigacion aginacionCientificoNueva = getAsignacionCientificoDeCentroInvestigacion();
-        //    aginacionCientificoNueva.personalCientifico = personalCientificoLogueado;
-        //    aginacionCientificoNueva.turno = turnoSeleccionado;
+        public int setTurno(string idTurnoSeleccionado, string idUsuario)
+        {
+            AsignacionCientificaCAO acbd = new AsignacionCientificaCAO();
+            DataTable idAC = acbd.getAC();
 
-        //}
+            Utils util = new Utils();
+            int ultimoId = util.BuscarUltimoId(idAC);
+
+            int nuevoId = ultimoId + 1;
+
+            acbd.setTurno(idTurnoSeleccionado, idUsuario, nuevoId);
+
+            return nuevoId;
+        }
+
+        public int Reservar(DataTable turnoSeleccionado, int idEstadoReservado)
+        {
+            Utils util = new Utils();
+            string idCambioEstadoTurnoSelec = util.ObtenerIdCambioEstado(turnoSeleccionado);
+
+            CambioEstadoTurnoDAO cmt = new CambioEstadoTurnoDAO();
+            DateTime fechaActual = DateTime.Now;
+            cmt.SetFechaHoraHasta(idCambioEstadoTurnoSelec, fechaActual, idEstadoReservado);
+
+            DataTable idCambioEstados = cmt.getCambioEstadoTurno();
+            int ultimoidCmt = util.BuscarUltimoId(idCambioEstados);
+            int nuevoIdcmt = ultimoidCmt + 1;
+
+            AsignacionCientificaCAO asbd = new AsignacionCientificaCAO();
+            asbd.New(idEstadoReservado, fechaActual, nuevoIdcmt);
+
+            return nuevoIdcmt;
+        }
+
+
     }
 }

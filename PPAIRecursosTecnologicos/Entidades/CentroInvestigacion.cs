@@ -42,9 +42,16 @@ namespace PPAIRecursosTecnologicos.Entidades
             return asignacionPersonalLogueado;
         }
 
-        //public void asignarTurno(Turno turnoSeleccionado, PersonalCientifico pesrsonalCientificoLogeado)
-        //{
-        //    asignacionCientificoDeCentroInvestigacion.setTurno(turnoSeleccionado, pesrsonalCientificoLogeado);
-        //}
+        public void asignarTurno(string idTurnoSeleccionado, string idUsuario, int nuevoIdcmt)
+        {           
+            AsignacionCientificoDeCentroInvestigacion ac = new AsignacionCientificoDeCentroInvestigacion();
+            int nuevoIdAc = ac.setTurno(idTurnoSeleccionado, idUsuario);
+
+            CentroInvestigacionDAO cibd = new CentroInvestigacionDAO();
+            cibd.asignarTurno(nuevoIdAc);
+
+            TurnoDAO turnobd = new TurnoDAO();
+            turnobd.setNuevoCambioEstado(nuevoIdcmt, idTurnoSeleccionado);
+        }
     }
 }
