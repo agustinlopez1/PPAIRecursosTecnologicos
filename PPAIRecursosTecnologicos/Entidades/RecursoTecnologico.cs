@@ -1,4 +1,5 @@
 ﻿using PPAIRecursosTecnologicos.AccesoADatos;
+using PPAIRecursosTecnologicos.Estrategia;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,6 +22,7 @@ namespace PPAIRecursosTecnologicos.Entidades
         private string duracionMantenimientoPrev;
         private string fraccionHorarioTurnos;
         private int idTurnos;
+        private EstrategiaRT estrategiaSeleccionada;
 
 
         public string Nombre { get => nombre; set => nombre = value; }
@@ -48,11 +50,41 @@ namespace PPAIRecursosTecnologicos.Entidades
             return (tablaRTseleccionado, idCentro);
         }
 
-        public (DataTable , DataTable) getTurnos(DataTable asignacionPersonalLogueado)
+        public void crearEstrategia(Boolean bandera)
+        // Método del STRATEGY para calcular la duracion estimada      
         {
-            Turno turno = new Turno();
-            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = turno.getTurnos(asignacionPersonalLogueado);
+            EstrategiaRT estrategia;
+
+            if (bandera == true)
+            {
+                estrategia = new EstrategiaCientificoMismoCI();
+
+            }
+            else
+            {
+                estrategia = new EstrategiaCientificoDistintoCI();
+
+            }
+            agregarEstrategia(estrategia);
+        }
+
+        //public (DataTable, DataTable) getTurnos(DataTable asignacionPersonalLogueado)
+        //{
+        //    Turno turno = new Turno();
+        //    (DataTable estadoTurnosActuales, DataTable tablaTurnos) = turno.getTurnos(asignacionPersonalLogueado);
+        //    return (estadoTurnosActuales, tablaTurnos);
+        //}
+
+        public (DataTable, DataTable) getTurnos(DataTable asignacionPersonalLogueado, Boolean bandera)
+        {
+            crearEstrategia(bandera);
+            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = estrategiaSeleccionada.getTurnos(asignacionPersonalLogueado);
             return (estadoTurnosActuales, tablaTurnos);
+        }
+
+        public void agregarEstrategia(EstrategiaRT estrategia)
+        {
+            estrategiaSeleccionada = estrategia;
         }
 
         public DataTable esDeTipoRtSeleccionado(string tipoRtSeleccionado)
@@ -75,19 +107,12 @@ namespace PPAIRecursosTecnologicos.Entidades
             return bandera;
         }
 
-        public DataTable getRecursosTecnologicosPorNumero(DataTable tablaRtActualesReservable)
-        {
-            RecursoTecnologicoDAO rtbd = new RecursoTecnologicoDAO();
-            DataTable tablaRt = rtbd.getRecursosTecnologicosPorNumero(tablaRtActualesReservable);
-            return tablaRt;
-        }
 
-
-        public DataTable esCientificoDelCentroDeInvestigacion(DataTable usuarioLogeado, int idCentro)
+        public (DataTable, Boolean) esCientificoDelCentroDeInvestigacion(DataTable usuarioLogeado, int idCentro)
         {
             CentroInvestigacion centroInvestigacion = new CentroInvestigacion();
-            DataTable centroInvestigacionRtSeleccioando = centroInvestigacion.esAsignado(usuarioLogeado, idCentro);
-            return centroInvestigacionRtSeleccioando;
+            (DataTable centroInvestigacionRtSeleccioando, Boolean bandera) = centroInvestigacion.esAsignado(usuarioLogeado, idCentro);
+            return (centroInvestigacionRtSeleccioando, bandera);
         }
 
         public void reservar(int idEstadoReservado, DataTable turnoSeleccionado, DataTable usuarioLogeado)

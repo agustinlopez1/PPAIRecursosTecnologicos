@@ -74,6 +74,9 @@
     <Compile Include="Entidades\TipoRecurso.cs" />
     <Compile Include="Entidades\Turno.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Estrategia\EstrategiaCientificoDistintoCI.cs" />
+    <Compile Include="Estrategia\EstrategiaCientificoMismoCI.cs" />
+    <Compile Include="Estrategia\EstrategiaRT.cs" />
     <Compile Include="Gestor\GestorRegistrarReserva.cs" />
     <Compile Include="Pantalla\PantallaRegistrarTurno.cs">
       <SubType>Form</SubType>
@@ -162,5 +165,6 @@
   <ItemGroup>
     <None Include="Resources\maxresdefault2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,12 +24,6 @@ namespace PPAIRecursosTecnologicos.Entidades
 
         CambioEstadoTurno cambioEstadoT = new CambioEstadoTurno();
 
-        public DataTable getTurnos()
-        {
-            TurnoDAO turnodb = new TurnoDAO();
-            DataTable tablaTurnos = turnodb.getTurnos();
-            return tablaTurnos;
-        }
 
         public (DataTable, DataTable) getTurnos(DataTable asignacionPersonalLogueado)
         {
@@ -66,7 +60,6 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             return (bandera, tablaTurnos);
         }
-
 
         public DataTable BuscarTurnoReservable(string idTurno)
         {

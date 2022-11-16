@@ -18,26 +18,23 @@ namespace PPAIRecursosTecnologicos.Entidades
         public int IdTurno { get => idTurno; set => idTurno = value; }
         public int IdAsignacionCientificoCI { get => idAsignacionCientificoCI; set => idAsignacionCientificoCI = value; }
 
-
-        //public DataTable getAsignacionCientificoDeCentroInvestigacion(DataTable usuarioLogeado)
-        //{
-        //    PersonalCientifico personalCientifico = new PersonalCientifico();
-        //    DataTable personalCientificoLogueado = personalCientifico.generarPersonalCientifico(usuarioLogeado);
-
-        //    AsignacionCientificaCAO asignacionbd = new AsignacionCientificaCAO();
-        //    DataTable asignacionPersonal = asignacionbd.BuscarAsignacionPersonal(personalCientificoLogueado);
-        //    return asignacionPersonal;
-        //}
-
-        public DataTable esTuCientifico(DataTable usuarioLogeado, int idCentro)
+        public (DataTable, Boolean) esTuCientifico(DataTable usuarioLogeado, int idCentro)
         {
+            Boolean bandera;
             PersonalCientifico personalCientifico = new PersonalCientifico();
             string legajoPc = personalCientifico.generarPersonalCientifico(usuarioLogeado);
 
             AsignacionCientificaCAO ACbd = new AsignacionCientificaCAO();
             DataTable tablaAsignacion = ACbd.BuscarAsignacionPorLegajo(legajoPc, idCentro);
 
-            return tablaAsignacion;
+            if (tablaAsignacion.Columns.Count == 0)
+            {
+                bandera = false;
+            }
+            else
+                bandera = true;
+
+            return (tablaAsignacion, bandera);
         }
 
         public int setTurno(string idTurnoSeleccionado, string idUsuario)
@@ -73,7 +70,5 @@ namespace PPAIRecursosTecnologicos.Entidades
 
             return nuevoIdcmt;
         }
-
-
     }
 }

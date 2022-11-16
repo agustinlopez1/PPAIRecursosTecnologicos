@@ -20,8 +20,6 @@ namespace PPAIRecursosTecnologicos.AccesoADatos
         SqlTransaction transaccion;
         TipoConexion ControlTipoConexion = TipoConexion.simple;
         TipoEstado ControlTransaccion = TipoEstado.correcto;
-        // string cadena_conexion = @"Data Source=DESKTOP-LN2QDRN\SQLEXPRESS;Initial Catalog=RecursosTecnologicosDB;Integrated Security=True";
-        //string cadena_conexion = ConfigurationManager.AppSettings['RecursosTecnologicosDB'];
         string cadena_conexion = @"Data Source=DESKTOP-LN2QDRN\SQLEXPRESS;Initial Catalog=RecursosTecnologicosBD;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private void Conectar()

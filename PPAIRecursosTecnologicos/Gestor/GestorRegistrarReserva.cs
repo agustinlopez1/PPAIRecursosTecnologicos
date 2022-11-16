@@ -8,6 +8,7 @@ using PPAIRecursosTecnologicos.Pantalla;
 using System.Windows.Forms;
 using System.Data;
 using PPAIRecursosTecnologicos.AccesoADatos;
+using PPAIRecursosTecnologicos.Estrategia;
 
 namespace PPAIRecursosTecnologicos.Gestor
 {
@@ -22,10 +23,8 @@ namespace PPAIRecursosTecnologicos.Gestor
         private DateTime fechaHoraActual = DateTime.UtcNow;
         DataTable turnoSeleccionado;
         DataTable usuarioLogeado;
+        private EstrategiaRT estrategiaSeleccionada;
 
-        // GET Y SET de atributos
-        // public List<RecursoTecnologico> RecursosTecnologicos { get => recursosTecnologicos; set => recursosTecnologicos = value; }
-        //  public List<string> TiposRecursos { get => tiposRecursos; set => tiposRecursos = value; }
         public Sesion Sesion { get => sesion; set => sesion = value; }
 
         public DataTable buscarTipoRecursoTecnologico()
@@ -108,9 +107,9 @@ namespace PPAIRecursosTecnologicos.Gestor
             usuarioLogeado = sesion.getCientificoLogueado(1);
             RecursoTecnologico rt = new RecursoTecnologico();
 
-            DataTable centroInvestigacionRtSeleccioando = rt.esCientificoDelCentroDeInvestigacion(usuarioLogeado, idCentro);
+            (DataTable centroInvestigacionRtSeleccioando, Boolean bandera) = rt.esCientificoDelCentroDeInvestigacion(usuarioLogeado, idCentro);
 
-            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = getTurnosRecursoTecnologicoSeleccionado(centroInvestigacionRtSeleccioando);
+            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = getTurnosRecursoTecnologicoSeleccionado(centroInvestigacionRtSeleccioando, bandera);
  
             return ( estadoTurnosActuales, tablaTurnos);
         }
@@ -130,13 +129,18 @@ namespace PPAIRecursosTecnologicos.Gestor
             return (listaestado, listaTurno);
         }
 
-
-        public (DataTable, DataTable) getTurnosRecursoTecnologicoSeleccionado(DataTable asignacionPersonalLogueado)
+        public (DataTable, DataTable) getTurnosRecursoTecnologicoSeleccionado(DataTable asignacionPersonalLogueado, Boolean bandera)
         {
             RecursoTecnologico rt = new RecursoTecnologico();
-            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = rt.getTurnos(asignacionPersonalLogueado);
+            (DataTable estadoTurnosActuales, DataTable tablaTurnos) = rt.getTurnos(asignacionPersonalLogueado, bandera);
             return (estadoTurnosActuales, tablaTurnos);
         }
+
+        //public (DataTable, DataTable) getTurnosRecursoTecnologicoSeleccionado(DataTable asignacionPersonalLogueado)
+        //{
+        //    (DataTable estadoTurnosActuales, DataTable tablaTurnos) = estrategiaSeleccionada.getTurnos(asignacionPersonalLogueado);
+        //    return (estadoTurnosActuales, tablaTurnos);
+        //}
 
         //recibe la seleccion desde la pantalla
         public DataTable tomarSeleccionTurno(DateTime fechaTurno)
@@ -168,7 +172,6 @@ namespace PPAIRecursosTecnologicos.Gestor
             int idEstadoReservado = estado.esAmbitoTurno();
             return idEstadoReservado;
         }
-
         public void reservar(int idEstadoReservado)
         {
             RecursoTecnologico rt = new RecursoTecnologico();
